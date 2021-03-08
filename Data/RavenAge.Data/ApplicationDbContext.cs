@@ -6,12 +6,12 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using RavenAge.Data.Common.Models;
-    using RavenAge.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using RavenAge.Data.Common.Models;
+    using RavenAge.Data.Models;
     using RavenAge.Data.Models.Models;
+    using RavenAge.Data.Models.Rankings;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -24,6 +24,10 @@
             : base(options)
         {
         }
+
+        public DbSet<SeasonRanking> SeasonRankings { get; set; }
+
+        public DbSet<GeneralRanking> GeneralRankings { get; set; }
 
         public DbSet<UserArmy> UserArmies { get; set; }
 
