@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "YdaXq8to6UJJ9ctDTgP7L6Sjc42NN7KQT89wrS8BQuJfETwDD5SoqVA66sInHGbuUCW+r5t4IS6YieRWX8kjfQ==",
+  "success": true,
+  "projectFilePath": "D:\\VisualStudio\\Raven Age\\Services\\RavenAge.Services.Mapping\\RavenAge.Services.Mapping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\darkk\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\darkk\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\darkk\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\darkk\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",
+    "C:\\Users\\darkk\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

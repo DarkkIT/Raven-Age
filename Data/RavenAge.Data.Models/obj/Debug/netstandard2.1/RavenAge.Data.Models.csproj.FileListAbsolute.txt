@@ -1,0 +1,12 @@
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\bin\Debug\netstandard2.1\RavenAge.Data.Models.deps.json
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\bin\Debug\netstandard2.1\RavenAge.Data.Models.dll
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\bin\Debug\netstandard2.1\RavenAge.Data.Models.pdb
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\bin\Debug\netstandard2.1\RavenAge.Data.Common.dll
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\bin\Debug\netstandard2.1\RavenAge.Data.Common.pdb
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.csprojAssemblyReference.cache
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.AssemblyInfoInputs.cache
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.AssemblyInfo.cs
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.csproj.CoreCompileInputs.cache
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.csproj.CopyComplete
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.dll
+D:\VisualStudio\Raven Age\Data\RavenAge.Data.Models\obj\Debug\netstandard2.1\RavenAge.Data.Models.pdb

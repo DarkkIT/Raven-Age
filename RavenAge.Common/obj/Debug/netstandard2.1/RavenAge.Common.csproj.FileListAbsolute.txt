@@ -1,0 +1,9 @@
+D:\VisualStudio\Raven Age\RavenAge.Common\bin\Debug\netstandard2.1\RavenAge.Common.deps.json
+D:\VisualStudio\Raven Age\RavenAge.Common\bin\Debug\netstandard2.1\RavenAge.Common.dll
+D:\VisualStudio\Raven Age\RavenAge.Common\bin\Debug\netstandard2.1\RavenAge.Common.pdb
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.csprojAssemblyReference.cache
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.AssemblyInfoInputs.cache
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.AssemblyInfo.cs
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.csproj.CoreCompileInputs.cache
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.dll
+D:\VisualStudio\Raven Age\RavenAge.Common\obj\Debug\netstandard2.1\RavenAge.Common.pdb

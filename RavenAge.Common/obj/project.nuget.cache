@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "QE3PtQX4vFn9pGhPLnyVWPd+u5AIpoD8jLSYsn6/ndrWqpByA+d+tcpUQCyOqeH2D1QehQerNolvAR6akZoGNw==",
+  "success": true,
+  "projectFilePath": "D:\\VisualStudio\\Raven Age\\RavenAge.Common\\RavenAge.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\darkk\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\darkk\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}
