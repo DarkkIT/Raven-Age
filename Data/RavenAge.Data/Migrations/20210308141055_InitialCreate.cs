@@ -75,6 +75,38 @@ namespace RavenAge.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GeneralRankings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GeneralRankings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SeasonRankings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SeasonRankings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Settings",
                 columns: table => new
                 {
@@ -334,6 +366,12 @@ namespace RavenAge.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "BaseSoldier");
+
+            migrationBuilder.DropTable(
+                name: "GeneralRankings");
+
+            migrationBuilder.DropTable(
+                name: "SeasonRankings");
 
             migrationBuilder.DropTable(
                 name: "Settings");
