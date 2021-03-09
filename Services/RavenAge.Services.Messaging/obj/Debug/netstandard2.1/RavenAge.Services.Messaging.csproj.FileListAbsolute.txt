@@ -1,9 +1,0 @@
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\bin\Debug\netstandard2.1\RavenAge.Services.Messaging.deps.json
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\bin\Debug\netstandard2.1\RavenAge.Services.Messaging.dll
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\bin\Debug\netstandard2.1\RavenAge.Services.Messaging.pdb
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.csprojAssemblyReference.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.AssemblyInfoInputs.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.AssemblyInfo.cs
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.csproj.CoreCompileInputs.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.dll
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Messaging\obj\Debug\netstandard2.1\RavenAge.Services.Messaging.pdb

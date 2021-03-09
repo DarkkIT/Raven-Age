@@ -1,9 +1,0 @@
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\bin\Debug\netstandard2.1\RavenAge.Data.Common.deps.json
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\bin\Debug\netstandard2.1\RavenAge.Data.Common.dll
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\bin\Debug\netstandard2.1\RavenAge.Data.Common.pdb
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.csprojAssemblyReference.cache
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.AssemblyInfoInputs.cache
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.AssemblyInfo.cs
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.csproj.CoreCompileInputs.cache
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.dll
-D:\VisualStudio\Raven Age\Data\RavenAge.Data.Common\obj\Debug\netstandard2.1\RavenAge.Data.Common.pdb

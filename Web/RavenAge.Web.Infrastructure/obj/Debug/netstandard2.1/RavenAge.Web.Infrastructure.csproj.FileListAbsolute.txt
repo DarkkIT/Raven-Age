@@ -1,9 +1,0 @@
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\bin\Debug\netstandard2.1\RavenAge.Web.Infrastructure.deps.json
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\bin\Debug\netstandard2.1\RavenAge.Web.Infrastructure.dll
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\bin\Debug\netstandard2.1\RavenAge.Web.Infrastructure.pdb
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.csprojAssemblyReference.cache
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.AssemblyInfoInputs.cache
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.AssemblyInfo.cs
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.csproj.CoreCompileInputs.cache
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.dll
-D:\VisualStudio\Raven Age\Web\RavenAge.Web.Infrastructure\obj\Debug\netstandard2.1\RavenAge.Web.Infrastructure.pdb

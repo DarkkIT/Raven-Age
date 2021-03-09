@@ -1,9 +1,0 @@
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\bin\Debug\netstandard2.1\RavenAge.Services.Mapping.deps.json
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\bin\Debug\netstandard2.1\RavenAge.Services.Mapping.dll
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\bin\Debug\netstandard2.1\RavenAge.Services.Mapping.pdb
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.csprojAssemblyReference.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.AssemblyInfoInputs.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.AssemblyInfo.cs
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.csproj.CoreCompileInputs.cache
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.dll
-D:\VisualStudio\Raven Age\Services\RavenAge.Services.Mapping\obj\Debug\netstandard2.1\RavenAge.Services.Mapping.pdb
