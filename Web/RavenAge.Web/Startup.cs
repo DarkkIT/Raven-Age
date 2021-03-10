@@ -8,7 +8,6 @@
     using RavenAge.Data.Models;
     using RavenAge.Data.Repositories;
     using RavenAge.Data.Seeding;
-    using RavenAge.Services.Data;
     using RavenAge.Services.Mapping;
     using RavenAge.Services.Messaging;
     using RavenAge.Web.ViewModels;
@@ -64,7 +63,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
