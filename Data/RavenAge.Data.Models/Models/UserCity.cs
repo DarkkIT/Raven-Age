@@ -6,15 +6,15 @@
 
     using RavenAge.Data.Common.Models;
 
-    public class UserArmy : BaseModel<int>
+    public class UserCity : BaseModel<int>
     {
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        public int SoldierId { get; set; }
+        public int CityId { get; set; }
 
-        public Soldier Soldier { get; set; }
+        public City City { get; set; }
 
     }
 }

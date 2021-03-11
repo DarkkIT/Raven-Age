@@ -8,7 +8,23 @@
 
     public class City : BaseDeletableModel<int>
     {
+        //// City Population
+
+        public int Workers { get; set; }
+
+        public int Archers { get; set; }
+
+        public int Infantry { get; set; }
+
+        public int Cavalry { get; set; }
+
+        public int Artillery { get; set; }
+
+        //// City Name
+
         public string Name { get; set; }
+
+        //// City Buildings
 
         public int TownHallId { get; set; }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RavenAge.Data;
 
 namespace RavenAge.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210311110727_AddCitysModels")]
+    partial class AddCitysModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,6 +283,44 @@ namespace RavenAge.Data.Migrations
                     b.ToTable("Barracks");
                 });
 
+            modelBuilder.Entity("RavenAge.Data.Models.Models.BaseSoldier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Attack")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Defence")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Healt")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("BaseSoldier");
+                });
+
             modelBuilder.Entity("RavenAge.Data.Models.Models.City", b =>
                 {
                     b.Property<int>("Id")
@@ -288,16 +328,7 @@ namespace RavenAge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Archers")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Artillery")
-                        .HasColumnType("int");
-
                     b.Property<int>("BarracksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Cavalry")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
@@ -313,9 +344,6 @@ namespace RavenAge.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("HouseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Infantry")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -337,9 +365,6 @@ namespace RavenAge.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("WoodMineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Workers")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -517,6 +542,39 @@ namespace RavenAge.Data.Migrations
                     b.ToTable("Marketplaces");
                 });
 
+            modelBuilder.Entity("RavenAge.Data.Models.Models.Soldier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Attack")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Defence")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Healt")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Soldiers");
+                });
+
             modelBuilder.Entity("RavenAge.Data.Models.Models.StoneMine", b =>
                 {
                     b.Property<int>("Id")
@@ -593,15 +651,12 @@ namespace RavenAge.Data.Migrations
                     b.ToTable("TownHalls");
                 });
 
-            modelBuilder.Entity("RavenAge.Data.Models.Models.UserCity", b =>
+            modelBuilder.Entity("RavenAge.Data.Models.Models.UserArmy", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -609,16 +664,19 @@ namespace RavenAge.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("SoldierId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("SoldierId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserCities");
+                    b.ToTable("UserArmies");
                 });
 
             modelBuilder.Entity("RavenAge.Data.Models.Models.WoodMine", b =>
@@ -825,11 +883,11 @@ namespace RavenAge.Data.Migrations
                     b.Navigation("WoodMine");
                 });
 
-            modelBuilder.Entity("RavenAge.Data.Models.Models.UserCity", b =>
+            modelBuilder.Entity("RavenAge.Data.Models.Models.UserArmy", b =>
                 {
-                    b.HasOne("RavenAge.Data.Models.Models.City", "City")
+                    b.HasOne("RavenAge.Data.Models.Models.Soldier", "Soldier")
                         .WithMany()
-                        .HasForeignKey("CityId")
+                        .HasForeignKey("SoldierId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -837,7 +895,7 @@ namespace RavenAge.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("City");
+                    b.Navigation("Soldier");
 
                     b.Navigation("User");
                 });

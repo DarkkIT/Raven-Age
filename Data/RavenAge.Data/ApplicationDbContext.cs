@@ -25,15 +25,29 @@
         {
         }
 
+        public DbSet<TownHall> TownHalls { get; set; }
+
+        public DbSet<WoodMine> WoodMines { get; set; }
+
+        public DbSet<StoneMine> StoneMines { get; set; }
+
+        public DbSet<Marketplace> Marketplaces { get; set; }
+
+        public DbSet<House> Houses { get; set; }
+
+        public DbSet<Farm> Farms { get; set; }
+
+        public DbSet<DefenceWall> DefenceWalls { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Barracks> Barracks { get; set; }
+
         public DbSet<SeasonRanking> SeasonRankings { get; set; }
 
         public DbSet<GeneralRanking> GeneralRankings { get; set; }
 
-        public DbSet<UserArmy> UserArmies { get; set; }
-
-        public DbSet<Soldier> Soldiers { get; set; }
-
-        public DbSet<BaseSoldier> BaseSoldier { get; set; }
+        public DbSet<UserCity> UserCities { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
