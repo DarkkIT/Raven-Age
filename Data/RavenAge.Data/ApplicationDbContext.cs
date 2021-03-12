@@ -25,6 +25,10 @@
         {
         }
 
+        public DbSet<UserBattle> UserBattles { get; set; }
+
+        public DbSet<BattleResult> BattleResults { get; set; }
+
         public DbSet<TownHall> TownHalls { get; set; }
 
         public DbSet<WoodMine> WoodMines { get; set; }

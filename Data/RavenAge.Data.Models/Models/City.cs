@@ -24,6 +24,16 @@
 
         public string Name { get; set; }
 
+        //// City Resources
+
+        public int Gold { get; set; } //// Premium
+
+        public int Silver { get; set; }
+
+        public int Stone { get; set; }
+
+        public int Wood { get; set; }
+
         //// City Buildings
 
         public int TownHallId { get; set; }
