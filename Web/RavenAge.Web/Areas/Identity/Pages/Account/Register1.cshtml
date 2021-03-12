@@ -1,0 +1,40 @@
+﻿@page
+@Layout
+@model RavenAge.Web.Areas.Identity.Pages.Account.Register1
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/RegisterStyle/register1.css" />
+    <title>Choose Class</title>
+</head>
+<body>
+    <span id="title">Choose Class</span>
+    <div class="chooseClass">
+        <div id="wrapper">
+            <h1 class="name">Elf</h1>
+            <a href="/Identity/Account/Register2?type=Elf">
+                <img class="class" src="/images/Races/races1.png" alt="programmerImg" />
+            </a>
+        </div>
+        <div id="wrapper">
+            <h1 class="name">Undead</h1>
+            <a href="/Identity/Account/Register2?type=Undead">
+                <img class="class" src="/images/Races/races2.png" alt="hackerImg" />
+            </a>
+        </div>
+        <div id="wrapper">
+            <h1 class="name">Soldier</h1>
+            <a href="/Identity/Account/Register2?type=Soldier">
+                <img class="class" src="/images/Races/races3.png" alt="programmerImg" />
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+﻿@page
+@model RavenAge.Web.Areas.Identity.Pages.Account.Register3
+@{
+    var type = this.ViewData["type"];
+    var avatar = this.ViewData["avatar"];
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/RegisterStyle/register3.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="chosenRunes">
+            <img class="center" src="" alt="" />
+        </div>
+        <div class="chosenRunes">
+            <img class="center" src="" alt="" />
+        </div>
+    </div>
+
+    <div class="containerRunes">
+        <a href="/test">
+            <img class="rune" src="/images/Badges/army.png" alt="" />
+        </a>
+        <a href="/test">
+            <img class="rune" src="/images/Badges/attack.png" alt="" />
+        </a>
+        <a href="/test">
+            <img class="rune" src="/images/Badges/defence.png" alt="" />
+        </a>
+    </div>
+    <div class="containerButtons">
+        <a class="btn color rounded">Cancel</a>
+        <a id='linkToClick' class="btn color rounded" href="#">Complete</a>
+    </div>
+</body>
+<script>
+
+    document
+        .getElementsByClassName("containerRunes")[0]
+        .addEventListener("click", (event) => {
+            event.preventDefault();
+
+            if (event.target.tagName == "IMG") {
+                const leftRune = document.getElementsByClassName("chosenRunes")[0].children[0];
+                const rightRune = document.getElementsByClassName("chosenRunes")[1].children[0];
+
+                if (leftRune.getAttribute('src') == '') {
+                    leftRune.src = '/images' + event.target.src.split('/images')[1];
+                    if (rightRune.getAttribute('src') === leftRune.getAttribute('src')) {
+                        document.getElementsByClassName("chosenRunes")[0].children[0].src = ''
+                        console.log('equal runes');
+                    }
+                }
+                else if (rightRune.getAttribute('src') == '') {
+                    rightRune.src = '/images' + event.target.src.split('/images')[1];
+                    if (leftRune.getAttribute('src') === rightRune.getAttribute('src')) {
+                        console.log('equal runes');
+
+                        document.getElementsByClassName("chosenRunes")[1].children[0].src = ''
+                    }
+                }
+
+                let resultLeftRune = leftRune.src.split('/images/Badges/')[1].split('.')[0];
+                let resultRightRune = rightRune.src.split('/images/Badges/')[1].split('.')[0];
+                document.getElementById("linkToClick").href = `/Identity/Account/Register?type=@type&&avatar=@avatar&&rune=${resultLeftRune}^${resultRightRune}`
+            }
+        });
+
+    document
+        .getElementById("container")
+        .addEventListener("click", (event) => {
+            event.preventDefault();
+            if (event.target.tagName == "IMG") {
+                event.target.src = '';
+            }
+        });
+</script>
+</html>

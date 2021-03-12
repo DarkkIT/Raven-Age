@@ -1,0 +1,91 @@
+body {
+    background-image: url("/images/background1.jpg");
+    background-position: top;
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.containerButtons{
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  top: 100px;
+}
+.chosenRunes{
+  position: relative;
+  top: 80px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+.center{
+  position: relative;
+  top: 15px;
+  left: 15px;
+  width: 170px;
+  height: 170px;
+  text-align: center;
+}
+.rune{
+  width: 180px;
+  height: 180px;
+  text-align: center;
+  
+}
+
+.containerRunes{
+  margin: 0 50px 0 50px;
+  position: relative;
+  top: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 18px;
+  padding: 15px 25px;
+  min-width: 150px;
+  min-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+  position: relative;
+  top: 100px;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.color {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.color:hover {
+  background: #fce17a;
+}
+.color:active,
+.color:focus {
+  background: #fac24b;
+}
+
+
+
+

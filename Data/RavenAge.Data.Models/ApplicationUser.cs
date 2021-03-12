@@ -4,9 +4,8 @@ namespace RavenAge.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using RavenAge.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using RavenAge.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,12 +15,26 @@ namespace RavenAge.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.AttackRune = false;
+            this.DefenceRune = false;
+            this.ArmyRune = false;
+
         }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
+
+        public string Type { get; set; }
+
+        public string Avatar { get; set; }
+
+        public bool AttackRune { get; set; }
+
+        public bool DefenceRune { get; set; }
+
+        public bool ArmyRune { get; set; }
 
         // Deletable entity
         public bool IsDeleted { get; set; }
