@@ -21,6 +21,20 @@ namespace RavenAge.Data.Models
 
         }
 
+        //// User stats set by registration
+
+        public int Premium { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; } //// Race
+
+        public bool AttackRune { get; set; }
+
+        public bool DefenseRune { get; set; }
+
+        public bool HealthRune { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 
