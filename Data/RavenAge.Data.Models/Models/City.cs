@@ -8,6 +8,10 @@
 
     public class City : BaseDeletableModel<int>
     {
+        //// City Name
+
+        public string Name { get; set; }
+
         //// City Population
 
         public int Workers { get; set; }
@@ -19,10 +23,6 @@
         public int Cavalry { get; set; }
 
         public int Artillery { get; set; }
-
-        //// City Name
-
-        public string Name { get; set; }
 
         //// City Resources
 

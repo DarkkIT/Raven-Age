@@ -18,6 +18,18 @@ namespace RavenAge.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
+        //// User stats set by registration
+
+        public string Name { get; set; }
+
+        public string Type { get; set; } //// Race
+
+        public bool AttackRune { get; set; }
+
+        public bool DefenseRune { get; set; }
+
+        public bool HealthRune { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 
