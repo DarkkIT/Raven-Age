@@ -4,9 +4,8 @@ namespace RavenAge.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using RavenAge.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using RavenAge.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -19,6 +18,8 @@ namespace RavenAge.Data.Models
         }
 
         //// User stats set by registration
+
+        public int Premium { get; set; }
 
         public string Name { get; set; }
 
