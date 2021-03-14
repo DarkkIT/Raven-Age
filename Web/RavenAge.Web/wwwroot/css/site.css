@@ -65,7 +65,11 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    /*    margin-bottom: 60px;
+*/
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
 }
 
 .footer {
