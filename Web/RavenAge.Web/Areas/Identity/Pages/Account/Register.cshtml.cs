@@ -50,6 +50,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -81,6 +85,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             {
                 return this.RedirectToPage("/Account/Register1");
             }
+
             this.ViewData["type"] = type;
             this.ViewData["avatar"] = avatar;
             this.ViewData["rune"] = rune;
@@ -96,7 +101,8 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email, Type = this.Input.Type, Avatar = this.Input.Avatar };
+                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email, Type = this.Input.Type, Avatar = this.Input.Avatar, Name = Input.Name };
+                //crete city with all buildings 
                 var firstRune = this.Input.Runes.Split('^')[0];
                 var secondRune = this.Input.Runes.Split('^')[1];
 
@@ -106,10 +112,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                         user.AttackRune = true;
                         break;
                     case "defence":
-                        user.DefenceRune = true;
+                        user.DefenseRune = true;
                         break;
-                    case "army":
-                        user.ArmyRune = true;
+                    case "heatlh":
+                        user.HealthRune = true;
                         break;
                 }
 
@@ -119,10 +125,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                         user.AttackRune = true;
                         break;
                     case "defence":
-                        user.DefenceRune = true;
+                        user.DefenseRune = true;
                         break;
-                    case "army":
-                        user.ArmyRune = true;
+                    case "heatlh":
+                        user.HealthRune = true;
                         break;
                 }
 

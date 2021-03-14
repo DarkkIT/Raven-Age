@@ -16,8 +16,8 @@ namespace RavenAge.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.AttackRune = false;
-            this.DefenceRune = false;
-            this.ArmyRune = false;
+            this.DefenseRune = false;
+            this.HealthRune = false;
 
         }
 
@@ -29,6 +29,8 @@ namespace RavenAge.Data.Models
 
         public string Type { get; set; } //// Race
 
+        public string Avatar { get; set; }
+
         public bool AttackRune { get; set; }
 
         public bool DefenseRune { get; set; }
@@ -39,16 +41,6 @@ namespace RavenAge.Data.Models
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
-
-        public string Type { get; set; }
-
-        public string Avatar { get; set; }
-
-        public bool AttackRune { get; set; }
-
-        public bool DefenceRune { get; set; }
-
-        public bool ArmyRune { get; set; }
 
         // Deletable entity
         public bool IsDeleted { get; set; }
