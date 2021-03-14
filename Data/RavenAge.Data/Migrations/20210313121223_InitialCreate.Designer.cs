@@ -10,8 +10,8 @@ using RavenAge.Data;
 namespace RavenAge.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210311112833_FixModels")]
-    partial class FixModels
+    [Migration("20210313121223_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -174,12 +174,18 @@ namespace RavenAge.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<bool>("AttackRune")
+                        .HasColumnType("bit");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("DefenseRune")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
@@ -189,6 +195,9 @@ namespace RavenAge.Data.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HealthRune")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
@@ -202,6 +211,9 @@ namespace RavenAge.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -220,11 +232,17 @@ namespace RavenAge.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Premium")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -283,6 +301,96 @@ namespace RavenAge.Data.Migrations
                     b.ToTable("Barracks");
                 });
 
+            modelBuilder.Entity("RavenAge.Data.Models.Models.BattleResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Atacker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AtackerArtillery")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AtackerArtilleryLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AtackerCavalry")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AtackerCavalryLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AtackerInfantrys")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AtackerInfantrysLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AttackerArchers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AttackerArchersLoss")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Defender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DefenderArchers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderArchersLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderArtillery")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderArtilleryLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderCavalry")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderCavalryLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderInfantrys")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenderInfantrysLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenseWallPoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefenseWallPointsLoss")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoldProfit")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StoneProfit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Winner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WoodProfit")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BattleResults");
+                });
+
             modelBuilder.Entity("RavenAge.Data.Models.Models.City", b =>
                 {
                     b.Property<int>("Id")
@@ -314,6 +422,9 @@ namespace RavenAge.Data.Migrations
                     b.Property<int>("FarmId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Gold")
+                        .HasColumnType("int");
+
                     b.Property<int>("HouseId")
                         .HasColumnType("int");
 
@@ -332,10 +443,19 @@ namespace RavenAge.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Silver")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stone")
+                        .HasColumnType("int");
+
                     b.Property<int>("StoneMineId")
                         .HasColumnType("int");
 
                     b.Property<int>("TownHallId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Wood")
                         .HasColumnType("int");
 
                     b.Property<int>("WoodMineId")
@@ -595,6 +715,37 @@ namespace RavenAge.Data.Migrations
                     b.ToTable("TownHalls");
                 });
 
+            modelBuilder.Entity("RavenAge.Data.Models.Models.UserBattle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BattleResultId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BattleResultId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("UserBattles");
+                });
+
             modelBuilder.Entity("RavenAge.Data.Models.Models.UserCity", b =>
                 {
                     b.Property<int>("Id")
@@ -825,6 +976,23 @@ namespace RavenAge.Data.Migrations
                     b.Navigation("TownHall");
 
                     b.Navigation("WoodMine");
+                });
+
+            modelBuilder.Entity("RavenAge.Data.Models.Models.UserBattle", b =>
+                {
+                    b.HasOne("RavenAge.Data.Models.Models.BattleResult", "BattleResult")
+                        .WithMany()
+                        .HasForeignKey("BattleResultId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RavenAge.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("BattleResult");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RavenAge.Data.Models.Models.UserCity", b =>
