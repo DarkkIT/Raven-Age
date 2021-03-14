@@ -46,4 +46,6 @@
     <ProjectReference Include="..\RavenAge.Web.Infrastructure\RavenAge.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\RavenAge.Web.ViewModels\RavenAge.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>
