@@ -10,8 +10,8 @@ using RavenAge.Data;
 namespace RavenAge.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210313121355_AddAvatarAndNameInput")]
-    partial class AddAvatarAndNameInput
+    [Migration("20210314114641_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

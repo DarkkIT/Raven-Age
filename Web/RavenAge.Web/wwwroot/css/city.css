@@ -1,0 +1,136 @@
+﻿body {
+    max-height: 1080px;
+}
+
+/*.level :hover {
+    transform: scale(1.08);
+}
+*/
+/*.container-fluid {
+    background-image: url("http://www.placecage.com/1000/800");
+    min-height: 400px;
+}*/
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1920px; /*actual width of image-- behaves strangely if exceeding this*/
+    position: relative;
+}
+
+#wrapper img {
+        max-width: 100%;
+    }
+
+/*level :hover{
+    text-decoration: none !important;
+}*/
+
+a p{
+    font-size: 12px;
+}
+
+#anchor-level1 {
+    width: 14.7%;
+    height: 16.5%;
+    border: 2px solid red;
+    position: absolute;
+    left: 6.2%;
+    top: 58.5%;
+}
+
+#anchor-level2 {
+    width: 15.7%;
+    height: 21.5%;
+    border: 2px solid red;
+    position: absolute;
+    left: 12.2%;
+    top: 20.5%;
+}
+
+#anchor-level3 {
+    width: 10.7%;
+    height: 18.5%;
+    border: 2px solid red;
+    position: absolute;
+    left: 42.4%;
+    top: 11.5%;
+}
+
+#anchor-level4 {
+    width: 6.7%;
+    height: 23.5%;
+    border: 2px solid red;
+    position: absolute;
+    left: 70.8%;
+    top: 9.95%;
+}
+
+#anchor-level5 {
+    width: 12.7%;
+    height: 11.5%;
+    border: 2px solid red;
+    position: absolute;
+    left: 78.75%;
+    top: 45.35%;
+}
+
+#anchor-level6 {
+    width: 11.1%;
+    height: 19%;
+    border: 2px solid red;
+    position: absolute;
+    left: 71.75%;
+    top: 63.38%;
+}
+
+#anchor-level7 {
+    width: 11.85%;
+    height: 15.75%;
+    border: 2px solid red;
+    position: absolute;
+    left: 40%;
+    top: 59.3%;
+}
+
+#anchor-level8 {
+    width: 13.85%;
+    height: 17.75%;
+    border: 2px solid red;
+    position: absolute;
+    left: 37.2%;
+    top: 80.35%;
+}
+
+#anchor-level9 {
+    width: 14.85%;
+    height: 26.75%;
+    border: 2px solid red;
+    border-radius: 50%;
+    position: absolute;
+    left: 85.9%;
+    top: 7.6%;
+}
+
+#anchor-level10 {
+    width: 3.85%;
+    height: 6.75%;
+    border: 2px solid red;
+    border-radius: 50%;
+    position: absolute;
+    left: 62.5%;
+    top: 34.2%;
+}
+
+
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
