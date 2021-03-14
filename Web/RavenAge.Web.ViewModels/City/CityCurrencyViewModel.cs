@@ -1,10 +1,10 @@
-﻿namespace RavenAge.Web.ViewModels.User
+﻿namespace RavenAge.Web.ViewModels.City
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public class UserCurrencyViewModel
+    public class CityCurrencyViewModel
     {
         public int Gold { get; set; } //// Premium
 

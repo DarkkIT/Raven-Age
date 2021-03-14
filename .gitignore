@@ -370,3 +370,5 @@ appsettings.Development.json
 appsettings.Staging.json
 *.min.css
 *.min.js
+
+**/migrations/
