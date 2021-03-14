@@ -1,0 +1,124 @@
+﻿@page
+@model RavenAge.Web.Areas.Identity.Pages.Account.Register2
+@{
+    var type = this.ViewData["type"];
+    var chosenAvatar = "";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/RegisterStyle/register2.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <img id="imgAvatar" class="chosenAvatar" src="/images/Avatars/Avatar1.png" />
+
+            <div class="container">
+                <a class="btn color rounded">Cancel</a>
+                <a for="chosenAvatar" id="linkToClick" href="" class="btn color rounded">Complete</a>
+            </div>
+        </div>
+        <div class="picker">
+            <a href="#" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar1.png" alt="" />
+            </a>
+            <a href="#" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar2.png" alt="" />
+            </a>
+            <a href="#" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar3.png" alt="" />
+            </a>
+            <a href="#" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar4.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar5.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar6.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar7.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar8.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar9.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar10.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar11.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar12.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar13.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar14.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar15.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar16.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar17.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar18.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar19.png" alt="" />
+            </a>
+            <a href="/test" class="link">
+                <img class="avatar class" src="/images/Avatars/Avatar20.png" alt="" />
+            </a>
+        </div>
+    </div>
+</body>
+    <script>
+
+    document
+        .getElementsByClassName("picker")[0]
+        .addEventListener("click", (event) => {
+
+            if (event.target.tagName == "IMG") {
+                event.preventDefault();
+                document.getElementsByClassName(
+                    "chosenAvatar"
+                )[0].src = "/images" + event.target.src.split('images')[1];
+                let avatar = document.getElementById("imgAvatar").src.split('/');
+                if (localStorage.getItem('itemName')) {
+                    localStorage.removeItem('itemName')
+                }
+                localStorage.setItem("itemName", avatar[avatar.length - 1].split('.')[0]);
+                document.getElementById('linkToClick').href = `/Identity/Account/Register3?type=@type&&avatar=${localStorage.getItem("itemName")}`
+                console.log(localStorage.getItem("itemName"))
+                console.log('this is my avatar  -> ' + avatar[avatar.length - 1].split('.')[0]);
+            }
+
+        });
+
+
+    document
+        .getElementsByClassName("picker")[0]
+        .addEventListener("load", (event) => {
+
+        });
+
+
+</script>
+</html>
+   

@@ -15,6 +15,10 @@ namespace RavenAge.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.AttackRune = false;
+            this.DefenseRune = false;
+            this.HealthRune = false;
+
         }
 
         //// User stats set by registration
@@ -24,6 +28,8 @@ namespace RavenAge.Data.Models
         public string Name { get; set; }
 
         public string Type { get; set; } //// Race
+
+        public string Avatar { get; set; }
 
         public bool AttackRune { get; set; }
 

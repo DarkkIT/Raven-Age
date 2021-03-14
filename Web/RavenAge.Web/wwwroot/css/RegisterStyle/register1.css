@@ -1,0 +1,31 @@
+body {
+  background-image: url("/images/background1.jpg");
+  background-position: top;
+}
+#title {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 4.5rem;
+  font-weight: 700;
+}
+.class {
+  position: relative;
+  width: 250px;
+  bottom: 400px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.chooseClass {
+  margin-top: 350px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.name {
+  text-align: center;
+  position: relative;
+  top: 150px;
+  color: white;
+}
