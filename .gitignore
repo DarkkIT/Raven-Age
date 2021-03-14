@@ -363,8 +363,8 @@ FodyWeavers.xsd
 
 # Custom ignores
 **/wwwroot/lib/
-/Data/TheDarkPortal.Data/appsettings.json
-/Web/TheDarkPortal.Web/appsettings.json
+/Data/RavenAge.Data/appsettings.json
+/Web/RavenAge.Web/appsettings.json
 appsettings.Production.json
 appsettings.Development.json
 appsettings.Staging.json
