@@ -44,8 +44,4 @@
     <ProjectReference Include="..\RavenAge.Web.Infrastructure\RavenAge.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\RavenAge.Web.ViewModels\RavenAge.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\City\" />
-  </ItemGroup>
 </Project>
