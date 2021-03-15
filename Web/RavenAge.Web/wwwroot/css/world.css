@@ -1,0 +1,26 @@
+﻿
+body {
+    max-height: 1080px;
+}
+
+#worldMap {
+    width: 1920px;
+    height: 1080px;
+    background-image: url("/images/World/Muddy-Streets-2x2-Gaming.jpg");
+    background-size: 1900px 1080px;
+    position: relative;
+}
+
+#anchor-level9 {
+    background-image: url(/images/City/db0s3j1-94fac8fa-b9e5-494e-9d5d-8eae4b21e57d.jpg);
+    background-size: 145px 100px;
+    width: 5.85%;
+    height: 11.75%;
+    border: 2px solid red;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 9999;
+    left: 92.9%;
+    top: 85.8%;
+    position: fixed;
+}
