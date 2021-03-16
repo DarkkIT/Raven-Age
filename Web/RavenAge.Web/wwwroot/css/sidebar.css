@@ -22,7 +22,7 @@
 
 .nav {
     list-style-type: none;
-    color: white;
+    color: black;
 }
 
     .nav:first-child {
@@ -45,7 +45,7 @@
         margin-left: 25px;
         margin-right: 10px;
         text-decoration: none;
-        color: white;
+        color: black;
         font-family: "roboto";
         font-weight: 100;
         font-size: 1.35em;
