@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using RavenAge.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using RavenAge.Web.ViewModels;
 
     public class HomeController : BaseController
     {

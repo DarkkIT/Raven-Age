@@ -7,12 +7,15 @@
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
     @RenderSection("CssFile", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow fixed-top">
+            <div id="layoutLogo" class="container-fluid">
 
                 <a class="navbar-brand" asp-area="" asp-controller="City" asp-action="Index">@GlobalConstants.SystemName</a>
 
@@ -23,32 +26,70 @@
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse justify-content-end">
 
-                    <partial name="_LoginPartial" />
-
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="City" asp-action="Index">My city</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
 
                     </ul>
                 </div>
+
+                <div id="right">
+
+                    <partial name="_LoginPartial" />
+
+                </div>
+
             </div>
         </nav>
+
+        <div class="sideBar">
+
+            <nav class="nav__cont">
+                <ul class="nav">
+                    <li class="nav__items ">
+                        <i class="fas fa-home fa-2x"></i>
+                        <a href="">Home</a>
+                    </li>
+
+                    <li class="nav__items ">
+                        <i class="fas fa-search fa-2x"></i>
+                        <a href="">Search</a>
+                    </li>
+
+                    <li class="nav__items ">
+                        <i class="far fa-list-alt fa-2x"></i>
+                        <a href="">Statistics</a>
+                    </li>
+
+                    <li class="nav__items ">
+                        <i class="far fa-calendar-alt fa-2x"></i>
+                        <a href="">Events</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
     </header>
-    
-    <div class="container">
+
+    <div class="mainBody">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        <main role="main" class="p-0 m-0">
             @this.RenderBody()
         </main>
     </div>
-    
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>

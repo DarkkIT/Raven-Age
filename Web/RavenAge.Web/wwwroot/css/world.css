@@ -1,0 +1,39 @@
+﻿
+body {
+    max-height: 1080px;
+}
+
+#worldMap {
+    width: 2920px;
+    height: 2080px;
+    background-image: url("/images/World/Muddy-Streets-2x2-Gaming.jpg");
+    background-size: 1900px 1080px;
+    position: relative;
+}
+
+#anchor-level1 {
+    background-image: url(/images/City/GoCityButton.jpg);
+    background-size: 145px 100px;
+    width: 5.85%;
+    height: 11.75%;
+    border: 2px solid red;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 9999;
+    left: 92.9%;
+    top: 85.8%;
+    position: fixed;
+}
+
+#anchor-level2 {
+    background-image: url(/images/depositphotos_11.jpg);
+    background-size: 145px 100px;
+    width: 5.85%;
+    height: 11.75%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 9999;
+    left: auto;
+    top: auto;
+    position: fixed;
+}
