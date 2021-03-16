@@ -33,7 +33,7 @@ body {
     border-radius: 50%;
     position: absolute;
     z-index: 9999;
-    left: auto;
-    top: auto;
+    left: 0%;
+    top: 0%;
     position: fixed;
 }
