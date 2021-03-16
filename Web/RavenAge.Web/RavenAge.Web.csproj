@@ -44,4 +44,16 @@
     <ProjectReference Include="..\RavenAge.Web.Infrastructure\RavenAge.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\RavenAge.Web.ViewModels\RavenAge.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\bb6b8a46ad6ddc69236047bd60773836.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\preloader.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\pushing-pixels.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
