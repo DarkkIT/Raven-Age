@@ -1,0 +1,282 @@
+/* Lato font */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Staatliches&display=swap");
+
+/* removing global margin and padding/setting global border-box */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  /* primary main color */
+  --clr-primary-5: #cf0e00;
+  /* secondary color */
+  --secondary-color: #ffa930;
+  --light-color: #f3f3f3;
+  --dark-color: #333;
+  /* darkest grey - used for headings */
+  --sports-color: #f99500;
+  --ent-color: #a66bbe;
+  --tech-color: #009cff;
+  /* category colors */
+  --clr-grey-1: #102a42;
+  --clr-grey-2: #243a52;
+  --clr-grey-3: #324d67;
+  --clr-grey-4: #48647f;
+  /* grey used for paragraphs */
+  --clr-grey-5: #617d98;
+  --clr-grey-6: #829ab0;
+  --clr-grey-7: #9eb2c7;
+  --clr-grey-8: #bcccdc;
+  --clr-grey-9: #dae2ec;
+  --clr-grey-10: #f1f5f8;
+  --clr-white: #fff;
+  --ff-primary: "Lato", sans-serif;
+  --ff-secondary: "Staatliches", cursive;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 2rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1100px;
+}
+
+/*****************
+***** Default styles*****
+ *****************/
+body {
+  font-family: var(--ff-primary);
+  color: #efede8;
+}
+html{
+  background: url('/images/Backgrounds/indexBackground2.jpg');
+     background-repeat: no-repeat;
+    background-size: cover;
+}
+/* we do this so by default images occupy 100% of the container they are in */
+/* img:not(.logo-img) {
+  width: 100%;
+  display: block;
+} */
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--clr-grey-4);
+  transition: var(--transition);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Staatliches", cursive;
+  margin-bottom: 1.4rem;
+}
+
+ion-icon {
+  color: var(--clr-primary-5);
+}
+
+/* input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+input:not([type="checkbox"]),
+select,
+textarea,
+.confirm-news {
+  padding: 5px 10px;
+  border-radius: 10px;
+} */
+
+/*****************
+***** Global classes*****
+ *****************/
+.section-center {
+  width: 95vw;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.section {
+  padding: 3.5rem 0;
+}
+.section-title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.btn {
+  color: black;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border: 0.1rem solid black;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  text-transform: capitalize;
+  background: transparent;
+}
+.btn:hover {
+  background: black;
+  color: white;
+}
+.decoration-line {
+  width: 4rem;
+  height: 0.125rem;
+  background: var(--clr-primary-5);
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
+}
+@media screen and (max-width: 992px) {
+  .section-center {
+    width: 90vw;
+  }
+  body {
+    font-size: 0.875rem;
+  }
+}
+
+
+
+/*****************
+***** Custom Styles*****
+ *****************/
+
+
+/*****************
+***** Layout*****
+ *****************/
+
+
+ h1 {
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+    padding-right: 25%;
+    text-align: right;
+    font-size: 3.5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+.img-responsive {
+    float: left;
+    transform: rotate(-30deg);
+}
+.container-text {
+    padding-right: 1.5rem;
+}
+.container-text p {
+    max-width: 35rem;
+    text-align: right;
+    text-shadow: 0 0 3px white, 0 0 5px black;
+
+}
+
+
+
+/*****************
+***** Form Styles*****
+ *****************/
+
+
+.container-login {
+    border: 2px solid #9f9784;
+    outline: 2px solid #897d67;
+    background-color:#b5ab97;
+    color: #5e584d;
+    outline-offset: -10px;
+    padding: 1rem;
+    width: 300px;
+    height: auto;
+}
+
+form > * {
+    margin-bottom: 1rem;
+}
+label {
+    display: block;
+}
+input[type="email"],input[type="password"], button {
+    padding: 0.3rem;
+    width :100%;
+    background-color: #756b5a;
+    outline: 2px solid #756b5a;
+
+}
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.login-part {
+    display: flex;
+}
+.login-label {
+    margin-right: 1rem;
+}
+.button--primary {
+    width: 40%;
+    padding:10px;
+    background-color: #42686b;
+    border-radius: 5px;
+    border: 2px solid white;
+    outline: 1px solid #42686b;
+    color: #efede8;
+    margin-left: 20px;
+}
+.button--primary:hover{
+  background-color: #325153;
+  
+}
+.or {
+    text-align: center;
+}
+p label {
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+h2 {
+    border-bottom: 2px solid #756b5a;
+}
+hr{
+  background-color: #756b5a;
+}
+
+
+.footer{
+  margin-top: 100px;
+  text-align: center;
+}
+
+.help, .privacy ,.terms{
+  padding-left:20px;
+  padding-right: 20px;
+  color: #e8e9ef;
+ 
+}
+.footer a:hover{
+color:#93959e ;
+}
+ .privacy , .terms{
+  border-left: 2px solid #efede8;
+}
+#load {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: url("https://i.imgur.com/Ryq7KyI.gif") no-repeat center center rgba(255,255,255,255);
+    /*   background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;*/
+}

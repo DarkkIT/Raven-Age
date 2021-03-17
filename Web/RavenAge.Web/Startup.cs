@@ -45,13 +45,16 @@
                         options.CheckConsentNeeded = context => true;
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
-
             services.AddControllersWithViews(
                 options =>
                     {
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);

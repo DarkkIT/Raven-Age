@@ -155,7 +155,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                     else
                     {
                         await this._signInManager.SignInAsync(user, isPersistent: false);
-                        return this.LocalRedirect(returnUrl);
+                        return this.Redirect("/City/Index");
                     }
                 }
                 foreach (var error in result.Errors)
@@ -164,6 +164,9 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                 }
             }
 
+            this.ViewData["type"] = Input.Type;
+            this.ViewData["avatar"] = Input.Avatar;
+            this.ViewData["rune"] = Input.Runes;
             // If we got this far, something failed, redisplay form
             return this.Page();
         }
