@@ -4,7 +4,10 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class CityCurrencyViewModel
+    using RavenAge.Data.Models.Models;
+    using RavenAge.Services.Mapping;
+
+    public class CurrencyViewModel : IMapFrom<City>
     {
         public int Gold { get; set; } //// Premium
 

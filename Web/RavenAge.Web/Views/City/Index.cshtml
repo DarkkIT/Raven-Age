@@ -1,22 +1,31 @@
-﻿<head>
+﻿@model RavenAge.Web.ViewModels.City.CityViewModel
+
+<head>
     <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
 </head>
 
-
+<a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 <div id="wrapper">
 
     <img class="img-fluid justify-content-center" src="~/images/City/CityMap.png" />
 
-    <a id="anchor-level1" data-toggle="modal" data-target="#exampleModalCenter" class="text-dark">
-        <p class="font-weight-bold p-0"> Barracks</p>
+    @*data-toggle="modal" data-target="#exampleModalCenter" class="text-dark"*@
+    <a id="anchor-level1" asp-controller="City" asp-action="BarracksStats" asp-route-enemyName="">
+        <p class="font-weight-bold p-0">Barracks</p>
+        <p>Lvl: @Model.Barracks.Level</p>
+
     </a>
 
-    <a id="anchor-level2" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+    <a id="anchor-level2" class="text-dark" asp-controller="City" asp-action="TownhallStats" asp-route-enemyName="">
         <p class="font-weight-bold p-0">Townhall</p>
+        <p>Lvl: @Model.TownHall.Level</p>
+
     </a>
 
     <a id="anchor-level3" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
         <p class="font-weight-bold p-0">House</p>
+        <p>Lvl: @Model.House.Level</p>
+
     </a>
 
     <a id="anchor-level4" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
