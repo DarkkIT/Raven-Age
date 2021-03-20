@@ -1,5 +1,5 @@
 ﻿@page
-@Layout
+
 @model RavenAge.Web.Areas.Identity.Pages.Account.Register1
 @{
     Layout = null;
@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/RegisterStyle/register1.css" />
     <title>Choose Class</title>
 </head>
@@ -18,23 +19,82 @@
     <div class="chooseClass">
         <div id="wrapper">
             <h1 class="name">Elf</h1>
-            <a href="/Identity/Account/Register2?type=Elf">
-                <img class="class" src="/images/Races/races1.png" alt="programmerImg" />
+            <a href="/Identity/Account/Register2?type=Elf" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="class" src="/images/Races/Elf.png" alt="programmerImg" />
             </a>
         </div>
         <div id="wrapper">
             <h1 class="name">Undead</h1>
-            <a href="/Identity/Account/Register2?type=Undead">
-                <img class="class" src="/images/Races/races2.png" alt="hackerImg" />
+            <a href="/Identity/Account/Register2?type=Undead" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="class" src="/images/Races/Undead.png" alt="hackerImg" />
             </a>
         </div>
         <div id="wrapper">
             <h1 class="name">Soldier</h1>
-            <a href="/Identity/Account/Register2?type=Soldier">
-                <img class="class" src="/images/Races/races3.png" alt="programmerImg" />
+            <a href="/Identity/Account/Register2?type=Soldier" type="button" id="myBtn">
+                <img class="class" src="/images/Races/Soldier.png" alt="programmerImg" />
             </a>
         </div>
     </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </html>
 
+<script>
+    document.getElementsByClassName('chooseClass')[0].addEventListener('click', event => {
+        if (event.target.tagName = 'IMG') {
+            event.preventDefault();
+           
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to change race later!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Continue!',
+                cancelButtonText: 'No, Cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const url = event.target.parentElement.getAttribute('href');
+                    console.log(url)
+
+                    window.location.href = url;
+                    swalWithBootstrapButtons.fire(
+                        'Continue',
+                        'Your continue successfully',
+                        'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Gone a chose another race!)',
+                        'question'
+                    )
+                }
+            })
+         
+        }
+
+    })
+    </script>

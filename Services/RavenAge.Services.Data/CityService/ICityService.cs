@@ -6,9 +6,9 @@
     using System.Threading.Tasks;
     using RavenAge.Web.ViewModels.City;
 
+
     public interface ICityService
     {
-
         Task CreateStartUpCity(string userId);
 
         BarracksViewModel GetBarracks(string userId);
@@ -28,6 +28,5 @@
         MarketPlaceViewModel GetMarketPlace(string userId);
 
         CityViewModel GetCity(string userId);
-
     }
 }

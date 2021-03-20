@@ -1,4 +1,7 @@
 ﻿@model RavenAge.Web.ViewModels.City.CityViewModel
+﻿@{
+    this.ViewData["Title"] = "Raven City";
+}
 
 <head>
     <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
@@ -7,7 +10,7 @@
 <a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 <div id="wrapper">
 
-    <img class="img-fluid justify-content-center" src="~/images/City/CityMap.png" />
+    <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: 1080px;" />
 
     @*data-toggle="modal" data-target="#exampleModalCenter" class="text-dark"*@
     <a id="anchor-level1" asp-controller="City" asp-action="BarracksStats" asp-route-enemyName="">
@@ -25,35 +28,38 @@
     <a id="anchor-level3" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
         <p class="font-weight-bold p-0">House</p>
         <p>Lvl: @Model.House.Level</p>
-
     </a>
 
     <a id="anchor-level4" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Farm</p>
+        <p class="font-weight-bold p-0">Farm - 4</p>
     </a>
 
     <a id="anchor-level5" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Saw mill</p>
+        <p class="font-weight-bold p-0">Saw mill - 5</p>
     </a>
 
     <a id="anchor-level6" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Stone quarry</p>
+        <p class="font-weight-bold p-0">Stone quarry - 6</p>
     </a>
 
     <a id="anchor-level7" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Marketplace</p>
+        <p class="font-weight-bold p-0">Marketplace - 7</p>
     </a>
 
     <a id="anchor-level8" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weighсt-bold p-0">Stone wall</p>
+        <p class="font-weighсt-bold p-0">Stone wall - 8</p>
     </a>
 
-    <a id="anchor-level9" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">World View</p>
+    <a id="anchor-level9" class="text-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
+        <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
     <a id="anchor-level10" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
         <p class="font-weight-bold p-0"> lvl 10</p>
+    </a>
+
+    <a id="anchor-level11" class="text-dark">
+        <p class="font-weight-bold p-0">Avatar - 11</p>
     </a>
 
 </div>

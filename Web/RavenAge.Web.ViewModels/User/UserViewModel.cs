@@ -18,5 +18,6 @@
         public bool HealthRune { get; set; }
 
         public string Avatar { get; set; }
+
     }
 }

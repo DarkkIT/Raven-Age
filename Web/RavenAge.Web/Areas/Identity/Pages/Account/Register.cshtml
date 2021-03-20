@@ -1,84 +1,204 @@
 ﻿@page
+@using System.Text;
+@using System;
+@using System.Collections.Generic;
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
-    
+    Layout = null;
+    var type = this.ViewData["type"];
+    var avatar = this.ViewData["avatar"];
+    var runes = this.ViewData["rune"];
+    var rune1 = runes.ToString().Split("^")[0];
+    var rune2 = runes.ToString().Split("^")[1];
+
 }
 
-<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/RegisterStyle/register.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h1 class='header section-center'>Raven Age</h1>
+    <div class="container section-center">
+        <div class="container-text1">
+            <h3>Race</h3>
+            <img src="/images/Races/@(type +".png")" class="img-responsive" alt="">
+        </div>
+        <div class="container-Runes">
+            <h3 class='headerRunes'>Runes</h3>
+            <img src="/images/Badges/@(rune1 + ".png")" class="img-responsive" alt="">
+            <img src="/images/Badges/@(rune2 + ".png")" class="img-responsive" alt="">
+        </div>
+        <div class="container-text2">
+            <h3>Avatar</h3>
+            <img src="/images/Avatars/@(avatar+".png")" class="img-responsive" alt="">
+        </div>
+        <div class="container-login">
+            <h2>Register</h2>
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <p>
+                    <label asp-for="Input.Email">Email address</label><input asp-for="Input.Email"
+                                                                             type="text" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </p>
+                <p>
+                    <label asp-for="Input.Name">Name</label><input asp-for="Input.Name"
+                                                                   type="text" />
+                </p>
+                <p>
+                    <label asp-for="Input.Password">Password</label><input asp-for="Input.Password"
+                                                                           type="password" />
+                </p>
+                <p>
+                    <label asp-for="Input.ConfirmPassword">ConfirmPassword</label><input asp-for="Input.ConfirmPassword"
+                                                                                         type="password" />
+                </p>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Type" value='@(ViewData["type"])' />
+                    <span asp-validation-for="Input.Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Avatar" value='@(ViewData["avatar"])' />
+                    <span asp-validation-for="Input.Avatar" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Runes" value='@(ViewData["rune"])' />
+                    <span asp-validation-for="Input.Runes" class="text-danger"></span>
+                </div>
+                <div class="login-part">
+                    <button class="button button--primary" type="submit">Register</button>
+                </div>
+                <p>
+                    <a href="/Identity/Account/Login" class="alreadyHaveAccount">
+                        Already have account?
+                    </a>
+                </p>
+            </form>
+            <hr />
+            <p class="or">or</p>
+            <p>
+                <span style="transition: opacity 0.5s ease 0s">
+                    <button type="button">
+                        <i></i>Login with Facebook
+                    </button>
+                </span>
+            </p>
+            <p class="or">or</p>
+            <button>
+                <span>
+                    <svg fill="currentColor"
+                         preserveAspectRatio="xMidYMid meet"
+                         height="25"
+                         width="25"
+                         viewBox="0 0 40 40"
+                         style="vertical-align: middle; color: rgb(0, 172, 237)">
+                        <g>
+                            <path d="m37.7 9.1q-1.5 2.2-3.7 3.7 0.1 0.3 0.1 1 0 2.9-0.9 5.8t-2.6 5.5-4.1 4.7-5.7 3.3-7.2 1.2q-6.1 0-11.1-3.3 0.8 0.1 1.7 0.1 5 0 9-3-2.4-0.1-4.2-1.5t-2.6-3.5q0.8 0.1 1.4 0.1 1 0 1.9-0.3-2.5-0.5-4.1-2.5t-1.7-4.6v0q1.5 0.8 3.3 0.9-1.5-1-2.4-2.6t-0.8-3.4q0-2 0.9-3.7 2.7 3.4 6.6 5.4t8.3 2.2q-0.2-0.9-0.2-1.7 0-3 2.1-5.1t5.1-2.1q3.2 0 5.3 2.3 2.4-0.5 4.6-1.7-0.8 2.5-3.2 3.9 2.1-0.2 4.2-1.1z"></path>
+                        </g>
+                    </svg>
+                    Log in with Twitter
+                </span>
+            </button>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Name"></label>
-                <input asp-for="Input.Name" class="form-control" />
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Input.Type" value='@(ViewData["type"])' />
-                <span asp-validation-for="Input.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Input.Avatar" value='@(ViewData["avatar"])' />
-                <span asp-validation-for="Input.Avatar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Input.Runes" value='@(ViewData["rune"])' />
-                <span asp-validation-for="Input.Runes" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+        </div>
+
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+
+    </div>
+
+    <footer class='footer'>
+        <p>	&#169; JuGADev2021</p>
+        <a class='help' href="#">Help</a>
+        <a class='privacy' href="#">Privacy</a>
+        <a class='terms' href="#">Terms</a>
+    </footer>
+</body>
+</html>
+
+
+
+
+@*<h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Name"></label>
+                    <input asp-for="Input.Name" class="form-control" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Type" value='@(ViewData["type"])' />
+                    <span asp-validation-for="Input.Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Avatar" value='@(ViewData["avatar"])' />
+                    <span asp-validation-for="Input.Avatar" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Input.Runes" value='@(ViewData["rune"])' />
+                    <span asp-validation-for="Input.Runes" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                <h4>Use another service to register.</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
                         <div>
                             <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
                             </p>
                         </div>
-                    </form>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
                 }
-            }
-        </section>
-    </div>
-</div>
+            </section>
+        </div>
+    </div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
