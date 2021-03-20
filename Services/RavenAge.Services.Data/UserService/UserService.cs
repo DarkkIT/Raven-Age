@@ -1,5 +1,8 @@
 ﻿namespace RavenAge.Services.UserService.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
     using System.Linq;
 
     using RavenAge.Data.Common.Repositories;
@@ -8,6 +11,7 @@
 
     public class UserService : IUserService
     {
+
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
 
         public UserService(IDeletableEntityRepository<ApplicationUser> userRepository)

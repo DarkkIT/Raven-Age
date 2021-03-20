@@ -19,8 +19,5 @@
 
         public string Avatar { get; set; }
 
-        public int Premium { get; set; }
-
-        public string Type { get; set; }
     }
 }

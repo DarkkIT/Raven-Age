@@ -1,16 +1,50 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RavenAge.Web.Controllers
+﻿namespace RavenAge.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using RavenAge.Services.CityService.Data;
+
     public class CityController : Controller
     {
+        private readonly ICityService cityService;
+
+        public CityController(ICityService cityService)
+        {
+            this.cityService = cityService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+           var model =  this.cityService.GetCity(this.GetUserId());
+           return this.View(model);
+        }
+
+        public IActionResult BarracksStats()
+        {
+            var model = this.cityService.GetBarracks(this.GetUserId());
+            return this.View(model);
+        }
+
+        public IActionResult TownhallStats()
+        {
+            var model = this.cityService.GetTownHall(this.GetUserId());
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> CreateCity()
+        {
+            await this.cityService.CreateStartUpCity(this.GetUserId());
+            return this.RedirectToAction("Index");
+        }
+
+        internal string GetUserId()
+        {
+            return this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
     }
 }
