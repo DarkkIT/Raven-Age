@@ -6,6 +6,7 @@
 
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
+    using RavenAge.Web.ViewModels.Barracks;
 
     public class CityViewModel : IMapFrom<City>
     {
@@ -14,15 +15,15 @@
 
         public string Name { get; set; }
 
-        public int WorkersCount { get; set; }
+        public int Workers { get; set; }
 
-        public int ArchersCount { get; set; }
+        public int Archers { get; set; }
 
-        public int InfantryCount { get; set; }
+        public int Infantry { get; set; }
 
-        public int CavalryCount { get; set; }
+        public int Cavalry { get; set; }
 
-        public int ArtilleryCount { get; set; }
+        public int Artillery { get; set; }
 
         public int Gold { get; set; } //// Premium
 
@@ -45,5 +46,7 @@
         public StoneMineViewMode StoneMine { get; set; }
 
         public BarracksViewModel Barracks { get; set; }
+
+        public HireSoldiersInputModel HireSoldiersInputModel { get; set; }
     }
 }

@@ -9,6 +9,7 @@
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
+    using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
 
     public class CityService : ICityService
@@ -44,6 +45,17 @@
             this.userCityRepo = userCityRepo;
             this.cityRepo = cityRepo;
             this.townHallRepo = townHallRepo;
+        }
+
+        public async Task AddSoldiersAsync(HireSoldiersInputModel input, string userId)
+        {
+            var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
+
+            var city = this.cityRepo.All().FirstOrDefault(x => x.Id == cityId);
+
+            city.Archers += input.Quantity;
+
+            await this.cityRepo.SaveChangesAsync();
         }
 
         public async Task CreateStartUpCity(string userId)
