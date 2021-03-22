@@ -1,4 +1,4 @@
-@using RavenAge.Common
+﻿@using RavenAge.Common
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,17 +26,19 @@
 
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
-                </div>
+                    <a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 
-                <div id="right" class="col-md-4">
+                    </div>
 
-                    <div class="ml-5">
-                        <partial name="_LoginPartial" />
+                    <div id="right" class="col-md-4">
+
+                        <div class="ml-5">
+                            <partial name="_LoginPartial" />
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
         </nav>
 
         <div class="sideBar">
