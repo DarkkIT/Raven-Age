@@ -30,8 +30,6 @@
                 DefenseRune = user.DefenseRune,
                 HealthRune = user.HealthRune,
                 Avatar = user.Avatar,
-                Premium = user.Premium,
-                Type = user.Type,
             };
 
             return userViewModel;

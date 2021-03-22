@@ -86,7 +86,9 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return this.Redirect("/City/Index");
+
+                    //TEMPORARY ------------------------
+                    return this.Redirect("/Home/Index");
                 }
                 if (result.RequiresTwoFactor)
                 {
