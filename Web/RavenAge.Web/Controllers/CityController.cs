@@ -8,15 +8,18 @@
 
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
+    using RavenAge.Services.Data.BarracksService;
     using RavenAge.Web.ViewModels.Barracks;
 
     public class CityController : Controller
     {
         private readonly ICityService cityService;
+        private readonly IBarracksService barrackService;
 
-        public CityController(ICityService cityService)
+        public CityController(ICityService cityService, IBarracksService barrackService)
         {
             this.cityService = cityService;
+            this.barrackService = barrackService;
         }
 
         public IActionResult Index()
@@ -36,7 +39,7 @@
                 return this.View();
             }
 
-            await this.cityService.AddSoldiersAsync(input, userId);
+            await this.barrackService.AddSoldiersAsync(input, userId);
 
             var model = this.cityService.GetCity(userId);
 

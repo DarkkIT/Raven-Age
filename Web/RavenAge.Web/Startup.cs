@@ -21,7 +21,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using RavenAge.Services.CityService.Data;
-    using RavenAge.Services.Data.HouseService;
+    using RavenAge.Services.Data.BarrarcksService;
 
     public class Startup
     {
@@ -69,7 +69,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ICityService, CityService>();
-            services.AddTransient<IHouseService, HouseService>();
+            services.AddTransient<IBarracksService, BarracksService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
