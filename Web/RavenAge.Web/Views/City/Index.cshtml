@@ -13,7 +13,7 @@
     <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: 1080px;" />
 
 
-    <a id="anchor-level1" data-toggle="modal" data-target="#modalCenter">
+    <a id="anchor-level1" data-toggle="modal" data-target="#modalBarracksCenter">
         <p class="font-weight-bold p-0">Barracks</p>
         <p>Lvl: @Model.Barracks.Level</p>
 
@@ -59,17 +59,22 @@
     </a>
 
     <a id="anchor-level11" class="text-dark">
-        <p class="font-weight-bold p-0">Avatar - 11</p>
+        <p class="font-weight-bold p-0">
+            <img src="~/images/Avatars/Avatar11.png" style="max-width: 100%; height: auto;" alt="Alternate Text" />
+        </p>
     </a>
 
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalBarracksCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Barracks</h5>
+                <h5 class="modal-title" id="modalCenterTitle">Barracks 
+                <span class="text-warning">Silver-@Model.Silver</span>
+                <span class="text-danger">Wood-@Model.Wood</span>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
