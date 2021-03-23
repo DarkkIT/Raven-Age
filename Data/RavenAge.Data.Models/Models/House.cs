@@ -10,7 +10,11 @@
     {
         public int Level { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal SilverPrice { get; set; }
+
+        public decimal WoodPrice { get; set; }
+
+        public decimal StonePrice { get; set; }
 
         public int WorkerLimit { get; set; }
 

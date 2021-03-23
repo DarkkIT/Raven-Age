@@ -26,13 +26,13 @@
 
         //// City Resources
 
-        public int Gold { get; set; } //// Premium
+        public decimal Gold { get; set; } //// Premium
 
-        public int Silver { get; set; }
+        public decimal Silver { get; set; }
 
-        public int Stone { get; set; }
+        public decimal Stone { get; set; }
 
-        public int Wood { get; set; }
+        public decimal Wood { get; set; }
 
         //// City Buildings
 
