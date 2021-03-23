@@ -22,6 +22,7 @@
         public IActionResult Index()
         {
            var model = this.cityService.GetCity(this.GetUserId());
+
            return this.View(model);
         }
 

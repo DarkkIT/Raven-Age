@@ -4,40 +4,40 @@
 <div class="row justify-content-between">
 
     <div class="col-md-3">
-        <p>Archars @Model.Archers</p>
+        <p class="text-center">Archars @Model.Archers</p>
         <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanArchar.jpg" />
     </div>
 
     <div class="col-md-3">
-        <p>Infantry</p>
+        <p class="text-center">Infantry @Model.Infantry</p>
         <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanInfantry.jpg" />
     </div>
 
     <div class="col-md-3">
-        <p>Cavalry</p>
+        <p class="text-center">Cavalry @Model.Cavalry</p>
         <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanCavalery.jpg" />
     </div>
 
     <div class="col-md-3">
-        <p>Artillery</p>
+        <p class="text-center">Artillery @Model.Artillery</p>
         <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanTrebuchet.jpg" />
     </div>
 
 </div>
 
-<div class="row justify-content-between">
+<div class="row justify-content-between ml-2">
 
     <div class="col-md-3">
         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
         <form method="post">
 
-            <div class="col-md-7">
-                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                <input name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
+            <div class="col-md-10">
+                <label asp-for="@Model.HireSoldiersInputModel.ArcharQuantity"></label>
+                <input name="archarquantity" asp-for="@Model.HireSoldiersInputModel.ArcharQuantity" class="form-control" />
+                <span asp-validation-for="@Model.HireSoldiersInputModel.ArcharQuantity" class="text-danger"></span>
             </div>
 
-            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;" />
+            <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
         </form>
     </div>
 
@@ -45,13 +45,13 @@
         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
         <form method="post">
 
-            <div class="col-md-7">
-                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                <input name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
+            <div class="col-md-10">
+                <label asp-for="@Model.HireSoldiersInputModel.InfantryQuantity"></label>
+                <input name="infantryquantity" asp-for="@Model.HireSoldiersInputModel.InfantryQuantity" class="form-control" />
+                <span asp-validation-for="@Model.HireSoldiersInputModel.InfantryQuantity" class="text-danger"></span>
             </div>
 
-            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;" />
+            <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
         </form>
     </div>
 
@@ -59,13 +59,13 @@
         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
         <form method="post">
 
-            <div class="col-md-7">
-                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                <input name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
+            <div class="col-md-10">
+                <label asp-for="@Model.HireSoldiersInputModel.CavalryQuantity"></label>
+                <input name="cavalryquantity" asp-for="@Model.HireSoldiersInputModel.CavalryQuantity" class="form-control" />
+                <span asp-validation-for="@Model.HireSoldiersInputModel.CavalryQuantity" class="text-danger"></span>
             </div>
 
-            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;" />
+            <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
         </form>
     </div>
 
@@ -73,14 +73,38 @@
         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
         <form method="post">
 
-            <div class="col-md-7">
-                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                <input name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
+            <div class="col-md-10">
+                <label asp-for="@Model.HireSoldiersInputModel.ArtilleryQuantity"></label>
+                <input name="artilleryquantity" asp-for="@Model.HireSoldiersInputModel.ArtilleryQuantity" class="form-control" />
+                <span asp-validation-for="@Model.HireSoldiersInputModel.ArtilleryQuantity" class="text-danger"></span>
             </div>
 
-            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;" />
+            <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
         </form>
+    </div>
+
+</div>
+
+<div class="row justify-content-between col-md-12">
+
+    <div class="col-md-3">
+        <p class="text-center">50 Silver</p>
+        <p class="text-center">50 Wood</p>
+    </div>
+
+    <div class="col-md-3">
+        <p class="text-center">100 Silver</p>
+        <p class="text-center">15 Wood</p>
+    </div>
+
+    <div class="col-md-3">
+        <p class="text-center">100 Silver</p>
+        <p class="text-center">15 Wood</p>
+    </div>
+
+    <div class="col-md-3">
+        <p class="text-center">25 Silver</p>
+        <p class="text-center">100 Wood</p>
     </div>
 
 </div>
