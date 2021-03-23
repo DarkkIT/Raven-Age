@@ -35,18 +35,24 @@
             var currentWood = city.Wood;
             var currentStone = city.Stone;
 
-            var silverNeeded = city.House.SilverPrice;
-            var woodNeeded = city.House.WoodPrice;
-            var stoneNeeded = city.House.StonePrice;
+            var house = this.houseRepo.All().FirstOrDefault(x => x.Id == city.HouseId);
+            var silverNeeded = house.SilverPrice;
+            var woodNeeded = house.WoodPrice;
+            var stoneNeeded = house.StonePrice;
 
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
-                city.House.Level += 1;
-                city.House.SilverPrice *= 2;
-                city.House.WoodPrice *= 2;
-                city.House.StonePrice *= 2;
+                city.Silver -= house.SilverPrice;
+                city.Wood -= house.WoodPrice;
+                city.Stone -= house.StonePrice;
+
+                house.Level += 1;
+                house.SilverPrice *= 2;
+                house.WoodPrice *= 2;
+                house.StonePrice *= 2;
             }
 
+            await this.houseRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
         }
     }
