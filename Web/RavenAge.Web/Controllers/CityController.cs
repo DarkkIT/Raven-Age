@@ -29,7 +29,7 @@
         [HttpPost]
         public async Task<IActionResult> Index(HireSoldiersInputModel input)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = this.GetUserId();
 
             if (!this.ModelState.IsValid)
             {
@@ -38,7 +38,7 @@
 
             await this.cityService.AddSoldiersAsync(input, userId);
 
-            var model = this.cityService.GetCity(this.GetUserId());
+            var model = this.cityService.GetCity(userId);
 
             return this.View(model);
         }
