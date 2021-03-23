@@ -26,19 +26,19 @@
 
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
-                    <a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
+                    <a class="nav-link text-danger" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 
-                    </div>
+                </div>
 
-                    <div id="right" class="col-md-4">
+                <div id="right" class="col-md-4">
 
-                        <div class="ml-5">
-                            <partial name="_LoginPartial" />
-                        </div>
-
+                    <div class="ml-5">
+                        <partial name="_LoginPartial" />
                     </div>
 
                 </div>
+
+            </div>
         </nav>
 
         <div class="sideBar">
@@ -73,7 +73,7 @@
     </header>
 
 
-    <div class="mainBody">
+    <div class="mainBody m-0 p-0">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="p-0 m-0">
             @this.RenderBody()

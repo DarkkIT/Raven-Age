@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
 </head>
 
-<a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 <div id="wrapper">
 
-    <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: 1080px;" />
+    <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: auto;" />
 
 
     <a id="anchor-level1" data-toggle="modal" data-target="#modalBarracksCenter">
@@ -19,13 +18,13 @@
 
     </a>
 
-    <a id="anchor-level2" class="text-dark" asp-controller="City" asp-action="TownhallStats" asp-route-enemyName="">
+    <a id="anchor-level2" data-toggle="modal" data-target="#modalTownhallCenter">
         <p class="font-weight-bold p-0">Townhall</p>
         <p>Lvl: @Model.TownHall.Level</p>
 
     </a>
 
-    <a id="anchor-level3" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+    <a id="anchor-level3" data-toggle="modal" data-target="#modalHouseCenter">
         <p class="font-weight-bold p-0">House</p>
         <p>Lvl: @Model.House.Level</p>
     </a>
@@ -66,7 +65,7 @@
 
 </div>
 
-<!-- Modal -->
+<!-- Modals -->
 <div class="modal fade" id="modalBarracksCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -86,6 +85,31 @@
             </div>
             <div class="modal-footer">
                 <p>@Model.Barracks.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHouseCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    House
+                    <span class="text-warning">Silver-@Model.Silver</span>
+                    <span class="text-danger">Wood-@Model.Wood</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_HouseModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.House.Description</p>
             </div>
         </div>
     </div>
