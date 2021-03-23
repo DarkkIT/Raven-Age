@@ -25,4 +25,8 @@
     <ProjectReference Include="..\RavenAge.Services.Mapping\RavenAge.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TownhallService\" />
+  </ItemGroup>
+
 </Project>
