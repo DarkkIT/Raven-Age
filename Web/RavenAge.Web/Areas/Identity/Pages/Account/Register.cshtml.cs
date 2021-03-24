@@ -54,6 +54,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             public string Name { get; set; }
 
             [Required]
+            [Display(Name = "CityName")]
+            public string CityName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }

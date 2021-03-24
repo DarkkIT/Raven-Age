@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using Microsoft.EntityFrameworkCore;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
@@ -47,6 +47,7 @@
             this.townHallRepo = townHallRepo;
         }
 
+
         public async Task AddSoldiersAsync(HireSoldiersInputModel input, string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
@@ -58,10 +59,13 @@
             await this.cityRepo.SaveChangesAsync();
         }
 
-        public async Task CreateStartUpCity(string userId)
+
+        public async Task CreateStartUpCity(string userId, string name)
+
         {
             var city = new City()
             {
+                Name = name,
                 Barracks = new Barracks { Level = 1, Description = "This is barracks!" },
                 DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!" },
                 Farm = new Farm { Level = 1, Description = "This is a farm!" },
@@ -106,9 +110,9 @@
             return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.House).To<HouseViewModel>().FirstOrDefault();
         }
 
-        public MarketPlaceViewModel GetMarketPlace(string userId)
+        public async Task<MarketPlaceViewModel> GetMarketPlace(string userId)
         {
-            return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Marketplace).To<MarketPlaceViewModel>().FirstOrDefault();
+            return await this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Marketplace).To<MarketPlaceViewModel>().FirstOrDefaultAsync();
         }
 
         public StoneMineViewMode GetStoneMine(string userId)

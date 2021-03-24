@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
 </head>
 
-<a class="btn btn-primary" asp-controller="City" asp-action="CreateCity">Create my city!</a>
 <div id="wrapper">
 
     <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: 1080px;" />
@@ -103,11 +102,11 @@
 
                     <div class="col-md-3">
                         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
-                        <form method="post">
+                        <form method="post" asp-controller="City" asp-action="Index">
 
                             <div class="col-md-7">
                                 <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                                <input asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
+                                <input  name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
                                 <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
                             </div>
 

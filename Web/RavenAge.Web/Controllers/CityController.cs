@@ -56,7 +56,7 @@
 
         public async Task<IActionResult> CreateCity()
         {
-            await this.cityService.CreateStartUpCity(this.GetUserId());
+            await this.cityService.CreateStartUpCity(this.GetUserId(),"test");
             return this.RedirectToAction("Index");
         }
 
