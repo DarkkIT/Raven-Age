@@ -18,6 +18,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
     using RavenAge.Data.Models;
+    using RavenAge.Services.CityService.Data;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -26,17 +27,20 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ICityService cityService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ICityService cityService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
             this._emailSender = emailSender;
+            this.cityService = cityService;
         }
 
         [BindProperty]
@@ -52,6 +56,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Name")]
             public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "CityName")]
+            public string CityName { get; set; }
 
             [Required]
             [EmailAddress]
@@ -101,8 +109,9 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email, Type = this.Input.Type, Avatar = this.Input.Avatar, Name = Input.Name };
+                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email, Type = this.Input.Type, Avatar = this.Input.Avatar, Name = this.Input.Name };
                 //crete city with all buildings 
+
                 var firstRune = this.Input.Runes.Split('^')[0];
                 var secondRune = this.Input.Runes.Split('^')[1];
 
@@ -135,6 +144,8 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
+                    await this.cityService.CreateStartUpCity(user.Id, this.Input.CityName);
+
                     this._logger.LogInformation("User created a new account with password.");
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -167,6 +178,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             this.ViewData["type"] = Input.Type;
             this.ViewData["avatar"] = Input.Avatar;
             this.ViewData["rune"] = Input.Runes;
+
             // If we got this far, something failed, redisplay form
             return this.Page();
         }
