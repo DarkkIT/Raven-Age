@@ -30,7 +30,8 @@
 
         public async Task AddSoldiersAsync(HireSoldiersInputModel input, string userId)
         {
-            var city = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).City;
+            var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
+            var city = this.cityRepo.All().FirstOrDefault(x => x.Id == cityId);
 
             var curentSilver = city.Silver;
             var curentWood = city.Wood;
