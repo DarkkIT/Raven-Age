@@ -8,6 +8,8 @@
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models;
     using RavenAge.Web.ViewModels.User;
+    using Microsoft.EntityFrameworkCore;
+    using System.Threading.Tasks;
 
     public class UserService : IUserService
     {
@@ -33,6 +35,11 @@
             };
 
             return userViewModel;
+        }
+
+        public async  Task<ApplicationUser> GetUserById(string userId)
+        {
+            return await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
         }
     }
 }

@@ -9,6 +9,7 @@
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
+    using RavenAge.Services.UserService.Data;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
 
@@ -23,6 +24,7 @@
         private readonly IRepository<UserCity> userCityRepo;
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IDeletableEntityRepository<TownHall> townHallRepo;
+        private readonly IUserService userService;
 
         public CityService(
                            IDeletableEntityRepository<Barracks> barracksRepo,
@@ -34,7 +36,8 @@
                            IDeletableEntityRepository<DefenceWall> defenceWallRepo,
                            IDeletableEntityRepository<Farm> farmRepo,
                            IRepository<UserCity> userCityRepo,
-                           IDeletableEntityRepository<City> cityRepo)
+                           IDeletableEntityRepository<City> cityRepo,
+                           IUserService userService)
         {
             this.barracksRepo = barracksRepo;
             this.houseRepo = houseRepo;
@@ -45,6 +48,7 @@
             this.userCityRepo = userCityRepo;
             this.cityRepo = cityRepo;
             this.townHallRepo = townHallRepo;
+            this.userService = userService;
         }
 
 
@@ -80,6 +84,8 @@
         public async Task CreateStartUpCity(string userId, string name)
 
         {
+
+
             var city = new City()
             {
                 Name = name,
@@ -97,8 +103,12 @@
                 Wood = 100,
             };
 
-            var userCity = new UserCity() { UserId = userId, City = city };
+            var user = await this.userService.GetUserById(userId);
+            await this.cityRepo.AddAsync(city);
+            await this.cityRepo.SaveChangesAsync();
+            var userCity = new UserCity() { User = user, City = city };
             await this.userCityRepo.AddAsync(userCity);
+
             await this.userCityRepo.SaveChangesAsync();
         }
 
