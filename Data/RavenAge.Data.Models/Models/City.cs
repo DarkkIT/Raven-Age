@@ -67,5 +67,7 @@
         public int DefenceWallId { get; set; }
 
         public DefenceWall DefenceWall { get; set; }
+
+        public virtual ICollection<UserCity> UserCities { get; set; }
     }
 }
