@@ -1,4 +1,4 @@
-﻿namespace RavenAge.Services.Data.BarraksService
+﻿namespace RavenAge.Services.Data.BarracksService
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +10,7 @@
     using RavenAge.Data.Models.Models;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
+    using RavenAge.Common;
 
     public class BarracksService : IBarracksService
     {
@@ -34,10 +35,15 @@
             var curentSilver = city.Silver;
             var curentWood = city.Wood;
 
-            var silverNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 100)
-                + (input.CavalryQuantity * 100) + (input.ArtilleryQuantity * 25);
-            var woodNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 15)
-                + (input.CavalryQuantity * 15) + (input.ArtilleryQuantity * 100);
+            var silverNeeded = (input.ArcharQuantity * GlobalConstants.ArcherSilverCost) +
+                               (input.InfantryQuantity * GlobalConstants.InfantrySilverCost) +
+                               (input.CavalryQuantity * GlobalConstants.CavalrySilverCost) +
+                               (input.ArtilleryQuantity * GlobalConstants.ArtillerySilverCost);
+
+            var woodNeeded = (input.ArcharQuantity * GlobalConstants.ArcherWoodCost) +
+                             (input.InfantryQuantity * GlobalConstants.InfantryWoodCost) +
+                             (input.CavalryQuantity * GlobalConstants.CavalryWoodCost) +
+                             (input.ArtilleryQuantity * GlobalConstants.ArcherWoodCost);
 
             if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
             {

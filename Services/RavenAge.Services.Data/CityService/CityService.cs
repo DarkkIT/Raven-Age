@@ -47,33 +47,7 @@
             this.townHallRepo = townHallRepo;
         }
 
-        public async Task AddSoldiersAsync(HireSoldiersInputModel input, string userId)
-        {
-            var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
-            var city = this.cityRepo.All().FirstOrDefault(x => x.Id == cityId);
-
-            var curentSilver = city.Silver;
-            var curentWood = city.Wood;
-
-            var silverNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 100)
-                + (input.CavalryQuantity * 100) + (input.ArtilleryQuantity * 25);
-            var woodNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 15)
-                + (input.CavalryQuantity * 15) + (input.ArtilleryQuantity * 100);
-
-            if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
-            {
-                city.Archers += input.ArcharQuantity;
-                city.Infantry += input.InfantryQuantity;
-                city.Cavalry += input.CavalryQuantity;
-                city.Artillery += input.ArtilleryQuantity;
-
-                city.Silver -= silverNeeded;
-                city.Wood -= woodNeeded;
-            }
-
-            await this.cityRepo.SaveChangesAsync();
-        }
 
         public async Task CreateStartUpCity(string userId)
         {

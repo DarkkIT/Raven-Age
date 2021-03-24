@@ -1,4 +1,4 @@
-﻿namespace RavenAge.Services.Data.BarraksService
+﻿namespace RavenAge.Services.Data.BarracksService
 {
     using System;
     using System.Collections.Generic;
