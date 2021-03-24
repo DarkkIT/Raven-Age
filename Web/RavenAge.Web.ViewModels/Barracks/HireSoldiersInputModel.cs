@@ -10,6 +10,19 @@
         public string Type { get; set; }
 
         [Required]
-        public int Quantity { get; set; }
+        [Range(0, 1000)]
+        public int ArcharQuantity { get; set; }
+
+        [Required]
+        [Range(0, 1000)]
+        public int InfantryQuantity { get; set; }
+
+        [Required]
+        [Range(0, 1000)]
+        public int CavalryQuantity { get; set; }
+
+        [Required]
+        [Range(0, 1000)]
+        public int ArtilleryQuantity { get; set; }
     }
 }

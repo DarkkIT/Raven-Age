@@ -9,22 +9,22 @@
 
 <div id="wrapper">
 
-    <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: 1080px;" />
+    <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: auto;" />
 
 
-    <a id="anchor-level1" data-toggle="modal" data-target="#modalCenter">
+    <a id="anchor-level1" data-toggle="modal" data-target="#modalBarracksCenter">
         <p class="font-weight-bold p-0">Barracks</p>
         <p>Lvl: @Model.Barracks.Level</p>
 
     </a>
 
-    <a id="anchor-level2" class="text-dark" asp-controller="City" asp-action="TownhallStats" asp-route-enemyName="">
+    <a id="anchor-level2" data-toggle="modal" data-target="#modalTownhallCenter">
         <p class="font-weight-bold p-0">Townhall</p>
         <p>Lvl: @Model.TownHall.Level</p>
 
     </a>
 
-    <a id="anchor-level3" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+    <a id="anchor-level3" data-toggle="modal" data-target="#modalHouseCenter">
         <p class="font-weight-bold p-0">House</p>
         <p>Lvl: @Model.House.Level</p>
     </a>
@@ -58,109 +58,58 @@
     </a>
 
     <a id="anchor-level11" class="text-dark">
-        <p class="font-weight-bold p-0">Avatar - 11</p>
+        <p class="font-weight-bold p-0">
+            <img src="~/images/Avatars/Avatar11.png" style="max-width: 100%; height: auto;" alt="Alternate Text" />
+        </p>
     </a>
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modals -->
+<div class="modal fade" id="modalBarracksCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Barracks</h5>
+                <h5 class="modal-title" id="modalCenterTitle">Barracks 
+                <span class="text-warning">Silver-@Model.Silver</span>
+                <span class="text-danger">Wood-@Model.Wood</span>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row justify-content-between">
 
-                    <div class="col-md-3">
-                        <p>Archars @Model.Archers</p>
-                        <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanArchar.jpg" />
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>Infantry</p>
-                        <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanInfantry.jpg" />
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>Cavalry</p>
-                        <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanCavalery.jpg" />
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>Artillery</p>
-                        <img class="img-fluid justify-content-center" src="~/images/Soldiers/HumanTrebuchet.jpg" />
-                    </div>
-
-                </div>
-
-                <div class="row justify-content-between">
-
-                    <div class="col-md-3">
-                        <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
-                        <form method="post" asp-controller="City" asp-action="Index">
-
-                            <div class="col-md-7">
-                                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                                <input  name="quantity" asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
-                            </div>
-
-                            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;"/>
-                        </form>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
-                        <form method="post">
-
-                            <div class="col-md-7">
-                                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                                <input asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
-                            </div>
-
-                            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;"/>
-                        </form>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
-                        <form method="post">
-
-                            <div class="col-md-7">
-                                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                                <input asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
-                            </div>
-
-                            <input type="submit" value="Hire" class="btn btn-primary mt-4" style="width: 6.1rem;"/>
-                        </form>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
-                        <form method="post">
-
-                            <div class="col-md-7">
-                                <label asp-for="@Model.HireSoldiersInputModel.Quantity"></label>
-                                <input asp-for="@Model.HireSoldiersInputModel.Quantity" class="form-control" />
-                                <span asp-validation-for="@Model.HireSoldiersInputModel.Quantity" class="text-danger"></span>
-                            </div>
-
-                            <input type="submit" value="Hire"  class="btn btn-primary mt-4" style="width: 6.1rem;" />
-                        </form>
-                    </div>
-
-                </div>
+                <partial name="_BarracksModal" />
 
             </div>
             <div class="modal-footer">
                 <p>@Model.Barracks.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHouseCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    House
+                    <span class="text-warning">Silver-@Model.Silver</span>
+                    <span class="text-danger">Wood-@Model.Wood</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_HouseModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.House.Description</p>
             </div>
         </div>
     </div>
