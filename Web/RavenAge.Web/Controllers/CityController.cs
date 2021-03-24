@@ -8,7 +8,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
-    using RavenAge.Services.Data.BarracksService;
+    using RavenAge.Services.Data.BarraksService;
     using RavenAge.Web.ViewModels.Barracks;
 
     public class CityController : Controller
