@@ -30,6 +30,5 @@
 
         CityViewModel GetCity(string userId);
 
-        Task AddSoldiersAsync(HireSoldiersInputModel input, string userId);
     }
 }
