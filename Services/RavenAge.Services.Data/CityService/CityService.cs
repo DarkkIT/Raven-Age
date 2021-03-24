@@ -5,10 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using Microsoft.EntityFrameworkCore;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
+    using RavenAge.Services.UserService.Data;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
 
@@ -23,6 +24,7 @@
         private readonly IRepository<UserCity> userCityRepo;
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IDeletableEntityRepository<TownHall> townHallRepo;
+        private readonly IUserService userService;
 
         public CityService(
                            IDeletableEntityRepository<Barracks> barracksRepo,
@@ -34,7 +36,8 @@
                            IDeletableEntityRepository<DefenceWall> defenceWallRepo,
                            IDeletableEntityRepository<Farm> farmRepo,
                            IRepository<UserCity> userCityRepo,
-                           IDeletableEntityRepository<City> cityRepo)
+                           IDeletableEntityRepository<City> cityRepo,
+                           IUserService userService)
         {
             this.barracksRepo = barracksRepo;
             this.houseRepo = houseRepo;
@@ -45,14 +48,20 @@
             this.userCityRepo = userCityRepo;
             this.cityRepo = cityRepo;
             this.townHallRepo = townHallRepo;
+            this.userService = userService;
         }
 
 
 
-        public async Task CreateStartUpCity(string userId)
+
+        public async Task CreateStartUpCity(string userId, string name)
+
         {
+
+
             var city = new City()
             {
+                Name = name,
                 Barracks = new Barracks { Level = 1, Description = "This is barracks!" },
                 DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!" },
                 Farm = new Farm { Level = 1, Description = "This is a farm!" },
@@ -67,8 +76,12 @@
                 Wood = 100,
             };
 
-            var userCity = new UserCity() { UserId = userId, City = city };
+            var user = await this.userService.GetUserById(userId);
+            await this.cityRepo.AddAsync(city);
+            await this.cityRepo.SaveChangesAsync();
+            var userCity = new UserCity() { User = user, City = city };
             await this.userCityRepo.AddAsync(userCity);
+
             await this.userCityRepo.SaveChangesAsync();
         }
 
@@ -97,9 +110,9 @@
             return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.House).To<HouseViewModel>().FirstOrDefault();
         }
 
-        public MarketPlaceViewModel GetMarketPlace(string userId)
+        public async Task<MarketPlaceViewModel> GetMarketPlace(string userId)
         {
-            return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Marketplace).To<MarketPlaceViewModel>().FirstOrDefault();
+            return await this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Marketplace).To<MarketPlaceViewModel>().FirstOrDefaultAsync();
         }
 
         public StoneMineViewMode GetStoneMine(string userId)
