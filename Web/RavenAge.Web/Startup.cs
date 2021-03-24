@@ -21,9 +21,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using RavenAge.Services.CityService.Data;
+    using RavenAge.Services.Data.BarracksService;
     using RavenAge.Services.Data.HouseService;
     using RavenAge.Services.UserService.Data;
-    using RavenAge.Services.Data.BarraksService;
 
     public class Startup
     {
