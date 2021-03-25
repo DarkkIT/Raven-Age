@@ -5,6 +5,7 @@
 
 <head>
     <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
 </head>
 
 <div id="wrapper">
@@ -29,12 +30,14 @@
         <p>Lvl: @Model.House.Level</p>
     </a>
 
-    <a id="anchor-level4" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Farm - 4</p>
+    <a id="anchor-level4" data-toggle="modal" data-target="#modalFarmCenter">
+        <p class="font-weight-bold p-0">Farm</p>
+        <p>Lvl: @Model.Farm.Level</p>
     </a>
 
-    <a id="anchor-level5" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Saw mill - 5</p>
+    <a id="anchor-level5" data-toggle="modal" data-target="#modalSawMillCenter">
+        <p class="font-weight-bold p-0">Saw mill</p>
+        <p>Lvl: @Model.WoodMine.Level</p>
     </a>
 
     <a id="anchor-level6" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
@@ -65,14 +68,15 @@
 
 </div>
 
-<!-- Modals -->
+<!-- Barracks Modal -->
 <div class="modal fade" id="modalBarracksCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Barracks 
-                <span class="text-warning">Silver-@Model.Silver</span>
-                <span class="text-danger">Wood-@Model.Wood</span>
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Barracks
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -90,14 +94,15 @@
     </div>
 </div>
 
+<!-- House Modal -->
 <div class="modal fade" id="modalHouseCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCenterTitle">
                     House
-                    <span class="text-warning">Silver-@Model.Silver</span>
-                    <span class="text-danger">Wood-@Model.Wood</span>
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -110,6 +115,58 @@
             </div>
             <div class="modal-footer">
                 <p>@Model.House.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Farm Modal -->
+<div class="modal fade" id="modalFarmCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Farm
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_FarmModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.Farm.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Saw mill Modal -->
+<div class="modal fade" id="modalSawMillCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Saw mill
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_SawMillModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.WoodMine.Description</p>
             </div>
         </div>
     </div>

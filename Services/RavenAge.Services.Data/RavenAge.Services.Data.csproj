@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RavenAge.Data.Common\RavenAge.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\RavenAge.Data.Models\RavenAge.Data.Models.csproj" />
+    <ProjectReference Include="..\..\RavenAge.Common\RavenAge.Common.csproj" />
     <ProjectReference Include="..\..\Web\RavenAge.Web.ViewModels\RavenAge.Web.ViewModels.csproj" />
     <ProjectReference Include="..\RavenAge.Services.Mapping\RavenAge.Services.Mapping.csproj" />
   </ItemGroup>

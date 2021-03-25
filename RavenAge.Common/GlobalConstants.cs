@@ -6,7 +6,7 @@
 
         public const string AdministratorRoleName = "Administrator";
 
-        ////Base Attacks, Defence, Healt
+        //// Base Attacks, Defence, Healt
 
         public const int ElfArcherBaseAttack = 1000;
         public const int ElfArcherBaseDefence = 1000;
@@ -20,15 +20,7 @@
         public const int UndeadArcherBaseDefence = 1000;
         public const int UndeadArcherBaseHealt = 1000;
 
-
-        //var curentSilver = city.Silver;
-        //var curentWood = city.Wood;
-
-        //var silverNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 100)
-        //    + (input.CavalryQuantity * 100) + (input.ArtilleryQuantity * 25);
-
-        //var woodNeeded = (input.ArcharQuantity * 50) + (input.InfantryQuantity * 15)
-        //    + (input.CavalryQuantity * 15) + (input.ArtilleryQuantity * 100);
+        //// Soldiers Costs
 
         public const int ArcherSilverCost = 50;
         public const int InfantrySilverCost = 100;
@@ -40,5 +32,16 @@
         public const int CavalryWoodCost = 15;
         public const int ArtilleryWoodCost = 100;
 
+        //// Farm
+
+        public const int FoodProductionPerLevel = 200;
+
+        //// Hause
+
+        public const int WorkerLimitPerLevel = 200;
+
+        //// SawMill
+
+        public const int SawMillProdictionPerLevel = 200;
     }
 }

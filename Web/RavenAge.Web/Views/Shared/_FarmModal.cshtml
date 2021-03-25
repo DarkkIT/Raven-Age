@@ -1,0 +1,31 @@
+﻿@model RavenAge.Web.ViewModels.City.CityViewModel;
+
+
+<div>
+
+    <div>
+        <p>Current Production: @Model.Farm.FoodProduction</p>
+
+        <p>Next Level Production: @(Model.Farm.FoodProduction + 200)</p>
+    </div>
+
+    <div>
+
+        <p>Raise the level of the farm to increase the food production </p>
+
+        <div class="row ml-1">
+            <a class="button-primary text-success mr-3 btn btn-outline-success" asp-controller="Farm" asp-action="LevelUp">Level Up</a>
+
+            <p>
+                <span>Price:</span>
+                <span class="text-warning">Silver: @Model.Farm.SilverPrice</span>,
+                <span class="text-secondary">Stone: @Model.Farm.StonePrice</span>,
+                <span class="text-danger">Wood: @Model.Farm.WoodPrice</span>
+            </p>
+        </div>
+
+
+    </div>
+
+</div>
+
