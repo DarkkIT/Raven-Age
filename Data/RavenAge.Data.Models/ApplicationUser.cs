@@ -6,6 +6,7 @@ namespace RavenAge.Data.Models
 
     using Microsoft.AspNetCore.Identity;
     using RavenAge.Data.Common.Models;
+    using RavenAge.Data.Models.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -52,5 +53,7 @@ namespace RavenAge.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<UserCity> UserCities { get; set; }
     }
 }

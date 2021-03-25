@@ -53,6 +53,11 @@
                                                                    type="text" />
                 </p>
                 <p>
+                    <label asp-for="Input.CityName">City Name</label><input asp-for="Input.CityName"
+                                                                             type="text" />
+                    <span asp-validation-for="Input.CityName" class="text-danger"></span>
+                </p>
+                <p>
                     <label asp-for="Input.Password">Password</label><input asp-for="Input.Password"
                                                                            type="password" />
                 </p>

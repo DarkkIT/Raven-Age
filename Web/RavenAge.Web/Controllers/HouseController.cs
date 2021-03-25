@@ -25,8 +25,8 @@
 
         public async Task<IActionResult> LevelUp()
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var model = this.cityService.GetCity(this.GetUserId());
+            var userId = this.GetUserId();
+            var model = this.cityService.GetCity(userId);
 
             await this.houseService.HouseLevelUp(userId);
 

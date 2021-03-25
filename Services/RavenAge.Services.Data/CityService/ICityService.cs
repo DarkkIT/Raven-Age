@@ -10,7 +10,7 @@
 
     public interface ICityService
     {
-        Task CreateStartUpCity(string userId);
+        Task CreateStartUpCity(string userId, string name);
 
         BarracksViewModel GetBarracks(string userId);
 
@@ -26,10 +26,9 @@
 
         DefenceWallViewModel GetDefenceWall(string userId);
 
-        MarketPlaceViewModel GetMarketPlace(string userId);
+        Task<MarketPlaceViewModel> GetMarketPlace(string userId);
 
         CityViewModel GetCity(string userId);
 
-        Task AddSoldiersAsync(HireSoldiersInputModel input, string userId);
     }
 }
