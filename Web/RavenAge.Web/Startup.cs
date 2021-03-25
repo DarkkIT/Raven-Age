@@ -25,6 +25,7 @@
     using RavenAge.Services.Data.HouseService;
     using RavenAge.Services.UserService.Data;
     using RavenAge.Services.Data.FarmService;
+    using RavenAge.Services.Data.SawMillService;
 
     public class Startup
     {
@@ -76,6 +77,7 @@
             services.AddTransient<IHouseService, HouseService>();
             services.AddTransient<IUserService,  UserService>();
             services.AddTransient<IFarmService, FarmService>();
+            services.AddTransient<ISawMillService, SawMillService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

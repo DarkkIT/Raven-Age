@@ -35,8 +35,9 @@
         <p>Lvl: @Model.Farm.Level</p>
     </a>
 
-    <a id="anchor-level5" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Saw mill - 5</p>
+    <a id="anchor-level5" data-toggle="modal" data-target="#modalSawMillCenter">
+        <p class="font-weight-bold p-0">Saw mill</p>
+        <p>Lvl: @Model.WoodMine.Level</p>
     </a>
 
     <a id="anchor-level6" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
@@ -140,6 +141,32 @@
             </div>
             <div class="modal-footer">
                 <p>@Model.Farm.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Saw mill Modal -->
+<div class="modal fade" id="modalSawMillCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Saw mill
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_SawMillModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.WoodMine.Description</p>
             </div>
         </div>
     </div>
