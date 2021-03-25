@@ -34,6 +34,8 @@
 
         public decimal Wood { get; set; }
 
+        public decimal Food { get; set; }
+
         //// City Buildings
 
         public int TownHallId { get; set; }

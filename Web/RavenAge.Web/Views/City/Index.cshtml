@@ -29,8 +29,9 @@
         <p>Lvl: @Model.House.Level</p>
     </a>
 
-    <a id="anchor-level4" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Farm - 4</p>
+    <a id="anchor-level4" data-toggle="modal" data-target="#modalFarmCenter">
+        <p class="font-weight-bold p-0">Farm</p>
+        <p>Lvl: @Model.Farm.Level</p>
     </a>
 
     <a id="anchor-level5" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
@@ -108,6 +109,32 @@
             <div class="modal-body">
 
                 <partial name="_HouseModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.House.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Farm Modal -->
+<div class="modal fade" id="modalFarmCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Farm
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_FarmModal" />
 
             </div>
             <div class="modal-footer">
