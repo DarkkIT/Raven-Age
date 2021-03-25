@@ -33,6 +33,8 @@
 
         public decimal Wood { get; set; }
 
+        public decimal Food { get; set; }
+
         public DefenceWallViewModel DefenceWall { get; set; }
 
         public FarmViewModel Farm { get; set; }

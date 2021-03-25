@@ -5,6 +5,7 @@
 
     <div>
         <p>Curent workers: @Model.Workers</p>
+        <p>Workers limit: @Model.House.WorkerLimit</p>
         <p>Income per worker: 2 Silver</p>
         <p>Total income: @(Model.Workers * 2)</p>
     </div>
@@ -12,7 +13,18 @@
     <div>
 
         <p>Raise the level of the houses to increase the workers' limit </p>
-        <a class="button-primary text-danger" asp-controller="House" asp-action="LevelUp">Level Up</a>
+
+        <div class="row ml-1">
+            <a class="button-primary text-success mr-3 btn btn-outline-success" asp-controller="House" asp-action="LevelUp">Level Up</a>
+
+            <p>
+                <span>Price:</span>
+                <span class="text-warning">Silver: @Model.House.SilverPrice</span>,
+                <span class="text-dark">Stone: @Model.House.StonePrice</span>,
+                <span class="text-danger">Wood: @Model.House.WoodPrice</span>
+            </p>
+        </div>
+
 
     </div>
 
