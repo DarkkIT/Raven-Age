@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
 
@@ -50,7 +51,7 @@
                 house.SilverPrice *= 2;
                 house.WoodPrice *= 2;
                 house.StonePrice *= 2;
-                house.WorkerLimit += 200;
+                house.WorkerLimit += GlobalConstants.WorkerLimitPerLevel;
             }
 
             await this.houseRepo.SaveChangesAsync();
