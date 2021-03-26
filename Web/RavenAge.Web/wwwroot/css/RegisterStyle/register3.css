@@ -1,93 +1,118 @@
 body {
-    background-image: url("/images/background1.jpg");
-    background-position: top;
+    background-image: url("/images/BackgroundRunes.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 #container {
-  display: flex;
-  justify-content: space-evenly;
+    display: flex;
+    justify-content: center;
 }
-.containerButtons{
-  display: flex;
-  justify-content: space-evenly;
-  position: relative;
-  top: 100px;
+
+.containerText {
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    margin: 0px;
+    font-weight: 1000;
 }
-.chosenRunes{
-  position: relative;
-  top: 80px;
-  background-color: white;
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+
+p {
+    margin: 0px;
+    padding-top: 10px;
 }
- /*  .chosenRunes img {
+
+.containerButtons {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+}
+
+.chosenRunes {
+    position: relative;
+    margin: 0px 40px;
+    top: 40px;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: gray;
+}
+
+    .chosenRunes img {
         position: relative;
         top: 15px;
         left: 15px;
         width: 170px;
         height: 170px;
         text-align: center;
-    }*/
+    }
 
-.rune{
-  width: 180px;
-  height: 180px;
-  text-align: center;
-  
+.rune {
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    margin: 0px 20px
 }
 
-.containerRunes{
-  margin: 0 50px 0 50px;
-  position: relative;
-  top: 150px;
-  display: flex;
-  justify-content: space-between;
+.containerRunes {
+    position: relative;
+    top: 80px;
+    display: flex;
+    justify-content: center
 }
 
 .btn {
-  background: transparent;
-  border: 2px solid transparent;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1;
-  margin: 18px;
-  padding: 15px 25px;
-  min-width: 150px;
-  min-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  outline: none;
-  -webkit-transition: all 0.2s ease-in-out 0s;
-  -moz-transition: all 0.2s ease-in-out 0s;
-  -ms-transition: all 0.2s ease-in-out 0s;
-  transition: all 0.2s ease-in-out 0s;
-  position: relative;
-  top: 100px;
+    background: transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 18px;
+    padding: 15px 25px;
+    min-width: 150px;
+    min-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+    position: relative;
+    top: 100px;
 }
+
 .rounded {
-  border-radius: 5px;
+    border-radius: 5px;
 }
+
 .full-rounded {
-  border-radius: 20em;
+    border-radius: 20em;
 }
 
 .color {
-  background: #fac75a;
-  color: black;
-  box-shadow: 0 3px 0 #f9b629;
-}
-.color:hover {
-  background: #fce17a;
-}
-.color:active,
-.color:focus {
-  background: #fac24b;
+    background: #fac75a;
+    color: black;
+    box-shadow: 0 3px 0 #f9b629;
 }
 
+    .color:hover {
+        background: #fce17a;
+    }
 
-
-
+    .color:active,
+    .color:focus {
+        background: #fac24b;
+    }
