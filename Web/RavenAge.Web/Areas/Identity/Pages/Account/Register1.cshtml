@@ -12,28 +12,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/RegisterStyle/register1.css" />
+    <link rel="stylesheet" href="~/css/registration.css" asp-append-version="true" />
     <title>Choose Class</title>
 </head>
 <body>
+    <div id="title" class="col-md-12 text-center mt-5">Choose Class</div>
+
     <div class="chooseClass">
-        <span id="title">Choose Class</span>
-        <div id="wrapper1">
-            <h1 class="name">Elf</h1>
-            <a href="/Identity/Account/Register2?type=Elf" data-toggle="modal" data-target="#exampleModalCenter">
-                <img class="class" src="/images/Races/Elf.png" alt="programmerImg" />
-            </a>
-        </div>
-        <div id="wrapper2">
-            <h1 class="name">Undead</h1>
-            <a href="/Identity/Account/Register2?type=Undead" data-toggle="modal" data-target="#exampleModalCenter">
-                <img class="class" src="/images/Races/Undead.png" alt="hackerImg" />
-            </a>
-        </div>
-        <div id="wrapper3">
-            <h1 class="name">Soldier</h1>
-            <a href="/Identity/Account/Register2?type=Soldier" type="button" id="myBtn">
-                <img class="class" src="/images/Races/Soldier.png" alt="programmerImg" />
-            </a>
+        <div class="row justify-content-center">
+            <div id="wrapper1" class="col-md-4">
+                <h1 class="name">Elf</h1>
+                <a href="/Identity/Account/Register2?type=Elf" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img class="class" src="/images/Races/Elf.png" alt="programmerImg" />
+                </a>
+            </div>
+            <div id="wrapper2" class="col-md-4">
+                <h1 class="name">Undead</h1>
+                <a href="/Identity/Account/Register2?type=Undead" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img class="class" src="/images/Races/Undead.png" alt="hackerImg" />
+                </a>
+            </div>
+            <div id="wrapper3" class="col-md-4">
+                <h1 class="name">Soldier</h1>
+                <a href="/Identity/Account/Register2?type=Soldier" type="button" id="myBtn">
+                    <img class="class" src="/images/Races/Soldier.png" alt="programmerImg" />
+                </a>
+            </div>
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -54,7 +58,7 @@
     document.getElementsByClassName('chooseClass')[0].addEventListener('click', event => {
         if (event.target.tagName = 'IMG') {
             event.preventDefault();
-           
+
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -93,8 +97,8 @@
                     )
                 }
             })
-         
+
         }
 
     })
-    </script>
+</script>

@@ -5,7 +5,7 @@ body {
 
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .wholeContainer {
@@ -25,17 +25,18 @@ body {
 
 .picker {
     position: relative;
-    top: 100px;
+    top: 50%;
     width: 550px;
     height: 500px;
-    background-color: white;
+    background-color: dimgrey;
     overflow: auto;
+    left: 50%
 }
 
 .avatar {
     position: relative;
     vertical-align: middle;
-    background-color: teal;
+    background-color: dimgrey;
     border-radius: 50%;
     margin: 10px;
     border-collapse: collapse;
