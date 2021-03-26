@@ -5,12 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
-    using RavenAge.Common;
 
     public class BarracksService : IBarracksService
     {
