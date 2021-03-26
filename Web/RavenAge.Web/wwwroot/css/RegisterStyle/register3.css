@@ -17,11 +17,7 @@ body {
 }
 
 .containerText {
-    color: white;
-    text-align: center;
-    font-size: xx-large;
-    margin: 0px;
-    font-weight: 1000;
+    
 }
 
 p {
@@ -31,9 +27,6 @@ p {
 
 .containerButtons {
     display: flex;
-    justify-content: center;
-    position: relative;
-    top: 20px;
 }
 
 .chosenRunes {
@@ -65,9 +58,7 @@ p {
 
 .containerRunes {
     position: relative;
-    top: 80px;
-    display: flex;
-    justify-content: center
+ 
 }
 
 .btn {
