@@ -1,16 +1,9 @@
 body {
-    width: 1920px;
-    height: 1080px;
+    max-width: 1920px;
+    height: auto;
 }
 
-#title {
-    display: block;
-    color: #efede8;
-    text-align: center;
-    font-size: 4.5rem;
-    font-weight: 700;
-    text-shadow: 4px 4px 4px black;
-}
+
 
 .class {
     width: 250px;
@@ -20,7 +13,7 @@ body {
 }
 
 .chooseClass {
-    width: 1920px;
+    max-width: 1920px;
     height: 1080px;
     background: url(/images/Backgrounds/indexBackground2.jpg);
     position: relative;
@@ -51,6 +44,15 @@ body {
     text-align: center;
     position: relative;
     top: 550px;
+    right: 20px;
+    color: #efede8;
+    font-size: 3rem;
+    text-shadow: 4px 4px 4px black;
+}
+
+#title {
+    text-align: center;
+    position: relative;
     right: 20px;
     color: #efede8;
     font-size: 3rem;
