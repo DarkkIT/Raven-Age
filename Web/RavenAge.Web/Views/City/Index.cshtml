@@ -70,9 +70,10 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Barracks 
-                <span class="text-warning">Silver-@Model.Silver</span>
-                <span class="text-danger">Wood-@Model.Wood</span>
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Barracks
+                    <span class="resource text-warning">Silver - @Model.Silver</span>
+                    <span class="resource text-danger">Wood - @Model.Wood</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -96,8 +97,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCenterTitle">
                     House
-                    <span class="text-warning">Silver-@Model.Silver</span>
-                    <span class="text-danger">Wood-@Model.Wood</span>
+                    <span class="resource text-warning">Silver - @Model.Silver</span>
+                    <span class="resource text-danger">Wood - @Model.Wood</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -114,3 +115,55 @@
         </div>
     </div>
 </div>
+<form method="post" id="antiForgeryForm">
+</form>
+@section Scripts{
+    <script>
+    console.log("test");
+
+    $("input[value='Hire']").each(function (el) {
+        $(this).click(function () {
+
+            var input = $(this).prev().children('input');
+            var quantity = parseInt(input.val())
+            input.val('0');
+            var unit = input.attr('name');
+            var data = {};
+            data[`${unit}`] = quantity;
+            console.log(data);
+
+            var antiForgeryToken = $('input[name=__RequestVerificationToken]').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/api/Barracks",
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken
+                },
+
+                success: function (data) {
+
+                    $('span.resource').each(function (index) {
+                        var resource;
+                        if ($(this).text().includes('Silver')) {
+                            resource = (`Silver - ${Number($(this).text().split('Silver - ').filter(Boolean)) - data.silverSpent}`);
+                            $(this).text(resource);
+                        }
+                        else {
+                            resource = (`Wood - ${Number($(this).text().split('Wood - ').filter(Boolean)) - data.woodSpent}`);
+                            $(this).text(resource);
+                        }
+                    })
+
+                    var newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;
+                    $(`#${data.unitType}`).text(`${data.unitType} ${newUnitQuantity}`)
+                },
+            })
+
+        })
+    })
+    </script>
+}
