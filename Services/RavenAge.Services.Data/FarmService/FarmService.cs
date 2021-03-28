@@ -1,4 +1,4 @@
-﻿namespace RavenAge.Services.Data.HouseService
+﻿namespace RavenAge.Services.Data.FarmService
 {
     using System;
     using System.Collections.Generic;
@@ -10,23 +10,23 @@
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
 
-    public class HouseService : IHouseService
+    public class FarmService : IFarmService
     {
-        private readonly IDeletableEntityRepository<House> houseRepo;
+        private readonly IDeletableEntityRepository<Farm> farmRepo;
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IRepository<UserCity> userCityRepo;
 
-        public HouseService(
-            IDeletableEntityRepository<House> houseRepo,
+        public FarmService(
+            IDeletableEntityRepository<Farm> farmRepo,
             IDeletableEntityRepository<City> cityRepo,
             IRepository<UserCity> userCityRepo)
         {
-            this.houseRepo = houseRepo;
+            this.farmRepo = farmRepo;
             this.cityRepo = cityRepo;
             this.userCityRepo = userCityRepo;
         }
 
-        public async Task HouseLevelUp(string userId)
+        public async Task FarmLevelUp(string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -36,25 +36,25 @@
             var currentWood = city.Wood;
             var currentStone = city.Stone;
 
-            var house = this.houseRepo.All().FirstOrDefault(x => x.Id == city.HouseId);
-            var silverNeeded = house.SilverPrice;
-            var woodNeeded = house.WoodPrice;
-            var stoneNeeded = house.StonePrice;
+            var farm = this.farmRepo.All().FirstOrDefault(x => x.Id == city.FarmId);
+            var silverNeeded = farm.SilverPrice;
+            var woodNeeded = farm.WoodPrice;
+            var stoneNeeded = farm.StonePrice;
 
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
-                city.Silver -= house.SilverPrice;
-                city.Wood -= house.WoodPrice;
-                city.Stone -= house.StonePrice;
+                city.Silver -= farm.SilverPrice;
+                city.Wood -= farm.WoodPrice;
+                city.Stone -= farm.StonePrice;
 
-                house.Level += 1;
-                house.SilverPrice *= 2;
-                house.WoodPrice *= 2;
-                house.StonePrice *= 2;
-                house.WorkerLimit += GlobalConstants.WorkerLimitPerLevel;
+                farm.Level += 1;
+                farm.SilverPrice *= 2;
+                farm.WoodPrice *= 2;
+                farm.StonePrice *= 2;
+                farm.FoodProduction += GlobalConstants.FoodProductionPerLevel;
             }
 
-            await this.houseRepo.SaveChangesAsync();
+            await this.farmRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
         }
     }
