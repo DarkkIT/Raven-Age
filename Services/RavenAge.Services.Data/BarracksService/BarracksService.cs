@@ -73,7 +73,7 @@
                 }
                 else if (input.CavalryQuantity > 0)
                 {
-                    unitType = "Vavalry";
+                    unitType = "Cavalry";
                     unitQuantity = input.CavalryQuantity;
                 }
                 else if (input.ArtilleryQuantity > 0)
