@@ -12,7 +12,7 @@
     {
         BarracksViewModel GetBarracks(string userId);
 
-        Task AddSoldiersAsync (HireSoldiersInputModel input, string userId);
+        Task<HiredUnitsAndCostModel> AddSoldiersAsync (HireSoldiersInputModel input, string userId);
 
     }
 }

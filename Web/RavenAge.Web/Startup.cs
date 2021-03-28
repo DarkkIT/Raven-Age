@@ -57,6 +57,10 @@
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
             services.AddMvc().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");

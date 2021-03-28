@@ -26,20 +26,13 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Hire(HireSoldiersInputModel input)
+        public async Task<HiredUnitsAndCostModel> Hire(HireSoldiersInputModel input)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            if (!this.ModelState.IsValid)
-            {
-                return this.View();
-            }
+            var result = await this.barrackService.AddSoldiersAsync(input, userId);
 
-            await this.barrackService.AddSoldiersAsync(input, userId);
-
-            //var model = this.cityService.GetCity(userId);
-
-            return /*this.View(model);*/ null;
+            return result;
         }
 
     }

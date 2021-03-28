@@ -27,7 +27,7 @@
             this.cityRepo = cityRepo;
         }
 
-        public async Task AddSoldiersAsync(HireSoldiersInputModel input, string userId)
+        public async Task<HiredUnitsAndCostModel> AddSoldiersAsync(HireSoldiersInputModel input, string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
             var city = this.cityRepo.All().FirstOrDefault(x => x.Id == cityId);
@@ -45,6 +45,8 @@
                              (input.CavalryQuantity * GlobalConstants.CavalryWoodCost) +
                              (input.ArtilleryQuantity * GlobalConstants.ArcherWoodCost);
 
+            var hiredUnits = new HiredUnitsAndCostModel();
+
             if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
             {
                 city.Archers += input.ArcharQuantity;
@@ -54,9 +56,36 @@
 
                 city.Silver -= silverNeeded;
                 city.Wood -= woodNeeded;
+                await this.cityRepo.SaveChangesAsync();
+
+                var unitType = string.Empty;
+                int unitQuantity = 0;
+
+                if (input.ArcharQuantity > 0)
+                {
+                    unitType = "Archers";
+                    unitQuantity = input.ArcharQuantity;
+                }
+                else if (input.InfantryQuantity > 0)
+                {
+                    unitType = "Infantry";
+                    unitQuantity = input.InfantryQuantity;
+                }
+                else if (input.CavalryQuantity > 0)
+                {
+                    unitType = "Vavalry";
+                    unitQuantity = input.CavalryQuantity;
+                }
+                else if (input.ArtilleryQuantity > 0)
+                {
+                    unitType = "Artillery";
+                    unitQuantity = input.ArtilleryQuantity;
+                }
+
+                return new HiredUnitsAndCostModel { UnitQuantity = unitQuantity, UnitType = unitType, WoodSpent = woodNeeded, SilverSpent = silverNeeded };
             }
 
-            await this.cityRepo.SaveChangesAsync();
+            return null;
         }
 
         public BarracksViewModel GetBarracks(string userId)
