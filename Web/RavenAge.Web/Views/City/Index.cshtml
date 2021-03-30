@@ -77,6 +77,7 @@
                     Barracks
 
                     <span class="resource text-warning">Silver - @(Math.Floor(Model.Silver))</span>
+
                     <span class="resource text-danger">Wood - @(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -104,6 +105,7 @@
                     House
 
                     <span class="resource text-warning">Silver - @(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
                     <span class="resource text-danger">Wood - @(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -132,6 +134,7 @@
                 <h5 class="modal-title" id="modalCenterTitle">
                     Farm
                     <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
                     <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -158,6 +161,7 @@
                 <h5 class="modal-title" id="modalCenterTitle">
                     Saw mill
                     <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
                     <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,6 +175,34 @@
             </div>
             <div class="modal-footer">
                 <p>@Model.WoodMine.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TownHall Modal -->
+<div class="modal fade" id="modalTownhallCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    TownHall
+
+                    <span class="resource text-warning">Silver - @(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
+                    <span class="resource text-danger">Wood - @(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_TownHallModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.TownHall.Description</p>
             </div>
         </div>
     </div>

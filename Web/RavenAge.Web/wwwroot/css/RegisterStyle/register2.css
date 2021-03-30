@@ -1,6 +1,6 @@
 body {
     background-image: url("/images/background1.jpg");
-    background-position: top;
+    
 }
 
 .container {
@@ -9,15 +9,11 @@ body {
 }
 
 .wholeContainer {
-    display: flex;
-    justify-content: center;
+
 }
 
 .wrapper {
-    margin-right: 200px;
     position: relative;
-    top: 100px;
-    left: 100px;
     width: 300px;
     height: 350px;
     background-color: white;
@@ -25,12 +21,10 @@ body {
 
 .picker {
     position: relative;
-    top: 50%;
     width: 550px;
     height: 500px;
     background-color: dimgrey;
     overflow: auto;
-    left: 50%
 }
 
 .avatar {
@@ -71,10 +65,7 @@ body {
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
-    margin: 18px;
-    padding: 15px 25px;
-    min-width: 150px;
-    min-height: 50px;
+    width: 100px;  
     text-align: center;
     text-decoration: none;
     display: inline-block;
