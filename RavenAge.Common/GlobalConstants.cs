@@ -43,5 +43,9 @@
         //// SawMill
 
         public const int SawMillProdictionPerLevel = 200;
+
+        //// TownHall
+
+        public const int TownHallArmyLimitPerLevel = 200;
     }
 }
