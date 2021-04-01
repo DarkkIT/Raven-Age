@@ -9,8 +9,11 @@
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.FarmService;
+    using RavenAge.Web.ViewModels.Farm;
 
-    public class FarmController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class FarmController : BaseController
     {
         private readonly ICityService cityService;
         private readonly IFarmService farmService;
@@ -23,14 +26,12 @@
             this.farmService = farmService;
         }
 
-        public async Task<IActionResult> LevelUp()
+        public async Task<FarmUpgradeViewModel> LevelUp()
         {
             var userId = this.GetUserId();
-            var model = this.cityService.GetCity(userId);
+            var data = await this.farmService.FarmLevelUp(userId);
 
-            await this.farmService.FarmLevelUp(userId);
-
-            return this.Redirect("~/City/Index");
+            return data;
         }
 
         internal string GetUserId()
