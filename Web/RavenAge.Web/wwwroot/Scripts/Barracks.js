@@ -20,7 +20,7 @@
                 headers: {
                     'X-CSRF-TOKEN': antiForgeryToken
                 },
-
+                
                 success: function (data) {
 
                     $('span.resource').each(function (index) {

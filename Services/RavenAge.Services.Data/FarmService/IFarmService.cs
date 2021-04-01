@@ -5,8 +5,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Web.ViewModels.Farm;
+
     public interface IFarmService
     {
-        Task FarmLevelUp(string userId);
+        Task<FarmUpgradeViewModel> FarmLevelUp(string userId);
     }
 }
