@@ -40,8 +40,9 @@
         <p>Lvl: @Model.WoodMine.Level</p>
     </a>
 
-    <a id="anchor-level6" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
-        <p class="font-weight-bold p-0">Stone quarry - 6</p>
+    <a id="anchor-level6" data-toggle="modal" data-target="#modalStoneMineCenter">
+        <p class="font-weight-bold p-0">Stone quarry</p>
+        <p>Lvl: @Model.StoneMine.Level</p>
     </a>
 
     <a id="anchor-level7" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
@@ -175,6 +176,33 @@
             </div>
             <div class="modal-footer">
                 <p>@Model.WoodMine.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stone mine Modal -->
+<div class="modal fade" id="modalStoneMineCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">
+                    Stone Mine
+                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
+                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <partial name="_StoneMineModal" />
+
+            </div>
+            <div class="modal-footer">
+                <p>@Model.StoneMine.Description</p>
             </div>
         </div>
     </div>
