@@ -42,7 +42,7 @@
             var woodNeeded = farm.WoodPrice;
             var stoneNeeded = farm.StonePrice;
 
-            var farmUpgradeData = new FarmUpgradeViewModel{ IsUpgraded = false};
+            var farmUpgradeData = new FarmUpgradeViewModel { IsUpgraded = false };
 
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {

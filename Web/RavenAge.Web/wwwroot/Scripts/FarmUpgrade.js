@@ -24,6 +24,7 @@
                 $('#FarmSilverCost').text(`Silver: ${data.silverUpgradeCost}`);
                 $('#FarmWoodCost').text(`Wood: ${data.woodUpgradeCost}`);
                 $('#FarmStoneCost').text(`Stone: ${data.stoneUpgradeCost}`);
+
             }
         }
     })
