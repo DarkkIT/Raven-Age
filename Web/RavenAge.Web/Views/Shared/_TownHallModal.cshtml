@@ -4,14 +4,12 @@
 <div>
 
     <div>
-        <p>Curent silver: @Model.Silver</p>
-        
-        <p>Total income: @(Model.Workers * 2)</p>
+        <p>Army Limit: @Model.TownHall.ArmyLimit</p>       
     </div>
 
     <div>
 
-        <p>Raise the level of the townhall to increase the silver income </p>
+        <p>Raise the level of the townhall to increase the army limit and to reach higher buildings levels</p>
 
         <div class="row ml-1">
             <a class="button-primary text-success mr-3 btn btn-outline-success" asp-controller="TownHall" asp-action="LevelUp">Level Up</a>
