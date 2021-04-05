@@ -29,6 +29,10 @@
                             resource = (`Silver - ${Number($(this).text().split('Silver - ').filter(Boolean)) - data.silverSpent}`);
                             $(this).text(resource);
                         }
+                        else if ($(this).text().includes('Stone')) {
+                            resource = (`Stone - ${Number($(this).text().split('Stone - ').filter(Boolean)) - data.stoneSpent}`);
+                            $(this).text(resource);
+                        }
                         else {
                             resource = (`Wood - ${Number($(this).text().split('Wood - ').filter(Boolean)) - data.woodSpent}`);
                             $(this).text(resource);

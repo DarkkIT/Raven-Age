@@ -1,14 +1,15 @@
 ﻿namespace RavenAge.Services.Data.TownhallService
 {
-    using RavenAge.Common;
-    using RavenAge.Data.Common.Repositories;
-    using RavenAge.Data.Models.Models;
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
+    using RavenAge.Common;
+    using RavenAge.Data.Common.Repositories;
+    using RavenAge.Data.Models.Models;
+    using RavenAge.Web.ViewModels.TownHall;
 
     public class TownHallService : ITownHallService
     {
@@ -26,7 +27,7 @@
             this.userCityRepo = userCityRepo;
         }
 
-        public async Task TownHallLevelUp(string userId)
+        public async Task<TownHallUpgradeViewModel> TownHallLevelUp(string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -41,6 +42,8 @@
             var woodNeeded = townHall.WoodPrice;
             var stoneNeeded = townHall.StonePrice;
 
+            var townHallUpgradeData = new TownHallUpgradeViewModel { IsUpgraded = false};
+
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
                 city.Silver -= townHall.SilverPrice;
@@ -52,10 +55,21 @@
                 townHall.WoodPrice *= 2;
                 townHall.StonePrice *= 2;
                 townHall.ArmyLimit += GlobalConstants.TownHallArmyLimitPerLevel;
+
+                townHallUpgradeData.IsUpgraded = true;
+                townHallUpgradeData.SilverAvailable = city.Silver;
+                townHallUpgradeData.WoodAvailable = city.Wood;
+                townHallUpgradeData.StoneAvailable = city.Stone;
+                townHallUpgradeData.SilverUpgradeCost = townHall.SilverPrice;
+                townHallUpgradeData.WoodUpgradeCost = townHall.WoodPrice;
+                townHallUpgradeData.StoneUpgradeCost = townHall.StonePrice;
+                townHallUpgradeData.ArmyLimit = townHall.ArmyLimit;
             }
 
             await this.townHallRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
+
+            return townHallUpgradeData;
         }
     }
 }
