@@ -10,8 +10,11 @@
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.HouseService;
     using RavenAge.Services.Data.TownhallService;
+    using RavenAge.Web.ViewModels.TownHall;
 
-    public class TownHallController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TownHallController : BaseController
     {
         private readonly ICityService cityService;
         private readonly ITownHallService townHallService;
@@ -24,14 +27,13 @@
             this.townHallService = townHallService;
         }
 
-        public async Task<IActionResult> LevelUp()
+        public async Task<TownHallUpgradeViewModel> LevelUp()
         {
             var userId = this.GetUserId();
-            var model = this.cityService.GetCity(userId);
 
-            await this.townHallService.TownHallLevelUp(userId);
+            var result = await this.townHallService.TownHallLevelUp(userId);
 
-            return this.Redirect("~/City/Index");
+            return result;
         }
 
         internal string GetUserId()

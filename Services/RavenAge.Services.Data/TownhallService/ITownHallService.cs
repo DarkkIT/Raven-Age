@@ -5,8 +5,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Web.ViewModels.TownHall;
+
     public interface ITownHallService
     {
-        Task TownHallLevelUp(string userId);
+        Task<TownHallUpgradeViewModel> TownHallLevelUp(string userId);
     }
 }
