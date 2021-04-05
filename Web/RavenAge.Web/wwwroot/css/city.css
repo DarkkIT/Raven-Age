@@ -113,15 +113,6 @@
     position: fixed;
 }
 
-#anchor-level10 {
-    width: 3.85%;
-    height: 6.75%;
-    border: 2px solid red;
-    border-radius: 50%;
-    position: absolute;
-    left: 62.5%;
-    top: 34.2%;
-}
 
 #anchor-level11 {
     background-image: url(/images/depositphotos_11.jpg);
