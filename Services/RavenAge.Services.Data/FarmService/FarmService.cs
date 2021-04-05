@@ -9,6 +9,7 @@
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
+    using RavenAge.Web.ViewModels.Farm;
 
     public class FarmService : IFarmService
     {
@@ -26,7 +27,7 @@
             this.userCityRepo = userCityRepo;
         }
 
-        public async Task FarmLevelUp(string userId)
+        public async Task<FarmUpgradeViewModel> FarmLevelUp(string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -41,6 +42,8 @@
             var woodNeeded = farm.WoodPrice;
             var stoneNeeded = farm.StonePrice;
 
+            var farmUpgradeData = new FarmUpgradeViewModel{ IsUpgraded = false};
+
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
                 city.Silver -= farm.SilverPrice;
@@ -52,10 +55,19 @@
                 farm.WoodPrice *= 2;
                 farm.StonePrice *= 2;
                 farm.FoodProduction += GlobalConstants.FoodProductionPerLevel;
+
+                farmUpgradeData.IsUpgraded = true;
+                farmUpgradeData.CurrentProduction = farm.FoodProduction;
+                farmUpgradeData.NextLevelProduction = farm.FoodProduction + GlobalConstants.FoodProductionPerLevel;
+                farmUpgradeData.SilverUpgradeCost = farm.SilverPrice;
+                farmUpgradeData.WoodUpgradeCost = farm.WoodPrice;
+                farmUpgradeData.StoneUpgradeCost = farm.StonePrice;
             }
 
             await this.farmRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
+
+            return farmUpgradeData;
         }
     }
 }
