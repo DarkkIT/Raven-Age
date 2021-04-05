@@ -39,6 +39,7 @@
         //// Hause
 
         public const int WorkerLimitPerLevel = 200;
+        public const int SilverPerWorker = 4;
 
         //// SawMill
 
