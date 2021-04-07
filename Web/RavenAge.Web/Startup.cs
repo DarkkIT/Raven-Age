@@ -37,6 +37,8 @@
     using RavenAge.Services.Data.HangfireService.SawMill;
     using RavenAge.Services.Data.HangfireService.Farm;
     using RavenAge.Services.Data.HangfireService.House;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc.Filters;
 
     public class Startup
     {
@@ -115,7 +117,6 @@
                     QueuePollInterval = TimeSpan.Zero,
                     UseRecommendedIsolationLevel = true,
                     UsePageLocksOnDequeue = true,
-
                     DisableGlobalLocks = true,
                 });
             });
@@ -150,7 +151,12 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseHangfireDashboard();
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new MyAuthorizationFilter() }
+            });
+
             app.UseRouting();
 
             app.UseAuthentication();
