@@ -7,7 +7,6 @@
             var unit = input.attr('name');
             var data = {};
             data[`${unit}`] = quantity;
-            console.log(data);
 
             var antiForgeryToken = $('input[name=__RequestVerificationToken]').val();
 
