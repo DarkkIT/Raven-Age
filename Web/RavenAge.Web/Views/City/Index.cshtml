@@ -13,13 +13,13 @@
     <img class="img-fluid justify-content-center" src="~/images/City/CityMapNew.png" style="width: 1920px; height: auto;" />
 
 
-    <a id="anchor-level1" data-toggle="modal" data-target="#modalBarracksCenter">
+    <a id="anchor-level1" class="playsound"  href="~/Sounds/Marching_Barracks.mp3" data-toggle="modal" data-target="#modalBarracksCenter">
         <p class="font-weight-bold p-0">Barracks</p>
         <p>Lvl: @Model.Barracks.Level</p>
 
     </a>
 
-    <a id="anchor-level2" data-toggle="modal" data-target="#modalTownhallCenter">
+    <a id="anchor-level2" class="playsound" href="~/Sounds/Townhall_sound.mp3" data-toggle="modal" data-target="#modalTownhallCenter">
         <p class="font-weight-bold p-0">Townhall</p>
         <p>Lvl: @Model.TownHall.Level</p>
 
@@ -30,26 +30,26 @@
         <p>Lvl: @Model.House.Level</p>
     </a>
 
-    <a id="anchor-level4" data-toggle="modal" data-target="#modalFarmCenter">
+    <a id="anchor-level4" class="playsound" href="~/Sounds/Farm_Sound.mp3" data-toggle="modal" data-target="#modalFarmCenter">
         <p class="font-weight-bold p-0">Farm</p>
         <p>Lvl: @Model.Farm.Level</p>
     </a>
 
-    <a id="anchor-level5" data-toggle="modal" data-target="#modalSawMillCenter">
+    <a id="anchor-level5" class="playsound" href="~/Sounds/SawMill_Sound.mp3" data-toggle="modal" data-target="#modalSawMillCenter">
         <p class="font-weight-bold p-0">Saw mill</p>
         <p>Lvl: @Model.WoodMine.Level</p>
     </a>
 
-    <a id="anchor-level6" data-toggle="modal" data-target="#modalStoneMineCenter">
+    <a id="anchor-level6" class="playsound" href="~/Sounds/StoneQuarry_Sound.mp3" data-toggle="modal" data-target="#modalStoneMineCenter">
         <p class="font-weight-bold p-0">Stone quarry</p>
         <p>Lvl: @Model.StoneMine.Level</p>
     </a>
 
-    <a id="anchor-level7" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+    <a id="anchor-level7" href="~/Sounds/Marketplace_Sound.mp3" class="playsound text-dark">
         <p class="font-weight-bold p-0">Marketplace - 7</p>
     </a>
 
-    <a id="anchor-level8" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+    <a id="anchor-level8" class="playsound "text-dark"" href="~/Sounds/DefenceWallGate_Sound.mp3">
         <p class="font-weighсt-bold p-0">Stone wall - 8</p>
     </a>
 
@@ -68,6 +68,7 @@
     </a>
 
 </div>
+<audio id="playTarget" src="" autoplay style="display:none"></audio>
 
 <!-- Barracks Modal -->
 <div class="modal fade" id="modalBarracksCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -241,4 +242,12 @@
     <script src="~/Scripts/Barracks.js"></script>
     <script src="~/Scripts/FarmUpgrade.js"></script>
     <script src="~/Scripts/TownHallUpgrade.js"></script>
+    <script>
+        $(".playsound").on("click", function (e) {
+            var url = $(this).attr('href');
+            $("#playTarget").attr("src", url);
+
+        });
+
+    </script>
 }
