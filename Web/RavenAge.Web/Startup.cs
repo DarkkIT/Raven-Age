@@ -134,7 +134,7 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-                this.SeedHangfireJobs(recurringJob);
+                 this.SeedHangfireJobs(recurringJob);
             }
 
             if (env.IsDevelopment())
