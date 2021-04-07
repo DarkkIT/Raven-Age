@@ -28,6 +28,15 @@
     using RavenAge.Services.Data.SawMillService;
     using RavenAge.Services.Data.TownhallService;
     using RavenAge.Services.Data.StoneMineService;
+    using Hangfire;
+    using Newtonsoft.Json;
+    using Hangfire.SqlServer;
+    using System;
+    using System.Threading.Tasks;
+    using RavenAge.Services.Data.HangfireService;
+    using RavenAge.Services.Data.HangfireService.SawMill;
+    using RavenAge.Services.Data.HangfireService.Farm;
+    using RavenAge.Services.Data.HangfireService.House;
 
     public class Startup
     {
@@ -41,6 +50,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -81,15 +91,39 @@
             services.AddTransient<ICityService, CityService>();
             services.AddTransient<IBarracksService, BarracksService>();
             services.AddTransient<IHouseService, HouseService>();
-            services.AddTransient<IUserService,  UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFarmService, FarmService>();
             services.AddTransient<ISawMillService, SawMillService>();
             services.AddTransient<ITownHallService, TownHallService>();
             services.AddTransient<IStoneMineService, StoneMineService>();
+
+            // HangfireServices
+            services.AddHangfire(config =>
+            {
+                // ReferenceLoop Fixing json error for resetStats on the player
+                config.UseSerializerSettings(new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_110);
+                config.UseSimpleAssemblyNameTypeSerializer();
+                config.UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(
+                this.configuration.GetConnectionString("DefaultConnection"),
+                new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    PrepareSchemaIfNecessary = true,
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+
+                    DisableGlobalLocks = true,
+                });
+            });
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJob)
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
@@ -99,6 +133,7 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                this.SeedHangfireJobs(recurringJob);
             }
 
             if (env.IsDevelopment())
@@ -115,7 +150,7 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseHangfireDashboard();
             app.UseRouting();
 
             app.UseAuthentication();
@@ -128,6 +163,14 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
                     });
+        }
+
+        public async Task SeedHangfireJobs(IRecurringJobManager recurringJob)
+        {
+            recurringJob.AddOrUpdate<StoneMineHangfireJobService>("StoneMineHangfireJobService", x => x.FarmStone(), Cron.Hourly);
+            recurringJob.AddOrUpdate<SawMillHangfireService>("SawMillHangfireService", x => x.FarmSaw(), Cron.Hourly);
+            recurringJob.AddOrUpdate<FarmHangfireService>("FarmHangfireService", x => x.FarmFood(), Cron.Hourly);
+            recurringJob.AddOrUpdate<HouseHangfireService>("HouseHangfireService", x => x.FarmWorkers(), Cron.Hourly);
         }
     }
 }

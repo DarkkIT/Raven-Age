@@ -18,8 +18,8 @@
 
                 $('#StoneAvailable').text('Stone - ' + ($('#StoneAvailable').text().split('Stone - ').filter(Boolean) - stoneCost));
 
-                $('#CurrentProduction').text(`Current Production: ${data.currentProduction}`);
-                $('#NextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
+                $('#CurrentFarmProduction').text(`Current Production: ${data.currentProduction}`);
+                $('#NextLevelFarmProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
                 $('#FarmSilverCost').text(`Silver: ${data.silverUpgradeCost}`);
                 $('#FarmWoodCost').text(`Wood: ${data.woodUpgradeCost}`);

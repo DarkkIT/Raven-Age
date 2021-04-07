@@ -3,9 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Http;
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
@@ -15,15 +16,18 @@
         private readonly IDeletableEntityRepository<StoneMine> stoneMineRepo;
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IRepository<UserCity> userCityRepo;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
         public StoneMineService(
             IDeletableEntityRepository<StoneMine> stoneMineRepo,
             IDeletableEntityRepository<City> cityRepo,
-            IRepository<UserCity> userCityRepo)
+            IRepository<UserCity> userCityRepo,
+            IHttpContextAccessor httpContextAccessor)
         {
             this.stoneMineRepo = stoneMineRepo;
             this.cityRepo = cityRepo;
             this.userCityRepo = userCityRepo;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public async Task StoneMineLevelUp(string userId)
