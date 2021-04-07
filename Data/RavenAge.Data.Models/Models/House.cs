@@ -16,6 +16,8 @@
 
         public decimal StonePrice { get; set; }
 
+        public int Production { get; set; }
+
         public int WorkerLimit { get; set; }
 
         public string Description { get; set; }
