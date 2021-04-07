@@ -4,9 +4,9 @@
 <div>
 
     <div>
-        <p>Current Production: @Model.WoodMine.Production</p>
+        <p id="SawMillCurrentProduction">Current Production: @Model.WoodMine.Production</p>
 
-        <p>Next Level Production: @(Model.WoodMine.Production + 200)</p>
+        <p id="SawMillNextLevelProduction">Next Level Production: @(Model.WoodMine.Production + 200)</p>
     </div>
 
     <div>
@@ -14,13 +14,13 @@
         <p>Raise the level of the saw mill to increase the wood production </p>
 
         <div class="row ml-1">
-            <a class="button-primary text-success mr-3 btn btn-outline-success" asp-controller="SawMill" asp-action="LevelUp">Level Up</a>
+            <a id="SawMillUpgrade" class="button-primary text-success mr-3 btn btn-outline-success">Level Up</a>
 
             <p>
                 <span>Price:</span>
-                <span class="text-warning">Silver: @Model.WoodMine.SilverPrice</span>,
-                <span class="text-secondary">Stone: @Model.WoodMine.StonePrice</span>,
-                <span class="text-danger">Wood: @Model.WoodMine.WoodPrice</span>
+                <span id="SawMillSilverUpgradeCost" class="text-warning">Silver: @Model.WoodMine.SilverPrice</span>,
+                <span id="SawMillStoneUpgradeCost" class="text-secondary">Stone: @Model.WoodMine.StonePrice</span>,
+                <span id="SawMillWoodUpgradeCost" class="text-danger">Wood: @Model.WoodMine.WoodPrice</span>
             </p>
         </div>
 

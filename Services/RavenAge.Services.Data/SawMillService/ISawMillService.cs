@@ -5,8 +5,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Web.ViewModels.Sawmill;
+
     public interface ISawMillService
     {
-        Task SawMillLevelUp(string userId);
+        Task<SawMillUpgradeViewModel> SawMillLevelUp(string userId);
     }
 }

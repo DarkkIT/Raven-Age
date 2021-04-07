@@ -9,8 +9,11 @@
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.SawMillService;
+    using RavenAge.Web.ViewModels.Sawmill;
 
-    public class SawMillController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SawMillController : BaseController
     {
         private readonly ICityService cityService;
         private readonly ISawMillService sawMillService;
@@ -23,14 +26,13 @@
             this.sawMillService = sawMillService;
         }
 
-        public async Task<IActionResult> LevelUp()
+        public async Task<SawMillUpgradeViewModel> LevelUp()
         {
             var userId = this.GetUserId();
-            var model = this.cityService.GetCity(userId);
 
-            await this.sawMillService.SawMillLevelUp(userId);
+            var data = await this.sawMillService.SawMillLevelUp(userId);
 
-            return this.Redirect("~/City/Index");
+            return data;
         }
 
         internal string GetUserId()
