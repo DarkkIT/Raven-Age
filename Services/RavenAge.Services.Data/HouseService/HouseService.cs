@@ -46,12 +46,14 @@
                 city.Silver -= house.SilverPrice;
                 city.Wood -= house.WoodPrice;
                 city.Stone -= house.StonePrice;
+                city.Workers += 2; //add workers
 
                 house.Level += 1;
                 house.SilverPrice *= 2;
                 house.WoodPrice *= 2;
                 house.StonePrice *= 2;
                 house.WorkerLimit += GlobalConstants.WorkerLimitPerLevel;
+                house.Production += 2; //workers
             }
 
             await this.houseRepo.SaveChangesAsync();
