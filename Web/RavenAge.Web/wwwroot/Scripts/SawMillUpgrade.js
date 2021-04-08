@@ -24,7 +24,7 @@
                     $('#SawMillWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
 
                     $('#SawMillCurrentProduction').text(`Current Production: ${data.currentProduction}`);
-                    $('#SawMillNextLevelProduction').text(`Wood: ${data.nextLevelProduction}`);
+                    $('#SawMillNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
 
                 })
