@@ -5,8 +5,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Web.ViewModels.StoneQuarry;
+
     public interface IStoneMineService
     {
-        Task StoneMineLevelUp(string userId);
+        Task<StoneQuarryUpgradeViewModel> StoneMineLevelUp(string userId);
     }
 }

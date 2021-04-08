@@ -9,8 +9,11 @@
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.StoneMineService;
+    using RavenAge.Web.ViewModels.StoneQuarry;
 
-    public class StoneMineController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class StoneMineController : BaseController
     {
         private readonly ICityService cityService;
         private readonly IStoneMineService stoneMineService;
@@ -23,14 +26,12 @@
             this.stoneMineService = stoneMineService;
         }
 
-        public async Task<IActionResult> LevelUp()
+        public async Task<StoneQuarryUpgradeViewModel> LevelUp()
         {
             var userId = this.GetUserId();
-            var model = this.cityService.GetCity(userId);
+            var data = await this.stoneMineService.StoneMineLevelUp(userId);
 
-            await this.stoneMineService.StoneMineLevelUp(userId);
-
-            return this.Redirect("~/City/Index");
+            return data;
         }
 
         internal string GetUserId()

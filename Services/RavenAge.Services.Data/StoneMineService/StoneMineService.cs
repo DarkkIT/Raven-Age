@@ -10,6 +10,7 @@
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
+    using RavenAge.Web.ViewModels.StoneQuarry;
 
     public class StoneMineService : IStoneMineService
     {
@@ -30,7 +31,7 @@
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task StoneMineLevelUp(string userId)
+        public async Task<StoneQuarryUpgradeViewModel> StoneMineLevelUp(string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -45,6 +46,8 @@
             var woodNeeded = stoneMine.WoodPrice;
             var stoneNeeded = stoneMine.StonePrice;
 
+            var mineUpgradeData = new StoneQuarryUpgradeViewModel { IsUpgraded = false };
+
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
                 city.Silver -= stoneMine.SilverPrice;
@@ -56,10 +59,22 @@
                 stoneMine.WoodPrice *= 2;
                 stoneMine.StonePrice *= 2;
                 stoneMine.Production += GlobalConstants.SawMillProdictionPerLevel;
+
+                mineUpgradeData.IsUpgraded = true;
+                mineUpgradeData.SilverUpgradeCost = stoneMine.SilverPrice;
+                mineUpgradeData.WoodUpgradeCost = stoneMine.WoodPrice;
+                mineUpgradeData.StoneUpgradeCost = stoneMine.StonePrice;
+                mineUpgradeData.CurrentProduction = stoneMine.Production;
+                mineUpgradeData.NextLevelProduction = stoneMine.Production + GlobalConstants.SawMillProdictionPerLevel;
+                mineUpgradeData.SilverAvailable = city.Silver;
+                mineUpgradeData.WoodAvailable = city.Wood;
+                mineUpgradeData.StoneAvailable = city.Stone;
             }
 
             await this.stoneMineRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
+
+            return mineUpgradeData;
         }
     }
 }
