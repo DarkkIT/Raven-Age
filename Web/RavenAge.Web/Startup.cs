@@ -152,12 +152,9 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            {
-                Authorization = new[] { new MyAuthorizationFilter() }
-            });
-
             app.UseRouting();
+
+            app.UseHangfireDashboard();
 
             app.UseAuthentication();
             app.UseAuthorization();
