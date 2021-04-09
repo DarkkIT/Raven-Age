@@ -68,7 +68,8 @@
                 House = new House { Level = 1, Description = "This is a house!", WorkerLimit = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
                 Marketplace = new Marketplace { Level = 1, Description = "This is a marketplace!", SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
                 WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!" },
+                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice= 15, WoodPrice = 15 },
+
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!" },
                 Infantry = 10,
                 Silver = 1000,

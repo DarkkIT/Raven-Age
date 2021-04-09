@@ -190,9 +190,9 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCenterTitle">
                     Stone Mine
-                    <span class="text-warning">Silver-@(Math.Floor(Model.Silver))</span>
-                    <span class="resource text-secondary">Stone - @(Math.Floor(Model.Stone))</span>
-                    <span class="text-danger">Wood-@(Math.Floor(Model.Wood))</span>
+                    <span class="resource text-warning">Silver - @(Math.Floor(Model.Silver))</span>
+                    <span class="resource resource text-secondary">Silver - @(Math.Floor(Model.Stone))</span>
+                    <span class="resource text-danger">Wood - @(Math.Floor(Model.Wood))</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -244,4 +244,46 @@
 <script src="~/Scripts/TownHallUpgrade.js"></script>
 <script src="~/Scripts/BuildingsSounds.js"></script>
 <script src="~/Scripts/SawMillUpgrade.js"></script>
+<script>
+    $(`#StoneMineUpgrade`).click(function () {
+        console.log('we in!')
+
+        $.ajax({
+            url: '/api/StoneMine',
+            type: 'GET',
+
+            success: function (data) {
+                console.log('success!')
+
+                if (data.isUpgraded) {
+                    $('span.resource').each(function (index) {
+
+                        if ($(this).text().includes('Silver')) {
+                            $(this).text(`Silver - ${data.silverAvailable}`);
+                        }
+
+                        else if ($(this).text().includes('Stone')) {
+                            $(this).text(`Stone - ${data.stoneAvailable}`);
+                        }
+
+                        else {
+                            $(this).text(`Wood - ${data.woodAvailable}`);
+                        }
+
+                        $('#StoneMineSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
+                        $('#StoneMineStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
+                        $('#StoneMineWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
+
+                        $('#StoneMineCurrentProduction').text(`Current Production: ${data.currentProduction}`);
+                        $('#StoneMineNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
+
+
+                    })
+                }
+            }
+        })
+    })
+
+
+</script>
 }
