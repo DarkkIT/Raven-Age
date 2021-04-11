@@ -9,6 +9,7 @@
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
+    using RavenAge.Web.ViewModels.House;
 
     public class HouseService : IHouseService
     {
@@ -26,7 +27,7 @@
             this.userCityRepo = userCityRepo;
         }
 
-        public async Task HouseLevelUp(string userId)
+        public async Task<HouseUpgradeViewModel> HouseLevelUp(string userId)
         {
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -41,6 +42,8 @@
             var woodNeeded = house.WoodPrice;
             var stoneNeeded = house.StonePrice;
 
+            var upgradeModelData = new HouseUpgradeViewModel() { IsUpgraded = false };
+
             if (silverNeeded <= currentSilver && woodNeeded <= currentWood && stoneNeeded <= currentStone)
             {
                 city.Silver -= house.SilverPrice;
@@ -54,10 +57,27 @@
                 house.StonePrice *= 2;
                 house.WorkerLimit += GlobalConstants.WorkerLimitPerLevel;
                 house.Production += 2; //workers
+
+                upgradeModelData.IsUpgraded = true;
+                upgradeModelData.WorkerLimit = house.WorkerLimit;
+                upgradeModelData.CurrentWorkersCount = city.Workers;
+                upgradeModelData.Production = house.Production;
+                upgradeModelData.IncomePerWorker = 4;
+
+
+                upgradeModelData.SilverUpgradeCost = house.SilverPrice;
+                upgradeModelData.WoodUpgradeCost = house.WoodPrice;
+                upgradeModelData.StoneUpgradeCost = house.StonePrice;
+
+                upgradeModelData.SilverAvailable = city.Silver;
+                upgradeModelData.WoodAvailable = city.Wood;
+                upgradeModelData.StoneAvailable = city.Stone;
             }
 
             await this.houseRepo.SaveChangesAsync();
             await this.cityRepo.SaveChangesAsync();
+
+            return upgradeModelData;
         }
     }
 }

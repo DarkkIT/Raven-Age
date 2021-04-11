@@ -4,10 +4,10 @@
 <div>
 
     <div>
-        <p>Curent workers: @Model.Workers</p>
-        <p>Income per Worker: 4</p>
-        <p>Silver income: @(Model.Workers * 4)</p>
-        <p>Workers limit: @Model.House.WorkerLimit</p>
+        <p id="HouseCurrentWorkers">Curent workers: @Model.Workers</p>
+        <p id="HouseIncomePerWorker">Income per Worker: 4</p>
+        <p id="HouseTotalIncome">Silver income: @(Model.Workers * 4)</p>
+        <p id="WorkerLimit">Workers limit: @Model.House.WorkerLimit</p>
     </div>
 
     <div>
@@ -15,13 +15,13 @@
         <p>Raise the level of the houses to increase the workers' limit </p>
 
         <div class="row ml-1">
-            <a class="button-primary text-success mr-3 btn btn-outline-success" asp-controller="House" asp-action="LevelUp">Level Up</a>
+            <a id="UpgradeHouse" class="button-primary text-success mr-3 btn btn-outline-success">Level Up</a>
 
             <p>
                 <span>Price:</span>
-                <span class="text-warning">Silver: @Model.House.SilverPrice</span>,
-                <span class="text-secondary">Stone: @Model.House.StonePrice</span>,
-                <span class="text-danger">Wood: @Model.House.WoodPrice</span>
+                <span id="HouseSilverUpgradeCost" class="text-warning">Silver: @Model.House.SilverPrice</span>,
+                <span id="HouseStoneUpgradeCost" class="text-secondary">Stone: @Model.House.StonePrice</span>,
+                <span id="HouseWoodUpgradeCost"class="text-danger">Wood: @Model.House.WoodPrice</span>
             </p>
         </div>
 
