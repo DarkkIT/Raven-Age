@@ -5,8 +5,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using RavenAge.Web.ViewModels.House;
+
     public interface IHouseService
     {
-        Task HouseLevelUp(string userId);
+        Task<HouseUpgradeViewModel> HouseLevelUp(string userId);
     }
 }
