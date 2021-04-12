@@ -51,6 +51,7 @@
 
     <a id="anchor-level8" class="playsound " text-dark"" href="~/Sounds/DefenceWallGate_Sound.mp3" data-toggle="modal" data-target="#modalDefenceWallCenter">
         <p class="font-weighсt-bold p-0">Stone wall - 8</p>
+        <p>Lvl: @Model.DefenceWall.Level</p>
     </a>
 
     <a id="anchor-level9" class="text-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
@@ -261,7 +262,7 @@
 
             </div>
             <div class="modal-footer">
-                <p>@Model.TownHall.Description</p>
+                <p>@Model.DefenceWall.Description</p>
             </div>
         </div>
     </div>
