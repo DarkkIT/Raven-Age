@@ -37,3 +37,39 @@ body {
     top: 0%;
     position: fixed;
 }
+
+#anchor-level3 {
+    width: 16%;
+    height: 31%;
+    border: 2px solid #292929;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 9999;
+    left: 13%;
+    top: 34.5%;
+    position: fixed;
+}
+
+#anchor-level4 {
+    width: 16%;
+    height: 31%;
+    border: 2px solid #292929;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 9999;
+    left: 42%;
+    top: 34.5%;
+    position: fixed;
+}
+
+#anchor-level5 {
+    width: 16%;
+    height: 31%;
+    border: 2px solid #292929;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 9999;
+    left: 71%;
+    top: 34.5%;
+    position: fixed;
+}
