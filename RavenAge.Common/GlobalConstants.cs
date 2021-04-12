@@ -48,9 +48,5 @@
         //// TownHall
 
         public const int TownHallArmyLimitPerLevel = 200;
-
-        //// Defence Wall
-
-        public const int DefencePerLevel = 1000;
     }
 }

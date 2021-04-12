@@ -1,44 +1,44 @@
 ﻿namespace RavenAge.Web
 {
-    using System;
-    using System.Collections.Generic;
     using System.Reflection;
-    using System.Threading.Tasks;
 
-    using Hangfire;
-    using Hangfire.SqlServer;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Filters;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using Newtonsoft.Json;
     using RavenAge.Data;
     using RavenAge.Data.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models;
     using RavenAge.Data.Repositories;
     using RavenAge.Data.Seeding;
-    using RavenAge.Services.CityService.Data;
-    using RavenAge.Services.Data.BarracksService;
-    using RavenAge.Services.Data.DefenceWall;
-    using RavenAge.Services.Data.FarmService;
-    using RavenAge.Services.Data.HangfireService;
-    using RavenAge.Services.Data.HangfireService.Farm;
-    using RavenAge.Services.Data.HangfireService.House;
-    using RavenAge.Services.Data.HangfireService.SawMill;
-    using RavenAge.Services.Data.HouseService;
-    using RavenAge.Services.Data.SawMillService;
-    using RavenAge.Services.Data.StoneMineService;
-    using RavenAge.Services.Data.TownhallService;
     using RavenAge.Services.Mapping;
     using RavenAge.Services.Messaging;
-    using RavenAge.Services.UserService.Data;
     using RavenAge.Web.ViewModels;
+
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using RavenAge.Services.CityService.Data;
+    using RavenAge.Services.Data.BarracksService;
+    using RavenAge.Services.Data.HouseService;
+    using RavenAge.Services.UserService.Data;
+    using RavenAge.Services.Data.FarmService;
+    using RavenAge.Services.Data.SawMillService;
+    using RavenAge.Services.Data.TownhallService;
+    using RavenAge.Services.Data.StoneMineService;
+    using Hangfire;
+    using Newtonsoft.Json;
+    using Hangfire.SqlServer;
+    using System;
+    using System.Threading.Tasks;
+    using RavenAge.Services.Data.HangfireService;
+    using RavenAge.Services.Data.HangfireService.SawMill;
+    using RavenAge.Services.Data.HangfireService.Farm;
+    using RavenAge.Services.Data.HangfireService.House;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc.Filters;
 
     public class Startup
     {
@@ -98,7 +98,6 @@
             services.AddTransient<ISawMillService, SawMillService>();
             services.AddTransient<ITownHallService, TownHallService>();
             services.AddTransient<IStoneMineService, StoneMineService>();
-            services.AddTransient<IDefenceWallService, DefenceWallService>();
 
             // HangfireServices
             services.AddHangfire(config =>
