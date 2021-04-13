@@ -40,6 +40,7 @@
 
         public const int WorkerLimitPerLevel = 200;
         public const int SilverPerWorker = 4;
+        public const int IncomingWorkersPerHoure = 4;
 
         //// SawMill
 
