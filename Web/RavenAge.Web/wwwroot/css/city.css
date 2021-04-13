@@ -35,8 +35,8 @@
     height: 18.5%;
     border: 2px solid red;
     position: absolute;
-    left: 6.2%;
-    top: 58.5%;
+    left: 19%;
+    top: 65%;
 }
 
 #anchor-level2 {
@@ -47,8 +47,8 @@
     height: 21.5%;
     border: 2px solid red;
     position: absolute;
-    left: 12.2%;
-    top: 20.5%;
+    left: 81%;
+    top: 38%;
 }
 
 #anchor-level3 {
@@ -59,8 +59,8 @@
     height: 18.5%;
     border: 2px solid red;
     position: absolute;
-    left: 42.4%;
-    top: 11.5%;
+    left: 65%;
+    top: 50%;
 }
 
 #anchor-level4 {
@@ -71,8 +71,8 @@
     height: 23.5%;
     border: 2px solid red;
     position: absolute;
-    left: 70.8%;
-    top: 9.95%;
+    left: 29%;
+    top: 27%;
 }
 
 #anchor-level5 {
@@ -83,8 +83,8 @@
     height: 16.5%;
     border: 2px solid red;
     position: absolute;
-    left: 78.75%;
-    top: 45.35%;
+    left: 15%;
+    top: 42.35%;
 }
 
 #anchor-level6 {
@@ -95,8 +95,8 @@
     height: 19%;
     border: 2px solid red;
     position: absolute;
-    left: 71.75%;
-    top: 63.38%;
+    left: 3%;
+    top: 53%;
 }
 
 #anchor-level7 {
@@ -107,8 +107,8 @@
     height: 18.75%;
     border: 2px solid red;
     position: absolute;
-    left: 40%;
-    top: 59.3%;
+    left: 44%;
+    top: 53%;
 }
 
 #anchor-level8 {
@@ -116,8 +116,8 @@
     height: 17.75%;
     border: 2px solid red;
     position: absolute;
-    left: 37.2%;
-    top: 80.35%;
+    left: 58%;
+    top: 74%;
 }
 
 #anchor-level9 {
@@ -130,7 +130,7 @@
     position: absolute;
     z-index: 9999;
     left: 92.9%;
-    top: 85.8%;
+    top: 83.8%;
     position: fixed;
 }
 
