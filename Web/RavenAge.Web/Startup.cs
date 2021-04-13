@@ -153,12 +153,9 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            {
-                Authorization = new[] { new MyAuthorizationFilter() }
-            });
-
             app.UseRouting();
+
+            app.UseHangfireDashboard();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -177,6 +174,7 @@
             recurringJob.AddOrUpdate<StoneMineHangfireJobService>("StoneMineHangfireJobService", x => x.FarmStone(), Cron.Hourly);
             recurringJob.AddOrUpdate<SawMillHangfireService>("SawMillHangfireService", x => x.FarmSaw(), Cron.Hourly);
             recurringJob.AddOrUpdate<FarmHangfireService>("FarmHangfireService", x => x.FarmFood(), Cron.Hourly);
+            recurringJob.AddOrUpdate<HouseHangfireService>("HouseHangfireService", x => x.FarmSilver(), Cron.Hourly);
             recurringJob.AddOrUpdate<HouseHangfireService>("HouseHangfireService", x => x.FarmWorkers(), Cron.Hourly);
         }
     }

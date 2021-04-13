@@ -11,14 +11,32 @@
     public class HouseHangfireService : IHouseHangfireService
     {
         private readonly IDeletableEntityRepository<City> cityRepository;
+        private readonly IDeletableEntityRepository<House> houseRepository;
         private readonly IRepository<UserCity> userCityRepository;
 
         public HouseHangfireService(
             IDeletableEntityRepository<City> cityRepository,
-            IRepository<UserCity> userCityRepository)
+            IRepository<UserCity> userCityRepository,
+            IDeletableEntityRepository<House> houseRepository)
         {
             this.cityRepository = cityRepository;
             this.userCityRepository = userCityRepository;
+            this.houseRepository = houseRepository;
+        }
+
+        public async Task FarmSilver()
+        {
+            var userCity = this.userCityRepository.All();
+
+            foreach (var user in userCity)
+            {
+                var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
+                city.Silver += city.Workers * 4; // 4 is income silver per Worker
+
+                this.cityRepository.SaveChangesAsync().GetAwaiter();
+            }
+
+            await this.userCityRepository.SaveChangesAsync();
         }
 
         public async Task FarmWorkers()
@@ -28,7 +46,8 @@
             foreach (var user in userCity)
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
-                city.Silver += city.Workers * 4; // 4 is income silver per Worker
+                var house = await this.houseRepository.All().FirstOrDefaultAsync(x => x.Id == city.HouseId);
+                city.Workers += house.Level * 4; // 4 is income silver per Worker
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
