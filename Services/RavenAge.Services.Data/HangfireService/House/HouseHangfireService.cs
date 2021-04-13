@@ -48,7 +48,7 @@
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
                 var house = await this.houseRepository.All().FirstOrDefaultAsync(x => x.Id == city.HouseId);
-                city.Workers += house.Level * 4; // 4 is income silver per Worker
+                city.Workers += house.Level * GlobalConstants.IncomingWorkersPerHoure;
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
