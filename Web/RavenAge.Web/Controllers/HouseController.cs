@@ -9,7 +9,10 @@
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.HouseService;
+    using RavenAge.Web.ViewModels.House;
 
+    [Route("api/[controller]")]
+    [ApiController]
     public class HouseController : Controller
     {
         private readonly ICityService cityService;
@@ -23,14 +26,12 @@
             this.houseService = houseService;
         }
 
-        public async Task<IActionResult> LevelUp()
+        public async Task<HouseUpgradeViewModel> LevelUp()
         {
             var userId = this.GetUserId();
-            var model = this.cityService.GetCity(userId);
+            var data = await this.houseService.HouseLevelUp(userId);
 
-            await this.houseService.HouseLevelUp(userId);
-
-            return this.Redirect("~/City/Index");
+            return data;
         }
 
         internal string GetUserId()

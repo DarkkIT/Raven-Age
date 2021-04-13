@@ -28,6 +28,9 @@
 
 
 #anchor-level1 {
+    background-image: url("../images/City/Barracks-2.png");
+    background-position: center;
+    background-size: cover;
     width: 20.7%;
     height: 18.5%;
     border: 2px solid red;
@@ -37,6 +40,9 @@
 }
 
 #anchor-level2 {
+    background-image: url("../images/City/TownHall-2.png");
+    background-position: center;
+    background-size: cover;
     width: 15.7%;
     height: 21.5%;
     border: 2px solid red;
@@ -46,7 +52,10 @@
 }
 
 #anchor-level3 {
-    width: 10.7%;
+    background-image: url("../images/City/House-2.png");
+    background-position: center;
+    background-size: cover;
+    width: 14.7%;
     height: 18.5%;
     border: 2px solid red;
     position: absolute;
@@ -55,7 +64,10 @@
 }
 
 #anchor-level4 {
-    width: 6.7%;
+    background-image: url("../images/City/Farm-2.png");
+    background-position: center;
+    background-size: cover;
+    width: 12.7%;
     height: 23.5%;
     border: 2px solid red;
     position: absolute;
@@ -64,8 +76,11 @@
 }
 
 #anchor-level5 {
+    background-image: url("../images/City/SawMill-2.png");
+    background-position: center;
+    background-size: cover;
     width: 12.7%;
-    height: 11.5%;
+    height: 16.5%;
     border: 2px solid red;
     position: absolute;
     left: 78.75%;
@@ -73,6 +88,9 @@
 }
 
 #anchor-level6 {
+    background-image: url("../images/City/StonQuarry-2.png");
+    background-position: center;
+    background-size: cover;
     width: 11.1%;
     height: 19%;
     border: 2px solid red;
@@ -82,8 +100,11 @@
 }
 
 #anchor-level7 {
-    width: 11.85%;
-    height: 15.75%;
+    background-image: url("../images/City/MarketPlace-2.png");
+    background-position: center;
+    background-size: cover;
+    width: 14.85%;
+    height: 18.75%;
     border: 2px solid red;
     position: absolute;
     left: 40%;
@@ -113,15 +134,6 @@
     position: fixed;
 }
 
-#anchor-level10 {
-    width: 3.85%;
-    height: 6.75%;
-    border: 2px solid red;
-    border-radius: 50%;
-    position: absolute;
-    left: 62.5%;
-    top: 34.2%;
-}
 
 #anchor-level11 {
     background-image: url(/images/depositphotos_11.jpg);
