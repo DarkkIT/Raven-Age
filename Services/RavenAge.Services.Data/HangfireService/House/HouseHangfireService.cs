@@ -5,6 +5,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
+    using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
 
@@ -31,7 +32,7 @@
             foreach (var user in userCity)
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
-                city.Silver += city.Workers * 4; // 4 is income silver per Worker
+                city.Silver += city.Workers * GlobalConstants.SilverPerWorker;
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
