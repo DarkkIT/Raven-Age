@@ -1,15 +1,7 @@
-﻿body {
+﻿/*body {
     max-height: 1080px;
 }
-
-/*.level :hover {
-    transform: scale(1.08);
-}
 */
-/*.container-fluid {
-    background-image: url("http://www.placecage.com/1000/800");
-    min-height: 400px;
-}*/
 
 #wrapper {
 /*    width: 100%;
@@ -21,11 +13,6 @@
 #wrapper img {
         max-width: 100%;
     }
-
-/*level :hover{
-    text-decoration: none !important;
-}*/
-
 
 #anchor-level1 {
     background-image: url("../images/City/Barracks-2.png");
