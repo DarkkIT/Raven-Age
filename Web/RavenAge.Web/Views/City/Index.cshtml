@@ -1,13 +1,12 @@
-﻿@model RavenAge.Web.ViewModels.City.CityViewModel
-
+@model RavenAge.Web.ViewModels.City.CityViewModel
 @{
     this.ViewData["Title"] = "Raven City";
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
-</head>
+        <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
+    </head>
 
 <div id="wrapper">
 
@@ -55,7 +54,7 @@
         <p>Lvl: @Model.DefenceWall.Level</p>
     </a>
 
-    <a id="anchor-level9" class="text-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
+    <a id="anchor-level9" class="-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
@@ -272,4 +271,21 @@
     <script src="~/Scripts/SawMillUpgrade.js"></script>
     <script src="~/Scripts/StoneMine.js"></script>
     <script src="~/Scripts/HouseUpgrade.js"></script>
+    <script src="~/Scripts/DefenceWallUpgrade.js"></script>
+
+    <script>
+        $(window).on("load", function () {
+
+            console.log('on load')
+            //${ '#text' } each(function () {
+            //    $(this).text(text.replace('\ufeff', ""));
+            //});
+
+            //$("div:contains('\ufeff')").text('');
+        })
+
+
+
+            //str.replace(u'\ufeff', '')
+    </script>
 }

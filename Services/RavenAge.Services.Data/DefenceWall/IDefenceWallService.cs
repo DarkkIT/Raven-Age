@@ -9,6 +9,6 @@
 
     public interface IDefenceWallService
     {
-        Task DefenceWallLevelUp(string userId);
+        Task<DefenceWallUpgradeViewModel> DefenceWallLevelUp(string userId);
     }
 }

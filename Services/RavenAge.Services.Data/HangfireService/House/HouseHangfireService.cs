@@ -48,9 +48,13 @@
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
                 var house = await this.houseRepository.All().FirstOrDefaultAsync(x => x.Id == city.HouseId);
-                city.Workers += house.Level * GlobalConstants.IncomingWorkersPerHoure;
+                var newWorkersCount = city.Workers + (house.Level * GlobalConstants.IncomingWorkersPerHoure);
+                if (newWorkersCount <= house.WorkerLimit)
+                {
+                    city.Workers += house.Level * GlobalConstants.IncomingWorkersPerHoure;
+                    this.cityRepository.SaveChangesAsync().GetAwaiter();
+                }
 
-                this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
 
             await this.userCityRepository.SaveChangesAsync();

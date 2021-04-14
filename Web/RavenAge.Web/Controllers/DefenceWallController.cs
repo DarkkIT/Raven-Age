@@ -9,7 +9,10 @@
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.CityService.Data;
     using RavenAge.Services.Data.DefenceWall;
+    using RavenAge.Web.ViewModels.DefenceWall;
 
+    [Route("api/[controller]")]
+    [ApiController]
     public class DefenceWallController : Controller
     {
             private readonly ICityService cityService;
@@ -23,13 +26,13 @@
                 this.defenceWallService = defenceWallService;
             }
 
-            public async Task<IActionResult> LevelUp()
+            public async Task<DefenceWallUpgradeViewModel> LevelUp()
             {
                 var userId = this.GetUserId();
 
-                await this.defenceWallService.DefenceWallLevelUp(userId);
+                var upgradeData = await this.defenceWallService.DefenceWallLevelUp(userId);
 
-                return this.Redirect("/city/index");
+                return upgradeData;
             }
 
             internal string GetUserId()
