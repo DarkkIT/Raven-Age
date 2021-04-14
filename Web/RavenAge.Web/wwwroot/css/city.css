@@ -2,30 +2,19 @@
     max-height: 1080px;
 }
 
-/*.level :hover {
-    transform: scale(1.08);
-}
-*/
-/*.container-fluid {
-    background-image: url("http://www.placecage.com/1000/800");
-    min-height: 400px;
-}*/
-
 #wrapper {
-/*    width: 100%;
-*/    height: 100%;
-    max-width: 1920px; /*actual width of image-- behaves strangely if exceeding this*/
+    width: 100%;
+    max-height: 1080px;
     position: relative;
 }
 
+#cityLogo {
+    margin-top: 0px;
+}
+
 #wrapper img {
-        max-width: 100%;
-    }
-
-/*level :hover{
-    text-decoration: none !important;
-}*/
-
+    max-width: 100%;
+}
 
 #anchor-level1 {
     background-image: url("../images/City/Barracks-2.png");
@@ -133,7 +122,6 @@
     top: 83.8%;
     position: fixed;
 }
-
 
 #anchor-level11 {
     background-image: url(/images/depositphotos_11.jpg);

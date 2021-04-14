@@ -1,5 +1,6 @@
 ﻿@model RavenAge.Web.ViewModels.City.CityViewModel
-﻿@{
+
+@{
     this.ViewData["Title"] = "Raven City";
 }
 
@@ -10,8 +11,7 @@
 
 <div id="wrapper">
 
-    <img class="img-fluid justify-content-center" src="~/images/City/Raven-village-3.jpeg" style="width: 1920px; height: auto;" />
-
+    <img id="cityLogo" class="img-fluid justify-content-center" src="~/images/City/Raven-village-3.jpeg" style="width: auto; height: 1080px;"/>
 
     <a id="anchor-level1" class="playsound" href="~/Sounds/Marching_Barracks.mp3" data-toggle="modal" data-target="#modalBarracksCenter">
         <p class="font-weight-bold p-0">Barracks</p>
@@ -47,6 +47,7 @@
 
     <a id="anchor-level7" href="~/Sounds/Marketplace_Sound.mp3" class="playsound text-dark">
         <p class="font-weight-bold p-0">Marketplace - 7</p>
+        <p>Lvl: - 1</p>
     </a>
 
     <a id="anchor-level8" class="playsound " text-dark"" href="~/Sounds/DefenceWallGate_Sound.mp3" data-toggle="modal" data-target="#modalDefenceWallCenter">
@@ -59,12 +60,13 @@
     </a>
 
     <a id="anchor-level11" class="text-dark">
-        <p class="font-weight-bold p-0">
+        <p class="">
             <img src="~/images/Avatars/Avatar11.png" style="max-width: 100%; height: auto;" alt="Alternate Text" />
         </p>
     </a>
 
 </div>
+
 <audio id="playTarget" src="" autoplay style="display:none"></audio>
 
 <!-- Barracks Modal -->
@@ -122,8 +124,6 @@
         </div>
     </div>
 </div>
-<form method="post" id="antiForgeryForm">
-</form>
 
 <!-- Farm Modal -->
 <div class="modal fade" id="modalFarmCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
