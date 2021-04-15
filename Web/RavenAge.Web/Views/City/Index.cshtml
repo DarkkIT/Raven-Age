@@ -4,13 +4,14 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
-</head>
+        <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
+    </head>
 
 <div id="wrapper">
 
-    <img id="cityLogo" class="img-fluid justify-content-center" src="~/images/City/Raven-village-3.jpeg" style="width: auto; height: 1080px;" />
+    <img class="img-fluid justify-content-center" src="~/images/City/12931140-closeup-of-rough-brown-background.jpg" style="width: 1920px; height: auto;" />
+
 
     <a id="anchor-level1" class="playsound" href="~/Sounds/Marching_Barracks.mp3" data-toggle="modal" data-target="#modalBarracksCenter">
         <p class="font-weight-bold p-0">Barracks</p>
@@ -46,7 +47,6 @@
 
     <a id="anchor-level7" href="~/Sounds/Marketplace_Sound.mp3" class="playsound text-dark">
         <p class="font-weight-bold p-0">Marketplace - 7</p>
-        <p>Lvl: - 1</p>
     </a>
 
     <a id="anchor-level8" class="playsound " text-dark"" href="~/Sounds/DefenceWallGate_Sound.mp3" data-toggle="modal" data-target="#modalDefenceWallCenter">
@@ -58,14 +58,17 @@
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
+    <a id="anchor-level10" class="text-dark" asp-controller="" asp-action="" asp-route-enemyName="">
+        <p class="font-weight-bold p-0"> lvl 10</p>
+    </a>
+
     <a id="anchor-level11" class="text-dark">
-        <p class="">
+        <p class="font-weight-bold p-0">
             <img src="~/images/Avatars/Avatar11.png" style="max-width: 100%; height: auto;" alt="Alternate Text" />
         </p>
     </a>
 
 </div>
-
 <audio id="playTarget" src="" autoplay style="display:none"></audio>
 
 <!-- Barracks Modal -->
@@ -123,6 +126,8 @@
         </div>
     </div>
 </div>
+<form method="post" id="antiForgeryForm">
+</form>
 
 <!-- Farm Modal -->
 <div class="modal fade" id="modalFarmCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -152,7 +157,7 @@
     </div>
 </div>
 
-<!-- Saw Mill Modal -->
+<!-- Saw mill Modal -->
 <div class="modal fade" id="modalSawMillCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -179,7 +184,7 @@
     </div>
 </div>
 
-<!-- Stone Mine Modal -->
+<!-- Stone mine Modal -->
 <div class="modal fade" id="modalStoneMineCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -272,20 +277,4 @@
     <script src="~/Scripts/StoneMine.js"></script>
     <script src="~/Scripts/HouseUpgrade.js"></script>
     <script src="~/Scripts/DefenceWallUpgrade.js"></script>
-
-    <script>
-        $(window).on("load", function () {
-
-            console.log('on load')
-            //${ '#text' } each(function () {
-            //    $(this).text(text.replace('\ufeff', ""));
-            //});
-
-            //$("div:contains('\ufeff')").text('');
-        })
-
-
-
-                //str.replace(u'\ufeff', '')
-    </script>
 }
