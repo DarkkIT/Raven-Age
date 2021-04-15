@@ -1,4 +1,6 @@
-﻿
+﻿import { updateResource } from "./UpdateResource.js"
+
+
 $("#UpgradeHouse").click(function () {
 
     $.ajax({
@@ -8,19 +10,7 @@ $("#UpgradeHouse").click(function () {
         success: function (data) {
 
             if (data.isUpgraded) {
-                $('span.resource').each(function (index) {
-
-                    if ($(this).text().includes('Silver')) {
-                        $(this).text(`Silver - ${data.silverAvailable}`);
-                    }
-
-                    else if ($(this).text().includes('Stone')) {
-                        $(this).text(`Stone - ${data.stoneAvailable}`);
-                    }
-
-                    else {
-                        $(this).text(`Wood - ${data.woodAvailable}`);
-                    }
+                updateResource();
 
                     $('#HouseSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
                     $('#HouseStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
