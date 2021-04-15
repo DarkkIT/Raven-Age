@@ -62,19 +62,25 @@
             var city = new City()
             {
                 Name = name,
-                Barracks = new Barracks { Level = 1, Description = "This is barracks!" },
-                DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!" },
-                Farm = new Farm { Level = 1, Description = "This is a farm!", FoodProduction = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                House = new House { Level = 1, Description = "This is a house!", WorkerLimit = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
+                Barracks = new Barracks { Level = 1, Description = "This is barracks!", SilverPrice = 12, StonePrice = 16, WoodPrice = 16, TrainingLimit = 100 },
+                DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!", SilverPrice = 12, StonePrice = 24, WoodPrice = 8, Defence = 1000 },
+                Farm = new Farm { Level = 1, Description = "This is a farm!", FoodProduction = 100, SilverPrice = 13, StonePrice = 8, WoodPrice = 12 },
+                House = new House { Level = 1, Description = "This is a house!", WorkerLimit = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15, Production = 4 },
                 Marketplace = new Marketplace { Level = 1, Description = "This is a marketplace!", SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice= 15, WoodPrice = 15 },
+                WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
+                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
 
-                TownHall = new TownHall { Level = 1, Description = "This is a townhall!" },
+                TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
                 Infantry = 10,
+                Archers = 10,
+                Cavalry = 10,
+                Artillery = 5,
                 Silver = 1000,
                 Stone = 100,
                 Wood = 100,
+                Food = 200,
+                Workers = 50,
+                Gold = 10,
             };
 
             var user = await this.userService.GetUserById(userId);
