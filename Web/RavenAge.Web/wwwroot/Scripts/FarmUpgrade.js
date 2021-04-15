@@ -1,6 +1,4 @@
-﻿import { updateResource } from "./UpdateResource.js"
-
-$("#FarmLevel").click(function () {
+﻿$("#FarmLevel").click(function () {
     console.log('clicked!');
 
     const silverCost = $('#FarmSilverCost').text().split('Silver: ').filter(Boolean);

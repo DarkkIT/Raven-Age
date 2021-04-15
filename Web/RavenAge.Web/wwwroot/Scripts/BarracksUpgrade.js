@@ -1,35 +1,47 @@
-﻿import { updateResource } from "./UpdateResource.js"
+﻿    $("input[value='Hire']").each(function (el) {
+        $(this).click(function () {
 
-$("input[value='Hire']").each(function (el) {
-    $(this).click(function () {
+            var input = $(this).prev().children('input');
+            var quantity = parseInt(input.val())
+            input.val('0');
+            var unit = input.attr('name');
+            var data = {};
+            data[`${unit}`] = quantity;
 
-        var input = $(this).prev().children('input');
-        var quantity = parseInt(input.val())
-        input.val('0');
-        var unit = input.attr('name');
-        var data = {};
-        data[`${unit}`] = quantity;
+            var antiForgeryToken = $('input[name=__RequestVerificationToken]').val();
 
-        var antiForgeryToken = $('input[name=__RequestVerificationToken]').val();
+            $.ajax({
+                type: "POST",
+                url: "/api/Barracks",
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken
+                },
+                
+                success: function (data) {
 
-        $.ajax({
-            type: "POST",
-            url: "/api/Barracks",
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType: 'application/json',
-            headers: {
-                'X-CSRF-TOKEN': antiForgeryToken
-            },
+                    $('span.resource').each(function (index) {
+                        var resource;
+                        if ($(this).text().includes('Silver')) {
+                            resource = (`Silver - ${Number($(this).text().split('Silver - ').filter(Boolean)) - data.silverSpent}`);
+                            $(this).text(resource);
+                        }
+                        else if ($(this).text().includes('Stone')) {
+                            resource = (`Stone - ${Number($(this).text().split('Stone - ').filter(Boolean)) - data.stoneSpent}`);
+                            $(this).text(resource);
+                        }
+                        else {
+                            resource = (`Wood - ${Number($(this).text().split('Wood - ').filter(Boolean)) - data.woodSpent}`);
+                            $(this).text(resource);
+                        }
+                    })
 
-            success: function (data) {
+                    var newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;
+                    $(`#${data.unitType}`).text(`${data.unitType} ${newUnitQuantity}`)
+                },
+            })
 
-                updateResource();
-
-                var newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;
-                $(`#${data.unitType}`).text(`${data.unitType} ${newUnitQuantity}`)
-            },
         })
-
     })
-})
