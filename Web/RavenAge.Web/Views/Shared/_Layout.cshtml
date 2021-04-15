@@ -12,13 +12,14 @@
     <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
     @RenderSection("CssFile", required: false)
 </head>
+
 <body>
+
     <header>
 
         <nav class="navbar navbar-expand-sm navbar-light bg-transparent fixed-top p-0">
 
             <div id="layoutLogo" class="container-fluid m-0 p-0">
-
 
                 <div id="left" class="row col-md-4">
                     <a id="firstLink" class="nav-link text-light" asp-area="" asp-controller="City" asp-action="Index">My city</a>
@@ -38,22 +39,12 @@
         </nav>
     </header>
 
+    <main role="main">
 
-    <div class="mainBody">
-        <div class="">
-            <partial name="_CookieConsentPartial" />
-        </div>
+        <partial name="_CookieConsentPartial" />
 
-        <main role="main" class="p-0 m-0">
-            @this.RenderBody()
-        </main>
-    </div>
-
-    @*<footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>*@
+        @this.RenderBody()
+    </main>
 
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
