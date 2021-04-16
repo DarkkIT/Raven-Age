@@ -49,7 +49,7 @@
                 city.Silver -= house.SilverPrice;
                 city.Wood -= house.WoodPrice;
                 city.Stone -= house.StonePrice;
-                city.Workers += 2; //add workers
+                city.Workers += 2; ////add workers
 
                 house.Level += 1;
                 house.SilverPrice *= 2;
