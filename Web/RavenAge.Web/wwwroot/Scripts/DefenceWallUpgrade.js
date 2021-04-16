@@ -14,8 +14,7 @@ $(`#DefenceWallUpgrade`).click(function () {
                 $('#DefenceWallWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
 
                 $('#DefencePoints').text(`Curent defence score: ${data.defencePoints}`);
-            })
-}
+            }
         }
     })
 })
