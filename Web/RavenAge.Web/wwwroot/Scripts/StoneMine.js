@@ -18,7 +18,9 @@ $(`#StoneMineUpgrade`).click(function () {
                 $('#StoneMineCurrentProduction').text(`Current Production: ${data.currentProduction}`);
                 $('#StoneMineNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
-            }
+
+            })
+}
         }
     })
 })

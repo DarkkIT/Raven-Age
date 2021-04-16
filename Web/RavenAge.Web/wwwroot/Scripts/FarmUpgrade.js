@@ -14,7 +14,11 @@ $("#FarmLevel").click(function () {
             console.log('success!');
 
             if (data.isUpgraded) {
-                updateResource();
+                $('#SilverAvailable').text('Silver - ' + ($('#SilverAvailable').text().split('Silver - ').filter(Boolean) - silverCost));
+
+                $('#WoodAvailable').text('Wood - ' + ($('#WoodAvailable').text().split('Wood - ').filter(Boolean) - woodCost));
+
+                $('#StoneAvailable').text('Stone - ' + ($('#StoneAvailable').text().split('Stone - ').filter(Boolean) - stoneCost));
 
                 $('#CurrentFarmProduction').text(`Current Production: ${data.currentProduction}`);
                 $('#NextLevelFarmProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
