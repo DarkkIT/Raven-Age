@@ -1,22 +1,33 @@
-﻿import { updateResource } from "./UpdateResource.js"
-
-$(`#SawMillUpgrade`).click(function () {
+﻿$(`#SawMillUpgrade`).click(function () {
     $.ajax({
         url: '/api/SawMill',
         type: 'GET',
 
         success: function (data) {
             if (data.isUpgraded) {
-                updateResource();
+                $('span.resource').each(function (index) {
 
-                $('#SawMillSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
-                $('#SawMillStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
-                $('#SawMillWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
+                    if ($(this).text().includes('Silver')) {
+                        $(this).text(`Silver - ${data.silverAvailable}`);
+                    }
 
-                $('#SawMillCurrentProduction').text(`Current Production: ${data.currentProduction}`);
-                $('#SawMillNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
+                    else if ($(this).text().includes('Stone')) {
+                        $(this).text(`Stone - ${data.stoneAvailable}`);
+                    }
+
+                    else {
+                        $(this).text(`Wood - ${data.woodAvailable}`);
+                    }
+
+                    $('#SawMillSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
+                    $('#SawMillStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
+                    $('#SawMillWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
+
+                    $('#SawMillCurrentProduction').text(`Current Production: ${data.currentProduction}`);
+                    $('#SawMillNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
 
+                })
             }
         }
     })
