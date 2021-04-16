@@ -8,6 +8,12 @@
 
     public class City : BaseDeletableModel<int>
     {
+        public int Premium { get; set; }
+
+        public string Type { get; set; } //// Race
+
+        public string Avatar { get; set; }
+
         //// City Name
 
         public string Name { get; set; }
@@ -69,6 +75,14 @@
         public int DefenceWallId { get; set; }
 
         public DefenceWall DefenceWall { get; set; }
+
+        public int RuneId { get; set; }
+
+        public Rune Rune { get; set; }
+
+        public int ArmyId { get; set; }
+
+        public Army Army { get; set; }
 
         public virtual ICollection<UserCity> UserCities { get; set; }
     }

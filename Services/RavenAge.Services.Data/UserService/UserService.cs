@@ -1,19 +1,15 @@
 ﻿namespace RavenAge.Services.UserService.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Linq;
+    using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models;
     using RavenAge.Web.ViewModels.User;
-    using Microsoft.EntityFrameworkCore;
-    using System.Threading.Tasks;
 
     public class UserService : IUserService
     {
-
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
 
         public UserService(IDeletableEntityRepository<ApplicationUser> userRepository)
@@ -37,7 +33,7 @@
             return userViewModel;
         }
 
-        public async  Task<ApplicationUser> GetUserById(string userId)
+        public async Task<ApplicationUser> GetUserById(string userId)
         {
             return await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
         }

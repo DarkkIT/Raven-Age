@@ -5,7 +5,9 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
+    using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
@@ -51,14 +53,8 @@
             this.userService = userService;
         }
 
-
-
-
         public async Task CreateStartUpCity(string userId, string name)
-
         {
-
-
             var city = new City()
             {
                 Name = name,
@@ -69,8 +65,17 @@
                 Marketplace = new Marketplace { Level = 1, Description = "This is a marketplace!", SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
                 WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
-
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
+                Rune = new Rune { },
+                Army = new Army
+                {
+                    ArcherAtack = GlobalConstants.ArcherBaseAtack, ArcherDefence = GlobalConstants.ArcherBaseDefence,
+                    ArcherHealt = GlobalConstants.ArcherBaseHealt, InfantryAtack = GlobalConstants.InfantryBaseAtack,
+                    InfantryDefence = GlobalConstants.InfantryBaseDefence, InfantryHealt = GlobalConstants.InfantryBaseHealt,
+                    CavalryAtack = GlobalConstants.CavalryBaseAtack, CavalryDefence = GlobalConstants.CavalryBaseDefence,
+                    CavalryHealt = GlobalConstants.CavalryBaseHealt, ArtilleryAtack = GlobalConstants.ArtilleryBaseAtack,
+                    ArtilleryDefence = GlobalConstants.ArtilleryBaseDefence, ArtilleryHealt = GlobalConstants.ArtilleryBaseHealt,
+                },
                 Infantry = 10,
                 Archers = 10,
                 Cavalry = 10,

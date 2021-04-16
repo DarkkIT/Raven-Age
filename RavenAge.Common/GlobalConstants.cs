@@ -8,17 +8,21 @@
 
         //// Base Attacks, Defence, Healt
 
-        public const int ElfArcherBaseAttack = 1000;
-        public const int ElfArcherBaseDefence = 1000;
-        public const int ElfArcherBaseHealt = 1000;
+        public const int ArcherBaseAtack = 1000;
+        public const int ArcherBaseDefence = 1000;
+        public const int ArcherBaseHealt = 1000;
 
-        public const int HumanArcherBaseAttack = 1000;
-        public const int HumanArcherBaseDefence = 1000;
-        public const int HumanArcherBaseHealt = 1000;
+        public const int InfantryBaseAtack = 1000;
+        public const int InfantryBaseDefence = 1000;
+        public const int InfantryBaseHealt = 1000;
 
-        public const int UndeadArcherBaseAttack = 1000;
-        public const int UndeadArcherBaseDefence = 1000;
-        public const int UndeadArcherBaseHealt = 1000;
+        public const int CavalryBaseAtack = 1000;
+        public const int CavalryBaseDefence = 1000;
+        public const int CavalryBaseHealt = 1000;
+
+        public const int ArtilleryBaseAtack = 1000;
+        public const int ArtilleryBaseDefence = 1000;
+        public const int ArtilleryBaseHealt = 1000;
 
         //// Soldiers Costs
 
