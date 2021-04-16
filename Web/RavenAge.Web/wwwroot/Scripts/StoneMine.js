@@ -1,6 +1,4 @@
-﻿import { updateResource } from "./UpdateResource.js"
-
-$(`#StoneMineUpgrade`).click(function () {
+﻿$(`#StoneMineUpgrade`).click(function () {
 
     $.ajax({
         url: '/api/StoneMine',
@@ -9,18 +7,30 @@ $(`#StoneMineUpgrade`).click(function () {
         success: function (data) {
 
             if (data.isUpgraded) {
-                updateResource()
+                $('span.resource').each(function (index) {
 
-                $('#StoneMineSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
-                $('#StoneMineStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
-                $('#StoneMineWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
+                    if ($(this).text().includes('Silver')) {
+                        $(this).text(`Silver - ${data.silverAvailable}`);
+                    }
 
-                $('#StoneMineCurrentProduction').text(`Current Production: ${data.currentProduction}`);
-                $('#StoneMineNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
+                    else if ($(this).text().includes('Stone')) {
+                        $(this).text(`Stone - ${data.stoneAvailable}`);
+                    }
+
+                    else {
+                        $(this).text(`Wood - ${data.woodAvailable}`);
+                    }
+
+                    $('#StoneMineSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
+                    $('#StoneMineStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
+                    $('#StoneMineWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
+
+                    $('#StoneMineCurrentProduction').text(`Current Production: ${data.currentProduction}`);
+                    $('#StoneMineNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
 
-            })
-}
+                })
+            }
         }
     })
 })

@@ -1,5 +1,4 @@
-﻿import {updateResource }from "./UpdateResource.js"
-$('#TownHallUpgrade').click(function () {
+﻿$('#TownHallUpgrade').click(function () {
     $.ajax({
         type: "GET",
         url: "/api/TownHall",
@@ -8,7 +7,20 @@ $('#TownHallUpgrade').click(function () {
 
             if (data.isUpgraded) {
 
-                updateResource();
+                $('span.resource').each(function (index) {
+
+                    if ($(this).text().includes('Silver')) {
+                        $(this).text(`Silver - ${data.silverAvailable}`);
+                    }
+
+                    else if ($(this).text().includes('Stone')) {
+                        $(this).text(`Stone - ${data.stoneAvailable}`);
+                    }
+
+                    else {
+                        $(this).text(`Wood - ${data.woodAvailable}`);
+                    }
+                })
 
                 $('#TownHallSilverCost').text(`Silver: ${data.silverUpgradeCost}`);
                 $('#TownHallWoodCost').text(`Wood: ${data.woodUpgradeCost}`);
