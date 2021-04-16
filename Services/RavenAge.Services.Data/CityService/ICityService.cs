@@ -28,6 +28,10 @@
 
         Task<MarketPlaceViewModel> GetMarketPlace(string userId);
 
+        ArmyViewModel GetArmy(string userId);
+
+        RuneViewModel GetRune(string userId);
+
         CityViewModel GetCity(string userId);
 
     }

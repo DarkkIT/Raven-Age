@@ -25,6 +25,10 @@
         {
         }
 
+        public DbSet<Rune> Runes { get; set; }
+
+        public DbSet<Army> Armies { get; set; }
+
         public DbSet<UserBattle> UserBattles { get; set; }
 
         public DbSet<BattleResult> BattleResults { get; set; }
