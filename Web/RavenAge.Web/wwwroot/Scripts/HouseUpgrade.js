@@ -21,8 +21,6 @@ $("#UpgradeHouse").click(function () {
                     $('#HouseTotalIncome').text(`Silver income: ${data.incomePerWorker * data.currentWorkersCount}`);
 
                     $('#WorkerLimit').text(`Workers limit: ${data.workerLimit}`);
-
-                })
             }
         }
     })

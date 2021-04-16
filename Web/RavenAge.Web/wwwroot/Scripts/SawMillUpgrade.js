@@ -17,8 +17,7 @@ $(`#SawMillUpgrade`).click(function () {
                 $('#SawMillNextLevelProduction').text(`Next Level Production: ${data.nextLevelProduction}`);
 
 
-            })
-}
+            }
         }
     })
 })
