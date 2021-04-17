@@ -1,30 +1,20 @@
-﻿$(`#DefenceWallUpgrade`).click(function () {
+﻿import { updateResource } from '../Scripts/UpdateResource.js';
+
+$(`#DefenceWallUpgrade`).click(function () {
     $.ajax({
         url: '/api/Defencewall',
         type: 'GET',
 
         success: function (data) {
             if (data.isUpgraded) {
-                $('span.resource').each(function (index) {
+                updateResource(data);
 
-                    if ($(this).text().includes('Silver')) {
-                        $(this).text(`Silver - ${data.silverAvailable}`);
-                    }
+                $('#DefenceWallSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
+                $('#DefenceWallStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
+                $('#DefenceWallWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
 
-                    else if ($(this).text().includes('Stone')) {
-                        $(this).text(`Stone - ${data.stoneAvailable}`);
-                    }
+                $('#DefencePoints').text(`Curent defence score: ${data.defencePoints}`);
 
-                    else {
-                        $(this).text(`Wood - ${data.woodAvailable}`);
-                    }
-
-                    $('#DefenceWallSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
-                    $('#DefenceWallStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
-                    $('#DefenceWallWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
-
-                    $('#DefencePoints').text(`Curent defence score: ${data.defencePoints}`);
-                })
             }
         }
     })

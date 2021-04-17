@@ -121,6 +121,7 @@
                     DisableGlobalLocks = true,
                 });
             });
+
             services.AddHangfireServer();
         }
 
@@ -152,7 +153,6 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseRouting();
 
             app.UseHangfireDashboard();
