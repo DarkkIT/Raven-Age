@@ -10,10 +10,15 @@
 
     public class CityViewModel : IMapFrom<City>
     {
-
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string Type { get; set; } //// Race
+
+        public string Avatar { get; set; }
+
+        public int Premium { get; set; }
 
         public int Workers { get; set; }
 
@@ -48,6 +53,10 @@
         public StoneMineViewMode StoneMine { get; set; }
 
         public BarracksViewModel Barracks { get; set; }
+
+        public ArmyViewModel Armies { get; set; }
+
+        public RuneViewModel Runes { get; set; }
 
         public HireSoldiersInputModel HireSoldiersInputModel { get; set; }
     }

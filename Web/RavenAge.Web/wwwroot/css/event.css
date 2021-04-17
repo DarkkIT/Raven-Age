@@ -1,0 +1,24 @@
+﻿
+body {
+    max-height: 1080px;
+}
+
+#eventMap {
+    width: 100%;
+    height: 100%;
+    max-width: 1980px;
+    position: relative;
+}
+
+#anchor-level1 {
+    width: 11%;
+    height: 5%;
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    z-index: 9999;
+    left: 47%;
+    top: 2%;
+    position: fixed;
+}

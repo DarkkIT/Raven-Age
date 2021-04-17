@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
@@ -25,6 +26,8 @@
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IDeletableEntityRepository<TownHall> townHallRepo;
         private readonly IUserService userService;
+        private readonly IDeletableEntityRepository<Army> armyRepo;
+        private readonly IDeletableEntityRepository<Rune> runeRepo;
 
         public CityService(
                            IDeletableEntityRepository<Barracks> barracksRepo,
@@ -37,7 +40,9 @@
                            IDeletableEntityRepository<Farm> farmRepo,
                            IRepository<UserCity> userCityRepo,
                            IDeletableEntityRepository<City> cityRepo,
-                           IUserService userService)
+                           IUserService userService, 
+                           IDeletableEntityRepository<Army> armyRepo,
+                           IDeletableEntityRepository<Rune> runeRepo)
         {
             this.barracksRepo = barracksRepo;
             this.houseRepo = houseRepo;
@@ -49,32 +54,36 @@
             this.cityRepo = cityRepo;
             this.townHallRepo = townHallRepo;
             this.userService = userService;
+            this.armyRepo = armyRepo;
+            this.runeRepo = runeRepo;
         }
 
-
-
-
         public async Task CreateStartUpCity(string userId, string name)
-
         {
-
-
             var city = new City()
             {
                 Name = name,
-                Barracks = new Barracks { Level = 1, Description = "This is barracks!" },
-                DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!" },
-                Farm = new Farm { Level = 1, Description = "This is a farm!", FoodProduction = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                House = new House { Level = 1, Description = "This is a house!", WorkerLimit = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
+                Barracks = new Barracks { Level = 1, Description = "This is barracks!", SilverPrice = 12, StonePrice = 16, WoodPrice = 16, TrainingLimit = 100 },
+                DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!", SilverPrice = 12, StonePrice = 24, WoodPrice = 8, Defence = 1000 },
+                Farm = new Farm { Level = 1, Description = "This is a farm!", FoodProduction = 100, SilverPrice = 13, StonePrice = 8, WoodPrice = 12 },
+                House = new House { Level = 1, Description = "This is a house!", WorkerLimit = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15, Production = 4 },
                 Marketplace = new Marketplace { Level = 1, Description = "This is a marketplace!", SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
-                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice= 15, WoodPrice = 15 },
+                WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
+                StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
 
-                TownHall = new TownHall { Level = 1, Description = "This is a townhall!" },
+                TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
+                Army = new Army { ArcherAtack = 1000, ArcherDefence = 800, ArcherHealt = 1000, InfantryAtack = 1000, InfantryDefence = 1000, InfantryHealt = 800, CavalryAtack = 1200, CavalryDefence = 1000, CavalryHealt = 1000, ArtilleryAtack = 1000, ArtilleryDefence = 800, ArtilleryHealt = 800 },
+                Rune = new Rune { },
                 Infantry = 10,
+                Archers = 10,
+                Cavalry = 10,
+                Artillery = 5,
                 Silver = 1000,
                 Stone = 100,
                 Wood = 100,
+                Food = 200,
+                Workers = 50,
+                Gold = 10,
             };
 
             var user = await this.userService.GetUserById(userId);
@@ -129,6 +138,16 @@
         public WoodMineViewModel GetWoodMine(string userId)
         {
             return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.WoodMine).To<WoodMineViewModel>().FirstOrDefault();
+        }
+
+        public ArmyViewModel GetArmy(string userId)
+        {
+            return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Army).To<ArmyViewModel>().FirstOrDefault();
+        }
+
+        public RuneViewModel GetRune(string userId)
+        {
+            return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Rune).To<RuneViewModel>().FirstOrDefault();
         }
     }
 }

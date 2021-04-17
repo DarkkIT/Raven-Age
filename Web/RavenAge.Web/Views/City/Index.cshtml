@@ -1,12 +1,12 @@
 @model RavenAge.Web.ViewModels.City.CityViewModel
-﻿@{
+@{
     this.ViewData["Title"] = "Raven City";
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
-</head>
+        <link rel="stylesheet" href="~/css/city.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/modal.css" asp-append-version="true" />
+    </head>
 
 <div id="wrapper">
 
@@ -54,7 +54,7 @@
         <p>Lvl: @Model.DefenceWall.Level</p>
     </a>
 
-    <a id="anchor-level9" class="text-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
+    <a id="anchor-level9" class="-dark" asp-controller="World" asp-action="Index" asp-route-enemyName="">
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
@@ -153,7 +153,7 @@
     </div>
 </div>
 
-<!-- Saw Mill Modal -->
+<!-- Saw mill Modal -->
 <div class="modal fade" id="modalSawMillCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -180,7 +180,7 @@
     </div>
 </div>
 
-<!-- Stone Mine Modal -->
+<!-- Stone mine Modal -->
 <div class="modal fade" id="modalStoneMineCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -265,12 +265,12 @@
 </div>
 
 @section Scripts{
-    <script src="~/Scripts/BarracksUpgrade.js" asp-append-version="true"></script>
-    <script src="~/Scripts/FarmUpgrade.js" asp-append-version="true"></script>
-    <script src="~/Scripts/TownHallUpgrade.js" asp-append-version="true"></script>
-    <script src="~/Scripts/BuildingsSounds.js" asp-append-version="true"></script>
-    <script src="~/Scripts/SawMillUpgrade.js" asp-append-version="true"></script>
-    <script src="~/Scripts/StoneMine.js" asp-append-version="true"></script>
-    <script src="~/Scripts/HouseUpgrade.js" asp-append-version="true"></script>
-    <script src="~/Scripts/DefenceWallUpgrade.js" asp-append-version="true"></script>
+    <script src="~/Scripts/BarracksUpgrade.js"></script>
+    <script src="~/Scripts/FarmUpgrade.js"></script>
+    <script src="~/Scripts/TownHallUpgrade.js"></script>
+    <script src="~/Scripts/BuildingsSounds.js"></script>
+    <script src="~/Scripts/SawMillUpgrade.js"></script>
+    <script src="~/Scripts/StoneMine.js"></script>
+    <script src="~/Scripts/HouseUpgrade.js"></script>
+    <script src="~/Scripts/DefenceWallUpgrade.js"></script>
 }
