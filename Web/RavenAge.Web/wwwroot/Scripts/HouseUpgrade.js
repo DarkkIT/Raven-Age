@@ -1,4 +1,4 @@
-﻿
+﻿import { updateResource } from '../Scripts/UpdateResource.js';
 $("#UpgradeHouse").click(function () {
 
     $.ajax({
@@ -8,32 +8,20 @@ $("#UpgradeHouse").click(function () {
         success: function (data) {
 
             if (data.isUpgraded) {
-                $('span.resource').each(function (index) {
+                updateResource(data);
 
-                    if ($(this).text().includes('Silver')) {
-                        $(this).text(`Silver - ${data.silverAvailable}`);
-                    }
+                $('#HouseSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
+                $('#HouseStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
+                $('#HouseWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
 
-                    else if ($(this).text().includes('Stone')) {
-                        $(this).text(`Stone - ${data.stoneAvailable}`);
-                    }
+                $('#HouseCurrentWorkers').text(`Curent workers: ${data.currentWorkersCount}`);
+                $('#HouseIncomePerWorker').text(`Income per Worker: ${data.incomePerWorker}`);
+                $('#HouseTotalIncome').text(`Silver income: ${data.incomePerWorker * data.currentWorkersCount}`);
 
-                    else {
-                        $(this).text(`Wood - ${data.woodAvailable}`);
-                    }
-
-                    $('#HouseSilverUpgradeCost').text(`Silver: ${data.silverUpgradeCost}`);
-                    $('#HouseStoneUpgradeCost').text(`Stone: ${data.stoneUpgradeCost}`);
-                    $('#HouseWoodUpgradeCost').text(`Wood: ${data.woodUpgradeCost}`);
-
-                    $('#HouseCurrentWorkers').text(`Curent workers: ${data.currentWorkersCount}`);
-                    $('#HouseIncomePerWorker').text(`Income per Worker: ${data.incomePerWorker}`);
-                    $('#HouseTotalIncome').text(`Silver income: ${data.incomePerWorker * data.currentWorkersCount}`);
-
-                    $('#WorkerLimit').text(`Workers limit: ${data.workerLimit}`);
-
-                })
+                $('#WorkerLimit').text(`Workers limit: ${data.workerLimit}`);
             }
         }
     })
-})
+    })
+
+
