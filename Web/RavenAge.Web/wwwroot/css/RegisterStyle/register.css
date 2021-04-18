@@ -191,7 +191,7 @@ align-self:flex-end;
 
 }
 .container-Runes img{
-  width: 45%;
+  width: 35%;
   
 }
 .container-text1 {
@@ -221,7 +221,8 @@ align-self:flex-end;
     color: #5e584d;
     outline-offset: -10px;
     padding: 1rem;
-    width: 800px
+    width: 800px;
+    min-width : 300px
 }
 
 form > * {

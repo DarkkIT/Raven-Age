@@ -17,16 +17,18 @@
         private readonly IDeletableEntityRepository<City> cityRepository;
         private readonly IDeletableEntityRepository<StoneMine> stoneMineReposistory;
         private readonly IRepository<UserCity> userCityRepository;
-
+        private readonly IRepository<Rune> runeRepository;
 
         public StoneMineHangfireJobService(
             IDeletableEntityRepository<City> cityRepository,
             IDeletableEntityRepository<StoneMine> stoneMineReposistory,
-            IRepository<UserCity> userCityRepository)
+            IRepository<UserCity> userCityRepository,
+            IRepository<Rune> runeRepository)
         {
             this.cityRepository = cityRepository;
             this.stoneMineReposistory = stoneMineReposistory;
             this.userCityRepository = userCityRepository;
+            this.runeRepository = runeRepository;
         }
 
         public async Task FarmStone()
@@ -37,7 +39,16 @@
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
                 var stoneMine = await this.stoneMineReposistory.All().FirstOrDefaultAsync(x => x.Id == city.StoneMineId);
-                city.Stone += stoneMine.Production;
+                var rune = await this.runeRepository.All().FirstOrDefaultAsync(x => x.Id == city.RuneId);
+                if (rune.StoneRune)
+                {
+                    var plusPercentage = ((double)stoneMine.Production / 100.0) * 10.0;
+                    city.Stone += stoneMine.Production + (decimal)plusPercentage;
+                }
+                else
+                {
+                    city.Stone += stoneMine.Production;
+                }
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
                 this.stoneMineReposistory.SaveChangesAsync().GetAwaiter();

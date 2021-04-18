@@ -18,8 +18,8 @@
     <title>document</title>
 </head>
 <body>
-
-    <div id="load"></div>
+     // Loading screen Image
+    @*<div id="load"></div>*@
     <div class="text-center" id="contents">
         <h1 class='header section-center'>Raven Age</h1>
         <div class="container section-center">
@@ -105,20 +105,21 @@
         </footer>
     </div>
     <script>
-        document.onreadystatechange = function () {
-            var state = document.readyState;
-            if (state == 'interactive') {
-                document.getElementById('contents').style.visibility = 'hidden'
-            }
-            else if (state == 'complete') {
-                setTimeout(function () {
-                    document.getElementById("interactive");
-                    document.getElementById("load").style.visibility = 'hidden';
-                    document.getElementById("contents").style.visibility = 'visible';
-                }, 2000)
+        // Loading screen code
+        //document.onreadystatechange = function () {
+        //    var state = document.readyState;
+        //    if (state == 'interactive') {
+        //        document.getElementById('contents').style.visibility = 'hidden'
+        //    }
+        //    else if (state == 'complete') {
+        //        setTimeout(function () {
+        //            document.getElementById("interactive");
+        //            document.getElementById("load").style.visibility = 'hidden';
+        //            document.getElementById("contents").style.visibility = 'visible';
+        //        }, 2000)
 
-            }
-        }
+        //    }
+        //}
 
     </script>
 </body>

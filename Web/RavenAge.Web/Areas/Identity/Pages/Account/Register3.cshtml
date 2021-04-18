@@ -28,11 +28,60 @@
             <div class="col-md-1"></div>
 
             <div class="chosenRunes">
-                <img src="" alt="" />
+                <img  src="" alt="" />
             </div>
         </div>
-
-        <div class="containerRunes row justify-content-center">
+        <div class="picker  row justify-content-center">
+            <a href="/test">
+                <img class="rune" src="/images/Badges/silver.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/wood.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/food.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/stone.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/archerAttack.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/archerDefence.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/archerHealth.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/infantryAttack.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/infantryDefence.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/infantryHealth.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/trebuchetAttack.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/trebuchetDefence.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/trebuchetHealth.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/cavaleryAttack.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/cavaleryDefence.png" alt="" />
+            </a>
+            <a href="/test">
+                <img class="rune" src="/images/Badges/cavaleryHealth.png" alt="" />
+            </a>
+        </div>
+        @*<div class="containerRunes row justify-content-center">
             <a href="/test">
                 <img class="rune" src="/images/Badges/attack.png" alt="" />
             </a>
@@ -44,7 +93,7 @@
             <a href="/test">
                 <img class="rune" src="/images/Badges/health.png" alt="" />
             </a>
-        </div>
+        </div>*@
         <div class="containerButtons row justify-content-center">
             <a class="btn btn-danger rounded">Cancel</a>
             <div class="col-md-1"></div>
@@ -55,7 +104,7 @@
 <script>
 
     document
-        .getElementsByClassName("containerRunes")[0]
+        .getElementsByClassName("picker")[0]
         .addEventListener("click", (event) => {
             event.preventDefault();
 
@@ -67,7 +116,7 @@
                     leftRune.src = '/images' + event.target.src.split('/images')[1];
           
                     if (rightRune.getAttribute('src') === leftRune.getAttribute('src')) {
-                         document.getElementsByClassName("chosenRunes")[0].children[0]='';
+                        document.getElementsByClassName("chosenRunes")[0].children[0].src = '';
                         console.log('equal runes');
                      
                     }
@@ -90,9 +139,19 @@
         });
 
     document
-        .getElementById("container")
+        .getElementsByClassName("chosenRunes")[0]
         .addEventListener("click", (event) => {
             event.preventDefault();
+            console.log(event.target)
+            if (event.target.tagName == "IMG") {
+                event.target.src = '';
+            }
+        });
+    document
+        .getElementsByClassName("chosenRunes")[1]
+        .addEventListener("click", (event) => {
+            event.preventDefault();
+            console.log(event.target)
             if (event.target.tagName == "IMG") {
                 event.target.src = '';
             }
