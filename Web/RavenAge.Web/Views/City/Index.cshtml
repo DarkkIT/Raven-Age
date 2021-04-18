@@ -58,6 +58,58 @@
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
+    <a id="anchor-level10" class="d-flex text-decoration-none justify-content-between text-dark">
+
+        <div class="d-inline-block">
+            <span class="currency-image-container">  <i style="color:silver" class=" fas fa-coins"></i></span>
+            @if (Model.Silver > 999999)
+            {
+                <span class="resource">Silver - @(Math.Round((Model.Silver / 1000000), 3)) M</span>
+            }
+            else if (Model.Silver > 999)
+            {
+                <span class="resource">Silver - @(Math.Round((Model.Silver / 1000), 2)) k</span>
+            }
+            else
+            {
+                <span class="resource">Silver - @(Math.Floor(Model.Silver))</span>
+            }
+        </div>
+
+
+        <div class="d-inline-block">
+            <span class="currency-image-container"><i style="color:black" class="fas fa-mountain"></i></span>
+            @if (Model.Stone > 999999)
+            {
+                <span class="resource">Stone - @(Math.Round((Model.Stone / 1000000), 3)) M</span>
+            }
+            else if (Model.Stone > 999)
+            {
+                <span class="resource">Stone - @(Math.Round((Model.Stone / 1000), 2)) k</span>
+            }
+            else
+            {
+                <span class="resource">Stone - @(Math.Floor(Model.Stone))</span>
+            }
+        </div>
+
+        <div class="d-inline-block">
+            <span class="currency-image-container" style="color:forestgreen"> <i class="fas fa-tree"></i></span>
+            @if (Model.Wood > 999999)
+            {
+                <span class="resource">Wood - @(Math.Round((Model.Wood / 1000000), 3)) M</span>
+            }
+            else if (Model.Wood > 999)
+            {
+                <span class="resource">Wood - @(Math.Round((Model.Wood / 1000), 2)) k</span>
+            }
+            else
+            {
+                <span class="resource">Wood - @(Math.Floor(Model.Wood))</span>
+            }
+        </div>
+    </a>
+
     <a id="anchor-level11" class="text-dark">
         <p class="font-weight-bold p-0">
             <img src="~/images/Avatars/Avatar11.png" style="max-width: 100%; height: auto;" alt="Alternate Text" />
@@ -132,9 +184,9 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCenterTitle">
                     Farm
-                    <span id="SilverAvailable" class=" text-warning">Silver - @(Math.Floor(Model.Silver))</span>
-                    <span id="StoneAvailable" class=" text-primary">Stone - @(Math.Floor(Model.Stone))</span>
-                    <span id="WoodAvailable" class=" text-danger">Wood - @(Math.Floor(Model.Wood))</span>
+                    <span class="resource text-warning">Silver - @(Math.Floor(Model.Silver))</span>
+                    <span class="resource text-primary">Stone - @(Math.Floor(Model.Stone))</span>
+                    <span class="resource text-danger">Wood - @(Math.Floor(Model.Wood))</span>
 
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
