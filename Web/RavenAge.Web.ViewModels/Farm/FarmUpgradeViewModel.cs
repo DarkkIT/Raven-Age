@@ -17,5 +17,11 @@
         public decimal WoodUpgradeCost { get; set; }
 
         public decimal StoneUpgradeCost { get; set; }
+
+        public decimal SilverAvailable { get; set; }
+
+        public decimal StoneAvailable { get; set; }
+
+        public decimal WoodAvailable { get; set; }
     }
 }

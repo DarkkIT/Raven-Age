@@ -62,6 +62,10 @@
                 farmUpgradeData.SilverUpgradeCost = farm.SilverPrice;
                 farmUpgradeData.WoodUpgradeCost = farm.WoodPrice;
                 farmUpgradeData.StoneUpgradeCost = farm.StonePrice;
+
+                farmUpgradeData.SilverAvailable = city.Silver;
+                farmUpgradeData.WoodAvailable = city.Wood;
+                farmUpgradeData.StoneAvailable = city.Stone;
             }
 
             await this.farmRepo.SaveChangesAsync();

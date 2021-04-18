@@ -45,7 +45,7 @@
                              (input.CavalryQuantity * GlobalConstants.CavalryWoodCost) +
                              (input.ArtilleryQuantity * GlobalConstants.ArcherWoodCost);
 
-            var hiredUnits = new HiredUnitsAndCostModel();
+            var viewData = new HiredUnitsAndCostModel();
 
             if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
             {
@@ -61,28 +61,32 @@
                 var unitType = string.Empty;
                 int unitQuantity = 0;
 
+                viewData.SilverAvailable = city.Silver;
+                viewData.StoneAvailable = city.Stone;
+                viewData.WoodAvailable = city.Wood;
+
                 if (input.ArcharQuantity > 0)
                 {
-                    unitType = "Archers";
-                    unitQuantity = input.ArcharQuantity;
+                    viewData.UnitType = "Archers";
+                    viewData.UnitQuantity = input.ArcharQuantity;
                 }
                 else if (input.InfantryQuantity > 0)
                 {
-                    unitType = "Infantry";
-                    unitQuantity = input.InfantryQuantity;
+                    viewData.UnitType = "Infantry";
+                    viewData.UnitQuantity = input.InfantryQuantity;
                 }
                 else if (input.CavalryQuantity > 0)
                 {
-                    unitType = "Cavalry";
-                    unitQuantity = input.CavalryQuantity;
+                    viewData.UnitType = "Cavalry";
+                    viewData.UnitQuantity = input.CavalryQuantity;
                 }
                 else if (input.ArtilleryQuantity > 0)
                 {
-                    unitType = "Artillery";
-                    unitQuantity = input.ArtilleryQuantity;
+                    viewData.UnitType = "Artillery";
+                    viewData.UnitQuantity = input.ArtilleryQuantity;
                 }
 
-                return new HiredUnitsAndCostModel { UnitQuantity = unitQuantity, UnitType = unitType, WoodSpent = woodNeeded, SilverSpent = silverNeeded };
+                return viewData;
             }
 
             return null;
