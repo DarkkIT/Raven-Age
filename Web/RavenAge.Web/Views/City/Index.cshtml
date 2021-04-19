@@ -58,7 +58,7 @@
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
-    <a id="anchor-level10" class="d-flex text-decoration-none justify-content-between text-dark">
+    <a id="anchor-level10" class="row justify-content-between">
 
         <div class="d-inline-block">
             <span class="currency-image-container">  <i style="color:silver" class=" fas fa-coins"></i></span>
@@ -110,10 +110,15 @@
         </div>
     </a>
 
+    @*Avatar*@
     <a id="anchor-level11" class="text-dark">
         <p class="font-weight-bold p-0">
             <img src="~/images/Avatars/@(Model.Avatar +".png")" style="max-width: 100%; height: auto;" alt="Alternate Text" />
         </p>
+    </a>
+
+    <a id="anchor-level12" class="playsound" asp-controller="Guild" asp-action="Index">
+        <p class="font-weight-bold p-0">Guild</p>
     </a>
 
 </div>
