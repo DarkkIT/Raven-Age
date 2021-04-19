@@ -134,6 +134,42 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                     case "stone":
                         rune.StoneRune = true;
                         break;
+                    case "archerAttack":
+                        rune.ArcherAttackRune = true;
+                        break;
+                    case "archerDefence":
+                        rune.ArcherDefenseRune = true;
+                        break;
+                    case "archerHealth":
+                        rune.ArcherHealthRune = true;
+                        break;
+                    case "cavaleryAttack":
+                        rune.CavalryAttackRune = true;
+                        break;
+                    case "cavaleryDefence":
+                        rune.CavalryDefenseRune = true;
+                        break;
+                    case "cavaleryHealth":
+                        rune.CavalryHealthRune = true;
+                        break;
+                    case "infantryAttack":
+                        rune.InfantryAttackRune = true;
+                        break;
+                    case "infantryDefence":
+                        rune.InfantryDefenseRune = true;
+                        break;
+                    case "infantryHealth":
+                        rune.InfantryHealthRune = true;
+                        break;
+                    case "trebuchetAttack":
+                        rune.ArtilleryAttackRune = true;
+                        break;
+                    case "trebuchetDefence":
+                        rune.ArtilleryDefenseRune = true;
+                        break;
+                    case "trebuchetHealth":
+                        rune.ArtilleryHealthRune = true;
+                        break;
                 }
 
                 switch (secondRune)
@@ -149,6 +185,42 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                         break;
                     case "stone":
                         rune.StoneRune = true;
+                        break;
+                    case "archerAttack":
+                        rune.ArcherAttackRune = true;
+                        break;
+                    case "archerDefence":
+                        rune.ArcherDefenseRune = true;
+                        break;
+                    case "archerHealth":
+                        rune.ArcherHealthRune = true;
+                        break;
+                    case "cavaleryAttack":
+                        rune.CavalryAttackRune = true;
+                        break;
+                    case "cavaleryDefence":
+                        rune.CavalryDefenseRune = true;
+                        break;
+                    case "cavaleryHealth":
+                        rune.CavalryHealthRune = true;
+                        break;
+                    case "infantryAttack":
+                        rune.InfantryAttackRune = true;
+                        break;
+                    case "infantryDefence":
+                        rune.InfantryDefenseRune = true;
+                        break;
+                    case "infantryHealth":
+                        rune.InfantryHealthRune = true;
+                        break;
+                    case "trebuchetAttack":
+                        rune.ArtilleryAttackRune = true;
+                        break;
+                    case "trebuchetDefence":
+                        rune.ArtilleryDefenseRune = true;
+                        break;
+                    case "trebuchetHealth":
+                        rune.ArtilleryHealthRune = true;
                         break;
                 }
 
@@ -179,7 +251,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                     else
                     {
                         await this._signInManager.SignInAsync(user, isPersistent: false);
-                        return this.Redirect("/City/Index");
+                        return this.Redirect("/Home/Index");
                     }
                 }
 
