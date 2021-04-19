@@ -53,5 +53,11 @@
         //// Defence Wall
 
         public const int DefencePerLevel = 1000;
+
+        //// Army Taxes
+
+        public const int FoodTaxForArmy = 2;
+        public const int SilverTaxForArmy = 1;
+        public const int FoodTaxForWorkers = 1;
     }
 }
