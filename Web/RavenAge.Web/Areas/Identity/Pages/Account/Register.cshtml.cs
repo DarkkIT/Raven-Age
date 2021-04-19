@@ -17,6 +17,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
+    using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models;
     using RavenAge.Services.CityService.Data;
 
@@ -28,19 +29,23 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly ICityService cityService;
+        private readonly IRepository<Data.Models.Models.Rune> runeService;
+
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            ICityService cityService)
+            ICityService cityService,
+            IRepository<Data.Models.Models.Rune> runeService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
             this._emailSender = emailSender;
             this.cityService = cityService;
+            this.runeService = runeService;
         }
 
         [BindProperty]
@@ -111,40 +116,120 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email, Type = this.Input.Type, Avatar = this.Input.Avatar, Name = this.Input.Name };
                 //crete city with all buildings 
-
+                var rune = new Data.Models.Models.Rune();
                 var firstRune = this.Input.Runes.Split('^')[0];
                 var secondRune = this.Input.Runes.Split('^')[1];
 
                 switch (firstRune)
                 {
-                    case "attack":
-                        user.AttackRune = true;
+                    case "silver":
+                        rune.SilverRune = true;
                         break;
-                    case "defence":
-                        user.DefenseRune = true;
+                    case "food":
+                        rune.FoodRunes = true;
                         break;
-                    case "heatlh":
-                        user.HealthRune = true;
+                    case "wood":
+                        rune.WoodRune = true;
+                        break;
+                    case "stone":
+                        rune.StoneRune = true;
+                        break;
+                    case "archerAttack":
+                        rune.ArcherAttackRune = true;
+                        break;
+                    case "archerDefence":
+                        rune.ArcherDefenseRune = true;
+                        break;
+                    case "archerHealth":
+                        rune.ArcherHealthRune = true;
+                        break;
+                    case "cavaleryAttack":
+                        rune.CavalryAttackRune = true;
+                        break;
+                    case "cavaleryDefence":
+                        rune.CavalryDefenseRune = true;
+                        break;
+                    case "cavaleryHealth":
+                        rune.CavalryHealthRune = true;
+                        break;
+                    case "infantryAttack":
+                        rune.InfantryAttackRune = true;
+                        break;
+                    case "infantryDefence":
+                        rune.InfantryDefenseRune = true;
+                        break;
+                    case "infantryHealth":
+                        rune.InfantryHealthRune = true;
+                        break;
+                    case "trebuchetAttack":
+                        rune.ArtilleryAttackRune = true;
+                        break;
+                    case "trebuchetDefence":
+                        rune.ArtilleryDefenseRune = true;
+                        break;
+                    case "trebuchetHealth":
+                        rune.ArtilleryHealthRune = true;
                         break;
                 }
 
                 switch (secondRune)
                 {
-                    case "attack":
-                        user.AttackRune = true;
+                    case "silver":
+                        rune.SilverRune = true;
                         break;
-                    case "defence":
-                        user.DefenseRune = true;
+                    case "food":
+                        rune.FoodRunes = true;
                         break;
-                    case "heatlh":
-                        user.HealthRune = true;
+                    case "wood":
+                        rune.WoodRune = true;
+                        break;
+                    case "stone":
+                        rune.StoneRune = true;
+                        break;
+                    case "archerAttack":
+                        rune.ArcherAttackRune = true;
+                        break;
+                    case "archerDefence":
+                        rune.ArcherDefenseRune = true;
+                        break;
+                    case "archerHealth":
+                        rune.ArcherHealthRune = true;
+                        break;
+                    case "cavaleryAttack":
+                        rune.CavalryAttackRune = true;
+                        break;
+                    case "cavaleryDefence":
+                        rune.CavalryDefenseRune = true;
+                        break;
+                    case "cavaleryHealth":
+                        rune.CavalryHealthRune = true;
+                        break;
+                    case "infantryAttack":
+                        rune.InfantryAttackRune = true;
+                        break;
+                    case "infantryDefence":
+                        rune.InfantryDefenseRune = true;
+                        break;
+                    case "infantryHealth":
+                        rune.InfantryHealthRune = true;
+                        break;
+                    case "trebuchetAttack":
+                        rune.ArtilleryAttackRune = true;
+                        break;
+                    case "trebuchetDefence":
+                        rune.ArtilleryDefenseRune = true;
+                        break;
+                    case "trebuchetHealth":
+                        rune.ArtilleryHealthRune = true;
                         break;
                 }
+
+                await this.runeService.AddAsync(rune);
 
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
-                    await this.cityService.CreateStartUpCity(user.Id, this.Input.CityName);
+                    await this.cityService.CreateStartUpCity(user.Id, this.Input.CityName, this.Input.Avatar, rune.Id);
 
                     this._logger.LogInformation("User created a new account with password.");
 
@@ -166,9 +251,10 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                     else
                     {
                         await this._signInManager.SignInAsync(user, isPersistent: false);
-                        return this.Redirect("/City/Index");
+                        return this.Redirect("/Home/Index");
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     this.ModelState.AddModelError(string.Empty, error.Description);

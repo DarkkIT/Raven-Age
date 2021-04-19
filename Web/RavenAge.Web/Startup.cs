@@ -31,6 +31,7 @@
     using RavenAge.Services.Data.HangfireService.Farm;
     using RavenAge.Services.Data.HangfireService.House;
     using RavenAge.Services.Data.HangfireService.SawMill;
+    using RavenAge.Services.Data.HangfireService.TaxesArmy;
     using RavenAge.Services.Data.HouseService;
     using RavenAge.Services.Data.SawMillService;
     using RavenAge.Services.Data.StoneMineService;
@@ -136,7 +137,7 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-                 this.SeedHangfireJobs(recurringJob);
+                this.SeedHangfireJobs(recurringJob);
             }
 
             if (env.IsDevelopment())
@@ -176,6 +177,7 @@
             recurringJob.AddOrUpdate<FarmHangfireService>("FarmHangfireService", x => x.FarmFood(), Cron.Hourly);
             recurringJob.AddOrUpdate<HouseHangfireService>("HouseHangfireService", x => x.FarmSilver(), Cron.Hourly);
             recurringJob.AddOrUpdate<HouseHangfireService>("HouseHangfireService", x => x.FarmWorkers(), Cron.Hourly);
+            recurringJob.AddOrUpdate<TaxArmy>("TaxArmy", x => x.GetTaxesFromArmy(), Cron.Hourly);
         }
     }
 }

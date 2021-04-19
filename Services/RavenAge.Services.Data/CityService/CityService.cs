@@ -40,7 +40,7 @@
                            IDeletableEntityRepository<Farm> farmRepo,
                            IRepository<UserCity> userCityRepo,
                            IDeletableEntityRepository<City> cityRepo,
-                           IUserService userService, 
+                           IUserService userService,
                            IDeletableEntityRepository<Army> armyRepo,
                            IDeletableEntityRepository<Rune> runeRepo)
         {
@@ -58,10 +58,11 @@
             this.runeRepo = runeRepo;
         }
 
-        public async Task CreateStartUpCity(string userId, string name)
+        public async Task CreateStartUpCity(string userId, string name, string avatar, int runeId)
         {
             var city = new City()
             {
+                Avatar = avatar,
                 Name = name,
                 Barracks = new Barracks { Level = 1, Description = "This is barracks!", SilverPrice = 12, StonePrice = 16, WoodPrice = 16, TrainingLimit = 100 },
                 DefenceWall = new DefenceWall { Level = 1, Description = "This is a defence wall!", SilverPrice = 12, StonePrice = 24, WoodPrice = 8, Defence = 1000 },
@@ -70,10 +71,9 @@
                 Marketplace = new Marketplace { Level = 1, Description = "This is a marketplace!", SilverPrice = 10, StonePrice = 15, WoodPrice = 15 },
                 WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
-
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
                 Army = new Army { ArcherAtack = 1000, ArcherDefence = 800, ArcherHealt = 1000, InfantryAtack = 1000, InfantryDefence = 1000, InfantryHealt = 800, CavalryAtack = 1200, CavalryDefence = 1000, CavalryHealt = 1000, ArtilleryAtack = 1000, ArtilleryDefence = 800, ArtilleryHealt = 800 },
-                Rune = new Rune { },
+                RuneId = runeId,
                 Infantry = 10,
                 Archers = 10,
                 Cavalry = 10,
@@ -88,9 +88,13 @@
 
             var user = await this.userService.GetUserById(userId);
             await this.cityRepo.AddAsync(city);
+
             await this.cityRepo.SaveChangesAsync();
+
             var userCity = new UserCity() { User = user, City = city };
+
             await this.userCityRepo.AddAsync(userCity);
+
 
             await this.userCityRepo.SaveChangesAsync();
         }

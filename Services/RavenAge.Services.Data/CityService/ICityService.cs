@@ -10,7 +10,7 @@
 
     public interface ICityService
     {
-        Task CreateStartUpCity(string userId, string name);
+        Task CreateStartUpCity(string userId, string name, string avatar, int runeId);
 
         BarracksViewModel GetBarracks(string userId);
 
