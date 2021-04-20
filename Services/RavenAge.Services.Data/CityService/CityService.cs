@@ -72,7 +72,7 @@
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
 
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
-                Army = new Army { ArcherAtack = 1000, ArcherDefence = 800, ArcherHealt = 1000, InfantryAtack = 1000, InfantryDefence = 1000, InfantryHealt = 800, CavalryAtack = 1200, CavalryDefence = 1000, CavalryHealt = 1000, ArtilleryAtack = 1000, ArtilleryDefence = 800, ArtilleryHealt = 800 },
+                Army = new Army { ArcherAttack = 1000, ArcherDefence = 800, ArcherHealth = 1000, InfantryAttack = 1000, InfantryDefence = 1000, InfantryHealth = 800, CavalryAttack = 1200, CavalryDefence = 1000, CavalryHealth = 1000, ArtilleryAttack = 1000, ArtilleryDefence = 800, ArtilleryHealth = 800 },
                 Rune = new Rune { },
                 Infantry = 10,
                 Archers = 10,
