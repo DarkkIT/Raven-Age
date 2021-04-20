@@ -9,6 +9,8 @@
 
     public class ApplicationDbContextSeeder : ISeeder
     {
+        var userManager = ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
