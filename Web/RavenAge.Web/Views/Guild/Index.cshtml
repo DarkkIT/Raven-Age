@@ -1,3 +1,73 @@
-﻿@{
-    this.ViewData["Title"] = "Raven Guld";
+@{
+    this.ViewData["Title"] = "Raven Guild";
+}
+
+
+
+<head>
+    <link rel="stylesheet" href="~/css/guild.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div id="guildWrapper" href="~/Sounds/guild.mp3" class="playsound">
+
+        <img class="img-fluid justify-content-center " src="~/images/Guild/tavern2.jpg" />
+
+        <div id="scoreBoard" class="row justify-content-around border" >
+            <p class="">Guilds Scoreboard</p>
+            <table class="table table-border">
+                <tr>
+                    <th>Guild name:</th>
+                    <th>Points:</th>
+                </tr>
+                @for (int i = 10; i > 0; i--)
+                {
+                    <tr>
+                        <td class="border">Wild Guild @i</td>
+                        <td class="border">@(DateTime.UtcNow.Millisecond * i)</td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+
+        <div id="yourGuild" class="row col-md-12 justify-content-around border ">
+                <p class="border">Your guild</p>
+          
+
+            <div class="w-100"></div>
+
+            <div class="col-md-3 border" style="max-height:10%">
+                <p class="border">Wild Guild1</p>
+            </div>
+
+            <div class=" col-md-3 border" style="max-height:10%">
+                <a class=" btn btn-danger border "> Leave</a>
+            </div>
+
+            <div class="w-100"></div>
+
+            <div class="border">
+                <p class="border">CHAT!!!</p>
+            </div>
+        </div>
+
+    </div>
+    <audio id="playTarget" src="" loop="loop" autoplay style="display:none"></audio>
+
+</body>
+@section Scripts{
+
+    <script>
+        document.getElementById("guildWrapper").addEventListener("click", Playmusic);
+
+        function Playmusic(e) {
+            console.log("click")
+            //document.getElementById("playTarget").play();
+            var url = $(this).attr('href');
+            $("#playTarget").attr("src", url);
+        }
+
+    </script>
+
 }
