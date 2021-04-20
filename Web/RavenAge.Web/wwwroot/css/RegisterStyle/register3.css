@@ -11,13 +11,15 @@ body {
     flex-direction: column;
 }
 
+.containerText {
+    display: flex;
+    justify-content: center;
+    font-size: 1.7em;
+}
+
 #container {
     display: flex;
     justify-content: center;
-}
-
-.containerText {
-    
 }
 
 p {
@@ -27,6 +29,7 @@ p {
 
 .containerButtons {
     display: flex;
+    justify-content: center;
 }
 
 .chosenRunes {
@@ -48,17 +51,44 @@ p {
         height: 170px;
         text-align: center;
     }
+/* .rune{
+width: 80px;
+height: 80px;
+text-align: center;
+margin: 0px 20px
+} */
 
-.rune {
-    width: 180px;
-    height: 180px;
-    text-align: center;
-    margin: 0px 20px
+
+.picker {
+    position: relative;
+    top: 100px;
+    left: 550px;
+    width: 800px;
+    height: 300px;
+    background-color: white;
+    overflow: auto;
 }
 
-.containerRunes {
+.rune {
     position: relative;
- 
+    vertical-align: middle;
+    background-color: teal;
+    border-radius: 50%;
+    margin: 10px;
+    border-collapse: collapse;
+    border-radius: 50px;
+    width: 80px;
+    height: 80;
+    min-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    z-index: 1;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    background: none;
 }
 
 .btn {

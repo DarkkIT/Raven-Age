@@ -58,11 +58,6 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> CreateCity()
-        {
-            await this.cityService.CreateStartUpCity(this.GetUserId(),"test");
-            return this.RedirectToAction("Index");
-        }
 
         internal string GetUserId()
         {

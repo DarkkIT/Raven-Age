@@ -14,15 +14,19 @@
         private readonly IDeletableEntityRepository<City> cityRepository;
         private readonly IDeletableEntityRepository<House> houseRepository;
         private readonly IRepository<UserCity> userCityRepository;
+        private readonly IRepository<Rune> runeRepository;
+
 
         public HouseHangfireService(
             IDeletableEntityRepository<City> cityRepository,
             IRepository<UserCity> userCityRepository,
-            IDeletableEntityRepository<House> houseRepository)
+            IDeletableEntityRepository<House> houseRepository,
+            IRepository<Rune> runeRepository)
         {
             this.cityRepository = cityRepository;
             this.userCityRepository = userCityRepository;
             this.houseRepository = houseRepository;
+            this.runeRepository = runeRepository;
         }
 
         public async Task FarmSilver()
@@ -32,7 +36,16 @@
             foreach (var user in userCity)
             {
                 var city = await this.cityRepository.All().FirstOrDefaultAsync(x => x.Id == user.CityId);
-                city.Silver += city.Workers * GlobalConstants.SilverPerWorker;
+                var rune = await this.runeRepository.All().FirstOrDefaultAsync(x => x.Id == city.RuneId);
+                if (rune.SilverRune)
+                {
+                    var silverProduction = city.Workers * GlobalConstants.SilverPerWorker;
+                    city.Silver += silverProduction + (decimal)(((double)silverProduction / 100.0) * 10.0);
+                }
+                else
+                {
+                    city.Silver += city.Workers * GlobalConstants.SilverPerWorker;
+                }
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
