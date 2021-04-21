@@ -68,6 +68,9 @@
 #archers {
     background-image: url(/images/Soldiers/HumanArchar.jpg);
     background-size: cover;
+    color: orangered;
+    text-align: left;
+    line-height: 1.1;
     width: 20%;
     height: 45%;
     position: absolute;
@@ -76,6 +79,9 @@
 #infantry {
     background-image: url(/images/Soldiers/HumanInfantry.jpg);
     background-size: cover;
+    color: orangered;
+    text-align: left;
+    line-height: 1.1;
     width: 20%;
     height: 45%;
     position: absolute;
@@ -84,14 +90,20 @@
 #cavalry {
     background-image: url(/images/Soldiers/HumanCavalery.jpg);
     background-size: cover;
+    color: orangered;
+    text-align: left;
+    line-height: 1.1;
     width: 20%;
     height: 45%;
     position: absolute;
 }
 
 #artillery {
-    background-image: url(/images/Soldiers/HumanArchar.jpg);
+    background-image: url(/images/Soldiers/HumanTrebuchet.jpg);
     background-size: cover;
+    color: orangered;
+    text-align: left;
+    line-height: 1.1;
     width: 20%;
     height: 45%;
     position: absolute;

@@ -9,6 +9,6 @@
 
     public interface IArenaService
     {
-        List<ArenaUserViewModel> GetArenaList(string userId);
+        ArenaListViewModel GetArenaList(string userId);
     }
 }

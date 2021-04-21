@@ -2,6 +2,7 @@
 {
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
+    using RavenAge.Web.ViewModels.City;
 
     public class ArenaUserViewModel : IMapFrom<City>
     {
@@ -21,6 +22,6 @@
 
         public int Artillery { get; set; }
 
-        public ArmyViewModel Armies { get; set; }
+        public ArmyViewModel Army { get; set; }
     }
 }

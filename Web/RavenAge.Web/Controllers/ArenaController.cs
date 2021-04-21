@@ -23,9 +23,7 @@
         {
             var userId = this.GetUserId();
 
-            var list = this.arenaService.GetArenaList(userId);
-
-            var viewModel = new ArenaListViewModel { ArenaList = list };
+            var viewModel = this.arenaService.GetArenaList(userId);
 
             return this.View(viewModel);
         }
