@@ -6,7 +6,7 @@
 
     using RavenAge.Data.Common.Models;
 
-    public class Guild: BaseDeletableModel<int>
+    public class Guild : BaseDeletableModel<int>
     {
         public Guild()
         {
