@@ -24,6 +24,7 @@
     using RavenAge.Data.Repositories;
     using RavenAge.Data.Seeding;
     using RavenAge.Services.CityService.Data;
+    using RavenAge.Services.Data.ArenaService;
     using RavenAge.Services.Data.BarracksService;
     using RavenAge.Services.Data.DefenceWall;
     using RavenAge.Services.Data.FarmService;
@@ -54,7 +55,6 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -102,6 +102,7 @@
             services.AddTransient<IStoneMineService, StoneMineService>();
             services.AddTransient<IDefenceWallService, DefenceWallService>();
             services.AddTransient<IRuneService, RuneService>();
+            services.AddTransient<IArenaService, ArenaService>();
 
             // HangfireServices
             services.AddHangfire(config =>
