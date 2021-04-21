@@ -73,7 +73,8 @@
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
                 Army = new Army { ArcherAttack = 1000, ArcherDefence = 800, ArcherHealth = 1000, InfantryAttack = 1000, InfantryDefence = 1000, InfantryHealth = 800, CavalryAttack = 1200, CavalryDefence = 1000, CavalryHealth = 1000, ArtilleryAttack = 1000, ArtilleryDefence = 800, ArtilleryHealth = 800 },
-                Rune = new Rune { },
+
+                RuneId = runeId,
 
                 Infantry = 10,
                 Archers = 10,
@@ -87,12 +88,12 @@
                 Gold = 10,
             };
 
-            var user = await this.userService.GetUserById(userId);
+            //var user = await this.userService.GetUserById(userId);
             await this.cityRepo.AddAsync(city);
 
             await this.cityRepo.SaveChangesAsync();
 
-            var userCity = new UserCity() { User = user, City = city };
+            var userCity = new UserCity() { UserId = userId, CityId = city.Id };
 
             await this.userCityRepo.AddAsync(userCity);
 

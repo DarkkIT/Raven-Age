@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
+    using RavenAge.Data.Models.Models;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
 
