@@ -1,13 +1,12 @@
-﻿@{
+﻿@model RavenAge.Web.ViewModels.Arena.ArenaListViewModel;
+
+@{
     this.ViewData["Title"] = "Arena";
 }
 
 <head>
     <link rel="stylesheet" href="" asp-append-version="true" />
-</head>
-
-<head>
-    <link rel="stylesheet" href="~/css/event.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/arena.css" asp-append-version="true" />
 </head>
 
 <div id="arenaMap">
@@ -17,5 +16,72 @@
     <a id="anchor-level1" class="text-dark">
         <p class="font-weight-bold p-0 text-light">Arena</p>
     </a>
+
+    <div id="anchor-level2" class="text-dark">
+        <p class="font-weight-bold p-0 text-md-center text-light">List</p>
+
+        @foreach (var item in Model.ArenaList)
+        {
+            <div id="sub-level1" class="font-weight-bold p-0 text-light">
+                <div class="row justify-content-around">
+                    <div>@item.Name</div>
+                    <div>@item.ArenaPoints</div>
+                    <a id="link-level1" class="btn btn-danger" asp-controller="Arena" asp-action="Attack">Attack</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="anchor-level3" class="font-weight-bold p-0 text-light text-center">
+        <div>My Armies</div>
+        <div class="row justify-content-between">
+            <div>
+                <div>Archers</div>
+                <div id="archers"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Infantry</div>
+                <div id="infantry"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Cavalry</div>
+                <div id="cavalry"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Artillery</div>
+                <div id="artillery"></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="anchor-level4" class="font-weight-bold p-0 text-light text-center">
+        <div>Enemy Armies</div>
+        <div class="row justify-content-between">
+            <div>
+                <div>Archers</div>
+                <div id="archers"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Infantry</div>
+                <div id="infantry"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Cavalry</div>
+                <div id="cavalry"></div>
+                <div></div>
+            </div>
+            <div>
+                <div>Artillery</div>
+                <div id="artillery"></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 
 </div>

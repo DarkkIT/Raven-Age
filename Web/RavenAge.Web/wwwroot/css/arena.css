@@ -1,9 +1,5 @@
 ﻿
-body {
-    max-height: 1080px;
-}
-
-#eventMap {
+#arenaMap {
     width: 100%;
     height: 100%;
     max-width: 1980px;
@@ -16,9 +12,87 @@ body {
     font-size: 40px;
     text-decoration: none;
     color: black;
-    position: absolute;
     z-index: 9999;
+    position: absolute;
     left: 47%;
     top: 2%;
-    position: fixed;
+}
+
+#anchor-level2 {
+    width: 30%;
+    font-size: 30px;
+    text-decoration: none;
+    z-index: 100;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+}
+
+#sub-level1 {
+    border: 2px solid orangered;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+#link-level1 {
+    font-size: 1.5rem;
+    padding: 3px 10px;
+}
+
+#anchor-level3 {
+    width: 30%;
+    height: 30%;
+    font-size: 30px;
+    text-decoration: none;
+    border: 2px solid orangered;
+    border-radius: 6px;
+    z-index: 100;
+    position: absolute;
+    left: 65%;
+    top: 10%;
+}
+
+#anchor-level4 {
+    width: 30%;
+    height: 30%;
+    font-size: 30px;
+    text-decoration: none;
+    border: 2px solid orangered;
+    border-radius: 6px;
+    z-index: 100;
+    position: absolute;
+    left: 65%;
+    top: 50%;
+}
+
+#archers {
+    background-image: url(/images/Soldiers/HumanArchar.jpg);
+    background-size: cover;
+    width: 20%;
+    height: 45%;
+    position: absolute;
+}
+
+#infantry {
+    background-image: url(/images/Soldiers/HumanInfantry.jpg);
+    background-size: cover;
+    width: 20%;
+    height: 45%;
+    position: absolute;
+}
+
+#cavalry {
+    background-image: url(/images/Soldiers/HumanCavalery.jpg);
+    background-size: cover;
+    width: 20%;
+    height: 45%;
+    position: absolute;
+}
+
+#artillery {
+    background-image: url(/images/Soldiers/HumanArchar.jpg);
+    background-size: cover;
+    width: 20%;
+    height: 45%;
+    position: absolute;
 }

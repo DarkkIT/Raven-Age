@@ -88,7 +88,8 @@
                 Gold = 10,
             };
 
-            //var user = await this.userService.GetUserById(userId);
+            ////var user = await this.userService.GetUserById(userId);
+
             await this.cityRepo.AddAsync(city);
 
             await this.cityRepo.SaveChangesAsync();

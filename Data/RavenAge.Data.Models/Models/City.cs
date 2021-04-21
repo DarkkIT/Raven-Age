@@ -14,6 +14,8 @@
 
         public int Premium { get; set; }
 
+        public int ArenaPoints { get; set; }
+
         //// City Name
 
         public string Name { get; set; }
