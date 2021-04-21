@@ -25,7 +25,7 @@
 
         public ArenaListViewModel GetArenaList(string userId)
         {
-            var fullList = this.cityRepo.All().To<ArenaUserViewModel>().ToList();
+            var fullList = this.cityRepo.All().To<ArenaUserViewModel>().OrderByDescending(x => x.ArenaPoints).ToList();
 
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
@@ -36,7 +36,7 @@
             var min = curentId - 5 < 0 ? 0 : curentId - 5;
             var max = curentId + 5 > fullList.Count - 1 ? fullList.Count - 1 : curentId + 5;
 
-            for (int i = curentId - min; i < curentId + max; i++)
+            for (int i = min; i < max; i++)
             {
                 arenaList.Add(fullList[i]);
             }
