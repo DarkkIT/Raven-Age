@@ -1,10 +1,25 @@
-﻿<head>
-</head>
-<div>
-    <div class="mt-5">
+﻿@{
+    this.ViewData["Title"] = "Home";
+}
 
+<head>
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+</head>
+
+<div id="homePage">
+
+    <img class="img-fluid justify-content-center" src="~/images/Home/Home-image-5.jpg" style="width: 1920px; height: auto;" />
+
+    <a id="joinGameLink" class="" asp-controller="City" asp-action="Index">Join City</a>
+
+    <div id="block-1" >
+        <p class="text-center">News</p>
     </div>
-    <div class="row justify-content-center">
-        <a id="joinGameLink" class="link text-dark border border-danger" asp-controller="City" asp-action="Index">Join Game</a>
+    <div id="block-2">
+        <p class="text-center">News</p>
     </div>
+    <div id="block-3">
+        <p class="text-center">FAQ</p>
+    </div>
+
 </div>
