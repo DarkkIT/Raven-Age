@@ -33,6 +33,7 @@
     using RavenAge.Services.Data.HangfireService.SawMill;
     using RavenAge.Services.Data.HangfireService.TaxesArmy;
     using RavenAge.Services.Data.HouseService;
+    using RavenAge.Services.Data.RuneService;
     using RavenAge.Services.Data.SawMillService;
     using RavenAge.Services.Data.StoneMineService;
     using RavenAge.Services.Data.TownhallService;
@@ -100,6 +101,7 @@
             services.AddTransient<ITownHallService, TownHallService>();
             services.AddTransient<IStoneMineService, StoneMineService>();
             services.AddTransient<IDefenceWallService, DefenceWallService>();
+            services.AddTransient<IRuneService, RuneService>();
 
             // HangfireServices
             services.AddHangfire(config =>
