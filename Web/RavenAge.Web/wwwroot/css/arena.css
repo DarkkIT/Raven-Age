@@ -1,4 +1,4 @@
-﻿
+
 #arenaMap {
     width: 100%;
     height: 100%;
@@ -78,7 +78,6 @@
 
 .infantry {
     background-image: url(/images/Soldiers/HumanInfantry.jpg);
-}
 
 .cavalry {
     background-image: url(/images/Soldiers/HumanCavalery.jpg);

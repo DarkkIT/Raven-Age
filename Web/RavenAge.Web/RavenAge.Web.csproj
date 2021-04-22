@@ -9,6 +9,10 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Arena\Index.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -91,5 +95,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Sounds\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Arena\Index.cshtml" />
   </ItemGroup>
 </Project>
