@@ -71,8 +71,8 @@
     color: orangered;
     text-align: left;
     line-height: 1.1;
-    width: 20%;
-    height: 45%;
+    width: 15%;
+    height: 40%;
     position: absolute;
 }
 
@@ -82,8 +82,8 @@
     color: orangered;
     text-align: left;
     line-height: 1.1;
-    width: 20%;
-    height: 45%;
+    width: 15%;
+    height: 40%;
     position: absolute;
 }
 
@@ -93,8 +93,8 @@
     color: orangered;
     text-align: left;
     line-height: 1.1;
-    width: 20%;
-    height: 45%;
+    width: 15%;
+    height: 40%;
     position: absolute;
 }
 
@@ -104,7 +104,11 @@
     color: orangered;
     text-align: left;
     line-height: 1.1;
-    width: 20%;
-    height: 45%;
+    width: 15%;
+    height: 40%;
     position: absolute;
+}
+
+.armyBlock {
+    font-size: 20px;
 }
