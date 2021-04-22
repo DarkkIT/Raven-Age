@@ -26,8 +26,6 @@
     height: 75%;
     font-size: 20px;
     color: black;
-    border: solid;
-    border-color: black;
     border-radius: 10px;
     z-index: 9999;
     position: absolute;
@@ -43,8 +41,6 @@
     height: 75%;
     font-size: 20px;
     color: black;
-    border: solid;
-    border-color: black;
     border-radius: 10px;
     z-index: 9999;
     position: absolute;
@@ -60,8 +56,6 @@
     height: 75%;
     font-size: 20px;
     color: black;
-    border: solid;
-    border-color: black;
     border-radius: 10px;
     z-index: 9999;
     position: absolute;
