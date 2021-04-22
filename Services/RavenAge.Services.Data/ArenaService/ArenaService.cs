@@ -23,25 +23,29 @@
             this.userCityRepo = userCityRepo;
         }
 
-        public List<ArenaUserViewModel> GetArenaList(string userId)
+        public ArenaListViewModel GetArenaList(string userId)
         {
-            var fullArenaList = this.cityRepo.All().To<ArenaUserViewModel>().ToList();
+            var fullList = this.cityRepo.All().To<ArenaUserViewModel>().OrderByDescending(x => x.ArenaPoints).ToList();
 
             var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
-            var curentId = fullArenaList.FindIndex(a => a.Id == cityId);
+            var curentId = fullList.FindIndex(a => a.Id == cityId);
 
             var arenaList = new List<ArenaUserViewModel>();
 
             var min = curentId - 5 < 0 ? 0 : curentId - 5;
-            var max = curentId + 5 > fullArenaList.Count - 1 ? fullArenaList.Count - 1 : curentId + 5;
+            var max = curentId + 5 > fullList.Count - 1 ? fullList.Count - 1 : curentId + 5;
 
-            for (int i = curentId - min; i < curentId + max; i++)
+            for (int i = min; i < max; i++)
             {
-                arenaList.Add(fullArenaList[i]);
+                arenaList.Add(fullList[i]);
             }
 
-            return arenaList;
+            var arenaUser = fullList.FirstOrDefault(x => x.Id == cityId);
+
+            var fullArenaList = new ArenaListViewModel { ArenaList = arenaList, Attacker = arenaUser };
+
+            return fullArenaList;
         }
     }
 }

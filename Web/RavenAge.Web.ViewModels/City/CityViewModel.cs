@@ -54,7 +54,7 @@
 
         public BarracksViewModel Barracks { get; set; }
 
-        public ArmyViewModel Armies { get; set; }
+        public ArmyViewModel Army { get; set; }
 
         public RuneViewModel Runes { get; set; }
 

@@ -26,60 +26,53 @@
                 <div class="row justify-content-around">
                     <div>@item.Name</div>
                     <div>@item.ArenaPoints</div>
-                    <a id="link-level1" class="btn btn-danger" asp-controller="Arena" asp-action="Attack">Attack</a>
+                    <a id="link-level1" class="btn btn-danger" asp-controller="Arena" asp-action="Attack">Select</a>
                 </div>
             </div>
         }
+
     </div>
 
     <div id="anchor-level3" class="font-weight-bold p-0 text-light text-center">
         <div>My Armies</div>
-        <div class="row justify-content-between">
-            <div>
+        <div class="row justify-content-center">
+            <div class="m-2">
                 <div>Archers</div>
-                <div id="archers"></div>
-                <div></div>
+                <div id="archers">@Model.Attacker.Archers</div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Infantry</div>
-                <div id="infantry"></div>
-                <div></div>
+                <div id="infantry">@Model.Attacker.Infantry</div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Cavalry</div>
-                <div id="cavalry"></div>
-                <div></div>
+                <div id="cavalry">@Model.Attacker.Cavalry</div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Artillery</div>
-                <div id="artillery"></div>
-                <div></div>
+                <div id="artillery">@Model.Attacker.Artillery</div>
             </div>
         </div>
     </div>
 
     <div id="anchor-level4" class="font-weight-bold p-0 text-light text-center">
         <div>Enemy Armies</div>
-        <div class="row justify-content-between">
-            <div>
+        <div class="row justify-content-center">
+            <div class="m-2">
                 <div>Archers</div>
                 <div id="archers"></div>
-                <div></div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Infantry</div>
                 <div id="infantry"></div>
-                <div></div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Cavalry</div>
                 <div id="cavalry"></div>
-                <div></div>
             </div>
-            <div>
+            <div class="m-2">
                 <div>Artillery</div>
                 <div id="artillery"></div>
-                <div></div>
             </div>
         </div>
     </div>
