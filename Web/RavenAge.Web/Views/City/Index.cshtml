@@ -58,54 +58,54 @@
         <p class="font-weight-bold p-0">World View - 9</p>
     </a>
 
-    <a id="anchor-level10" class="row justify-content-between">
+    <a id="anchor-level10" class="row justify-content-around">
 
-        <div class="d-inline-block">
+        <div class="">
             <span class="currency-image-container">  <i style="color:silver" class=" fas fa-coins"></i></span>
             @if (Model.Silver > 999999)
             {
-                <span class="resource">Silver - @(Math.Round((Model.Silver / 1000000), 3)) M</span>
+                <span class="resource">@(Math.Round((Model.Silver / 1000000), 3)) M</span>
             }
             else if (Model.Silver > 999)
             {
-                <span class="resource">Silver - @(Math.Round((Model.Silver / 1000), 2)) k</span>
+                <span class="resource">@(Math.Round((Model.Silver / 1000), 2)) k</span>
             }
             else
             {
-                <span class="resource">Silver - @(Math.Floor(Model.Silver))</span>
+                <span class="resource">@(Math.Floor(Model.Silver))</span>
             }
         </div>
 
 
-        <div class="d-inline-block">
+        <div class="">
             <span class="currency-image-container"><i style="color:black" class="fas fa-mountain"></i></span>
             @if (Model.Stone > 999999)
             {
-                <span class="resource">Stone - @(Math.Round((Model.Stone / 1000000), 3)) M</span>
+                <span class="resource">@(Math.Round((Model.Stone / 1000000), 3)) M</span>
             }
             else if (Model.Stone > 999)
             {
-                <span class="resource">Stone - @(Math.Round((Model.Stone / 1000), 2)) k</span>
+                <span class="resource">@(Math.Round((Model.Stone / 1000), 2)) k</span>
             }
             else
             {
-                <span class="resource">Stone - @(Math.Floor(Model.Stone))</span>
+                <span class="resource">@(Math.Floor(Model.Stone))</span>
             }
         </div>
 
-        <div class="d-inline-block">
+        <div class="">
             <span class="currency-image-container" style="color:forestgreen"> <i class="fas fa-tree"></i></span>
             @if (Model.Wood > 999999)
             {
-                <span class="resource">Wood - @(Math.Round((Model.Wood / 1000000), 3)) M</span>
+                <span class="resource">@(Math.Round((Model.Wood / 1000000), 3)) M</span>
             }
             else if (Model.Wood > 999)
             {
-                <span class="resource">Wood - @(Math.Round((Model.Wood / 1000), 2)) k</span>
+                <span class="resource">@(Math.Round((Model.Wood / 1000), 2)) k</span>
             }
             else
             {
-                <span class="resource">Wood - @(Math.Floor(Model.Wood))</span>
+                <span class="resource">@(Math.Floor(Model.Wood))</span>
             }
         </div>
     </a>
