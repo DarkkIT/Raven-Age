@@ -85,7 +85,7 @@
 
                 if (result.Succeeded)
                 {
-                    if (username == "darkk@abv.bg")
+                    if (username == "darkk@abv.bg" || username == "misho@abv.bg" || username == "hristo@abv.bg")
                     {
                         userManager.AddToRoleAsync(appUser, GlobalConstants.AdministratorRoleName).Wait();
                     }
