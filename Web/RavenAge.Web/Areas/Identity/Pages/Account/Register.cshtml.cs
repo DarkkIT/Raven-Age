@@ -251,7 +251,7 @@ namespace RavenAge.Web.Areas.Identity.Pages.Account
                     else
                     {
                         await this._signInManager.SignInAsync(user, isPersistent: false);
-                        return this.Redirect("/Home/Index");
+                        return this.Redirect("/City/Index");
                     }
                 }
 

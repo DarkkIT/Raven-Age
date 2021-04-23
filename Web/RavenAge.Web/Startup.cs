@@ -78,7 +78,7 @@
             });
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
+                options.Conventions.AddAreaPageRoute("/Home", "/Index", "");
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDatabaseDeveloperPageExceptionFilter();
 
