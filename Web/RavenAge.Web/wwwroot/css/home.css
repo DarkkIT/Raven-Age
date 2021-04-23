@@ -1,0 +1,70 @@
+﻿
+#homePage{
+    max-width: 1980px;
+    height: auto;
+    position: relative;
+}
+
+#joinGameLink {
+    width: 11%;
+    height: 5%;
+    font-size: 45px;
+    text-decoration: none;
+    font-weight: 700;
+    color: orangered;
+    z-index: 9999;
+    position: absolute;
+    left: 45%;
+    top: 10%;
+}
+
+#block-1 {
+    background-image: url(/images/Home/White-background-3.jpg);
+    background-size: cover;
+    opacity: 0.5;
+    width: 29%;
+    height: 75%;
+    font-size: 20px;
+    color: black;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    z-index: 9999;
+    position: absolute;
+    left: 3%;
+    top: 15%;
+}
+
+#block-2 {
+    background-image: url(/images/Home/White-background-3.jpg);
+    background-size: cover;
+    opacity: 0.5;
+    width: 29%;
+    height: 75%;
+    font-size: 20px;
+    color: black;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    z-index: 9999;
+    position: absolute;
+    left: 35.5%;
+    top: 22%;
+}
+
+#block-3 {
+    background-image: url(/images/Home/White-background-3.jpg);
+    background-size: cover;
+    opacity: 0.5;
+    width: 29%;
+    height: 75%;
+    font-size: 20px;
+    color: black;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    z-index: 9999;
+    position: absolute;
+    left: 68%;
+    top: 15%;
+}

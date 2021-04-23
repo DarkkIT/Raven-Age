@@ -6,13 +6,20 @@
     var cookieString = consentFeature?.CreateConsentCookie();
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/cookie-consent.css" asp-append-version="true" />
+
+</head>
 @if (showBanner)
 {
-    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        We use cookies to understand how you use our site and to improve your experience. <a asp-area="" asp-controller="Home" asp-action="Privacy">Learn More</a>.
-        <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            <span aria-hidden="true">Accept</span>
-        </button>
+    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+        We use cookies to understand how you use our site and to improve your experience.
+        <div>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Learn More</a>.
+            <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+                <span aria-hidden="true">Accept</span>
+            </button>
+        </div>
     </div>
     <script>
         (function () {

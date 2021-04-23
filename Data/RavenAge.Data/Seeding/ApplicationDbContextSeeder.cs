@@ -6,6 +6,7 @@
 
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using TheDarkPortal.Data.Seeding;
 
     public class ApplicationDbContextSeeder : ISeeder
     {
@@ -26,6 +27,7 @@
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
+                              new UsersSeeder(),
                           };
 
             foreach (var seeder in seeders)
