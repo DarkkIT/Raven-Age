@@ -47,7 +47,6 @@
                 var foodCost = archersTaxFood + infantryTaxFood + cavalryTaxFood + catapulTaxFood + workersFoodCost;
                 var silverCost = archersTaxSilver + infantryTaxSilver + cavalryTaxSilver + catapulTaxSilver;
                 
-                // TODO: Need to validate if city food and silver go under the zero
                 if (city.Food - foodCost < 0)
                 {
                     city.Food = 0;

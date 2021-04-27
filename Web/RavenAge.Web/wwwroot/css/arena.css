@@ -78,8 +78,9 @@
 
 .infantry {
     background-image: url(/images/Soldiers/HumanInfantry.jpg);
+}
 
-.cavalry {
+.cavalry{
     background-image: url(/images/Soldiers/HumanCavalery.jpg);
 }
 
