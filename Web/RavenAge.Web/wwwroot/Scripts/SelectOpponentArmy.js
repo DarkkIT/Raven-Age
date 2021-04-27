@@ -7,6 +7,9 @@
         let cavalry = $(this).attr('data-cavalry');
         let artillery = $(this).attr('data-artillery');
 
+        $('#LaunchAttack').attr('asp-route-id', userId);
+        $('#LaunchAttack').removeClass('disabled');
+
         $(".opponent div.unit").each(function () {
 
             if ($(this).hasClass('archers')) {

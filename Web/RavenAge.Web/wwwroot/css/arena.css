@@ -59,6 +59,13 @@
     left: 65%;
 }
 
+#LaunchAttack {
+    z-index: 100;
+    position: absolute;
+    left: 78%;
+    top: 43%;
+}
+
 .unit {
     background-size: cover;
     color: orangered;
