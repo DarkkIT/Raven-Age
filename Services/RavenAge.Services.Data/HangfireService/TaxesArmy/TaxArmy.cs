@@ -42,12 +42,29 @@
                 var catapulTaxSilver = city.Artillery * GlobalConstants.SilverTaxForArmy;
 
                 // Tax workers
-                var workersTax = city.Workers * GlobalConstants.FoodTaxForWorkers;
+                var workersFoodCost = city.Workers * GlobalConstants.FoodTaxForWorkers;
 
+                var foodCost = archersTaxFood + infantryTaxFood + cavalryTaxFood + catapulTaxFood + workersFoodCost;
+                var silverCost = archersTaxSilver + infantryTaxSilver + cavalryTaxSilver + catapulTaxSilver;
+                
                 // TODO: Need to validate if city food and silver go under the zero
-                city.Food -= archersTaxFood + infantryTaxFood + cavalryTaxFood + catapulTaxFood;
-                city.Silver -= archersTaxSilver + infantryTaxSilver + cavalryTaxSilver + catapulTaxSilver;
-                city.Food -= workersTax;
+                if (city.Food - foodCost < 0)
+                {
+                    city.Food = 0;
+                }
+                else
+                {
+                    city.Food -= foodCost;
+                }
+
+                if (city.Silver - silverCost < 0)
+                {
+                    city.Silver = 0;
+                }
+                else
+                {
+                    city.Silver -= silverCost;
+                }
 
                 this.cityRepository.SaveChangesAsync().GetAwaiter();
             }
