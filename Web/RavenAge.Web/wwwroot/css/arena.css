@@ -59,6 +59,13 @@
     left: 65%;
 }
 
+#LaunchAttack {
+    z-index: 100;
+    position: absolute;
+    left: 78%;
+    top: 43%;
+}
+
 .unit {
     background-size: cover;
     color: orangered;
@@ -78,8 +85,9 @@
 
 .infantry {
     background-image: url(/images/Soldiers/HumanInfantry.jpg);
+}
 
-.cavalry {
+.cavalry{
     background-image: url(/images/Soldiers/HumanCavalery.jpg);
 }
 

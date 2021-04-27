@@ -58,6 +58,8 @@
         </div>
     </div>
 
+    <a id="LaunchAttack" class="btn btn-danger disabled" asp-controller="Battle" asp-action="Attack" asp-route-id="">Attack</a>
+
     <div  class="opponent army-container font-weight-bold p-0 text-light text-center">
         <div>Enemy Armies</div>
       
@@ -86,32 +88,5 @@
 
 @section Scripts{ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(".opponent-select").each(function () {
-            $(this).click(function () {
-
-                var userId = $(this).attr('data-defenderId');
-                var archers = $(this).attr('data-archers');
-                var infantry = $(this).attr('data-infantry');
-                var cavalry = $(this).attr('data-cavalry');
-                var artillery = $(this).attr('data-artillery');
-
-                $(".opponent div.unit").each(function () {
-
-                    if ($(this).hasClass('archers')) {
-                        $(this).text(`${archers}`);
-                    }
-                    else if ($(this).hasClass('infantry')) {
-                        $(this).text(`${infantry}`);
-                    }
-                    else if ($(this).hasClass('cavalry')) {
-                        $(this).text(`${cavalry}`);
-                    }
-                    else if ($(this).hasClass('artillery')) {
-                        $(this).text(`${artillery}`);
-                    }
-                })
-            })
-        });
-    </script>
+    <script src="~/Scripts/SelectOpponentArmy.js"></script>
 }
