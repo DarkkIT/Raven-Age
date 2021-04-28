@@ -1,3 +1,5 @@
+@model RavenAge.Web.ViewModels.Guild.GuildListViewModel;
+
 @{
     this.ViewData["Title"] = "Raven Guild";
 }
@@ -13,9 +15,12 @@
 
         <img class="img-fluid justify-content-center " src="~/images/Guild/tavern2.jpg" />
 
-        <div id="scoreBoard" class="row justify-content-around border" >
+        <div id="scoreBoard" class="row justify-content-around border">
             <p class="">Guilds Scoreboard</p>
-            <table class="table table-border">
+            <table class="table table-border align-content-center">
+                <tr>
+                    <th><a class="btn btn-success ">Create a guild!</a></th>
+                </tr>
                 <tr>
                     <th>Guild name:</th>
                     <th>Points:</th>
@@ -23,7 +28,7 @@
                 @for (int i = 10; i > 0; i--)
                 {
                     <tr>
-                        <td class="border">Wild Guild @i</td>
+                        <td class="border">Wild Guild @i - <a class="btn btn-primary" asp-controller="Guild" asp-action="Join">Join</a></td>
                         <td class="border">@(DateTime.UtcNow.Millisecond * i)</td>
                     </tr>
 
@@ -32,8 +37,8 @@
         </div>
 
         <div id="yourGuild" class="row col-md-12 justify-content-around border ">
-                <p class="border">Your guild</p>
-          
+            <p class="border">Your guild</p>
+
 
             <div class="w-100"></div>
 
