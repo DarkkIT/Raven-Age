@@ -28,6 +28,7 @@
     using RavenAge.Services.Data.BarracksService;
     using RavenAge.Services.Data.DefenceWall;
     using RavenAge.Services.Data.FarmService;
+    using RavenAge.Services.Data.GuildService;
     using RavenAge.Services.Data.HangfireService;
     using RavenAge.Services.Data.HangfireService.Farm;
     using RavenAge.Services.Data.HangfireService.House;
@@ -103,6 +104,7 @@
             services.AddTransient<IDefenceWallService, DefenceWallService>();
             services.AddTransient<IRuneService, RuneService>();
             services.AddTransient<IArenaService, ArenaService>();
+            services.AddTransient<IGuildService, GuildService>();
 
             // HangfireServices
             services.AddHangfire(config =>
