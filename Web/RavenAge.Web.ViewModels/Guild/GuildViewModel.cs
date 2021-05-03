@@ -18,9 +18,13 @@
 
         public int MembersCount { get; set; }
 
+        public int? UserOwnGuildId { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Guild, GuildViewModel>().ForMember(s => s.MembersCount, t => t.MapFrom(x => x.Members.Count));
+
+            //configuration.CreateMap<Guild, GuildViewModel>().ForMember(s => s.UserOwnGuildId, t => t.MapFrom(x => x.Members.))
         }
     }
 }

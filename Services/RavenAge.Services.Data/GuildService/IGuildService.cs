@@ -12,11 +12,11 @@
 
         List<GuildViewModel> GetGuilds();
 
-        Task Create(int userId);
+        Task Create(string userId, string guildName);
 
-        Task Join(int userId, int guildId);
+        Task Join(string userId, int guildId);
 
-        Task Leave(int userId, int guildId);
+        Task Leave(string userId, int guildId);
 
         Task ApproveJoinGuild(int guildId);
     }

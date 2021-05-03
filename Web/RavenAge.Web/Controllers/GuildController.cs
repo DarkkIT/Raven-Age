@@ -2,6 +2,9 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using RavenAge.Services.Data.GuildService;
+    using RavenAge.Web.ViewModels.Guild;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public class GuildController : Controller
     {
@@ -14,8 +17,8 @@
 
         public IActionResult Index()
         {
-
-            var model = this.guildService.GetGuilds();
+            var model = new GuildListViewModel();
+            model.Guilds = this.guildService.GetGuilds();
 
             return this.View(model);
         }
@@ -30,8 +33,12 @@
             return this.RedirectToAction("Index");
         }
 
-        public IActionResult Create()
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateGuildInputViewModel model)
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.guildService.Create(userId, model.Name);
             return this.RedirectToAction("Index");
         }
     }
