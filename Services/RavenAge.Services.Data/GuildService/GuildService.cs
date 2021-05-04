@@ -1,6 +1,7 @@
 ﻿namespace RavenAge.Services.Data.GuildService
 {
     using RavenAge.Data.Common.Repositories;
+    using RavenAge.Data.Models;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
     using RavenAge.Web.ViewModels.Guild;
@@ -13,10 +14,12 @@
     public class GuildService : IGuildService
     {
         private readonly IDeletableEntityRepository<Guild> guildRepo;
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepo;
 
-        public GuildService(IDeletableEntityRepository<Guild> guildRepo)
+        public GuildService(IDeletableEntityRepository<Guild> guildRepo, IDeletableEntityRepository<ApplicationUser> userRepo)
         {
             this.guildRepo = guildRepo;
+            this.userRepo = userRepo;
         }
 
         public Task ApproveJoinGuild(int guildId)
@@ -24,9 +27,13 @@
             throw new NotImplementedException();
         }
 
-        public Task Create(int userId)
+        public async Task Create(string userId, string guildName)
         {
-            throw new NotImplementedException();
+            var guild = new Guild() { Name = guildName, GuildMasterId = userId };
+
+            guild.Members.Add(this.userRepo.AllAsNoTracking().FirstOrDefault(x => x.Id == userId));
+            await this.guildRepo.AddAsync(guild);
+            await this.guildRepo.SaveChangesAsync();
         }
 
         public List<GuildViewModel> GetGuilds()
@@ -34,12 +41,12 @@
             return this.guildRepo.All().To<GuildViewModel>().ToList();
         }
 
-        public Task Join(int userId, int guildId)
+        public Task Join(string userId, int guildId)
         {
             throw new NotImplementedException();
         }
 
-        public Task Leave(int userId, int guildId)
+        public Task Leave(string userId, int guildId)
         {
             throw new NotImplementedException();
         }

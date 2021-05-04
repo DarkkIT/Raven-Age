@@ -1,0 +1,16 @@
+﻿@model RavenAge.Web.ViewModels.Guild.CreateGuildInputViewModel;
+
+<div class="row justify-content-between ml-2">
+    <div class="col-md-10">
+        <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
+        <div class="col-md-10">
+            <label asp-for="@Model.Name">Guild name*:</label>
+            <input name="name" asp-for="@Model.Name" value="My guild name" class="form-control col-md-12" />
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <input type="submit" asp-controller="Guild" asp-action="Create" value="Create" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
+        </form>
+
+    </div>
+</div>
