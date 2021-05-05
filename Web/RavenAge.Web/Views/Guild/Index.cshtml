@@ -1,3 +1,6 @@
+@using RavenAge.Web.ViewModels.Guild;
+@model RavenAge.Web.ViewModels.Guild.GuildListViewModel;
+
 @{
     this.ViewData["Title"] = "Raven Guild";
 }
@@ -13,27 +16,33 @@
 
         <img class="img-fluid justify-content-center " src="~/images/Guild/tavern2.jpg" />
 
-        <div id="scoreBoard" class="row justify-content-around border" >
+        <div id="scoreBoard" class="row justify-content-around border">
             <p class="">Guilds Scoreboard</p>
-            <table class="table table-border">
+            <table class="table table-border align-content-center">
+                <tr>
+                    <th><a class="btn btn-success" data-toggle="modal" data-target="#createGuild">Create a guild!</a></th>
+                </tr>
                 <tr>
                     <th>Guild name:</th>
-                    <th>Points:</th>
+                    <th>Members:</th>
                 </tr>
-                @for (int i = 10; i > 0; i--)
+
+                @foreach (var guild in Model.Guilds)
                 {
                     <tr>
-                        <td class="border">Wild Guild @i</td>
-                        <td class="border">@(DateTime.UtcNow.Millisecond * i)</td>
+                        <td class="border">@guild.Name <a class="btn btn-primary" asp-controller="Guild" asp-action="Join">Join</a></td>
+                        <td class="border">@guild.MembersCount</td>
                     </tr>
-
                 }
+
             </table>
         </div>
 
+
+
         <div id="yourGuild" class="row col-md-12 justify-content-around border ">
-                <p class="border">Your guild</p>
-          
+            <p class="border">Your guild</p>
+
 
             <div class="w-100"></div>
 
@@ -54,6 +63,33 @@
 
     </div>
     <audio id="playTarget" src="" loop="loop" autoplay style="display:none"></audio>
+
+    <div class="modal fade" id="createGuild" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">
+                        Create a guild:
+
+
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    @*@Html.PartialAsync("_BarracksModal");*@
+
+                    <partial name="_CreateGuild", model='new CreateGuildInputViewModel() { Name = string.Empty}' />
+
+                </div>
+                <div class="modal-footer">
+                    <p>Fill in all the necessary fields marked with (*)</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 @section Scripts{
