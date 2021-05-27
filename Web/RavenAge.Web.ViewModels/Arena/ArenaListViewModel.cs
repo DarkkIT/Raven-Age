@@ -12,5 +12,7 @@
         public IEnumerable<ArenaUserViewModel> ArenaList { get; set; }
 
         public ArenaUserViewModel Attacker { get; set; }
+
+        public BattleResultViewModel BattleResult { get; set; }
     }
 }

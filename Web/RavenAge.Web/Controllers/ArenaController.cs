@@ -7,25 +7,52 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
+    using RavenAge.Services.Data.ArenaBattleService;
     using RavenAge.Services.Data.ArenaService;
     using RavenAge.Web.ViewModels.Arena;
 
     public class ArenaController : Controller
     {
         private readonly IArenaService arenaService;
+        private readonly IArenaBattleService arenaBattleService;
 
-        public ArenaController(IArenaService arenaService)
+        public ArenaController(IArenaService arenaService, IArenaBattleService arenaBattleService)
         {
             this.arenaService = arenaService;
+            this.arenaBattleService = arenaBattleService;
         }
 
         public IActionResult Index()
         {
             var userId = this.GetUserId();
 
-            var viewModel = this.arenaService.GetArenaList(userId);
+            if (!this.TempData.Keys.Contains("ArenaListViewModel"))
+            {
+                return this.View(this.arenaService.GetArenaList(userId));
+            }
+            else
+            {
+                string results = this.TempData["ArenaListViewModel"].ToString();
 
-            return this.View(viewModel);
+                ArenaListViewModel viewModel = JsonConvert.DeserializeObject<ArenaListViewModel>(results);
+
+                return this.View(viewModel);
+            }
+        }
+
+        public async Task<IActionResult> Attack(int userId)
+        {
+            var attackerId = this.GetUserId();
+            var defenderId = userId;
+
+            var viewModel = this.arenaService.GetArenaList(attackerId);
+
+            viewModel.BattleResult = await this.arenaBattleService.Attack(attackerId, defenderId);
+
+            this.TempData["ArenaListViewModel"] = JsonConvert.SerializeObject(viewModel);
+
+            return this.RedirectToAction("Index");
         }
 
         internal string GetUserId()

@@ -41,9 +41,9 @@
                 arenaList.Add(fullList[i]);
             }
 
-            var arenaUser = fullList.FirstOrDefault(x => x.Id == cityId);
+            var attacker = fullList.FirstOrDefault(x => x.Id == cityId);
 
-            var fullArenaList = new ArenaListViewModel { ArenaList = arenaList, Attacker = arenaUser };
+            var fullArenaList = new ArenaListViewModel { ArenaList = arenaList, Attacker = attacker };
 
             return fullArenaList;
         }
