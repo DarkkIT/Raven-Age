@@ -1,4 +1,7 @@
-﻿@{
+﻿@using RavenAge.Data.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager;
+@{
     this.ViewData["Title"] = "Home";
 }
 
@@ -10,9 +13,18 @@
 
     <img class="img-fluid justify-content-center" src="~/images/Home/Home-image-5.jpg" style="width: 1920px; height: auto;" />
 
-    <a id="joinGameLink" class="" asp-controller="City" asp-action="Index">Join City</a>
+    @if (this.SignInManager.IsSignedIn(this.User))
+    {
+        <a id="joinGameLink" class="" asp-controller="City" asp-action="Index">Join City</a>
+    }
+    else
+    {
+        <a id="joinGameLink" class="" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    }
 
-    <div id="block-1" >
+
+
+    <div id="block-1">
         <p class="text-center">News</p>
     </div>
     <div id="block-2">
