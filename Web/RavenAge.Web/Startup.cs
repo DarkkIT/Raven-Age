@@ -24,6 +24,7 @@
     using RavenAge.Data.Repositories;
     using RavenAge.Data.Seeding;
     using RavenAge.Services.CityService.Data;
+    using RavenAge.Services.Data.ArenaBattleService;
     using RavenAge.Services.Data.ArenaService;
     using RavenAge.Services.Data.BarracksService;
     using RavenAge.Services.Data.DefenceWall;
@@ -105,6 +106,7 @@
             services.AddTransient<IRuneService, RuneService>();
             services.AddTransient<IArenaService, ArenaService>();
             services.AddTransient<IGuildService, GuildService>();
+            services.AddTransient<IArenaBattleService, ArenaBattleService>();
 
             // HangfireServices
             services.AddHangfire(config =>
