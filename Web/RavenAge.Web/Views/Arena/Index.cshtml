@@ -1,9 +1,94 @@
-
 @{
     this.ViewData["Title"] = "Arena";
 }
 
-<partial name="_ArenaIndex" />
+<head>
+    <link rel="stylesheet" href="" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/arena.css" asp-append-version="true" />
+</head>
+
+<div id="arenaMap">
+
+    @if (Model.BattleResult != null)
+    {
+        <div class="alert alert-primary" role="alert" style="left: 47%; top: 50%; position: absolute;">
+            You Win - @Model.BattleResult.ArenaPoints - Points "Test"
+        </div>
+    }
+
+    <img class="img-fluid justify-content-center" src="~/images/Arena/Raven-arena-3.png" style="width: 1920px; height: auto; z-index: 100;" />
+
+    <div id="title" class="text-dark">
+        <p class="font-weight-bold p-0 text-light">Arena</p>
+    </div>
+
+    <div id="users-list" class="text-dark">
+        <p class="font-weight-bold p-0 text-md-center text-light">List</p>
+
+        @foreach (var item in Model.ArenaList)
+        {
+            <div id="sub-level1" class="font-weight-bold p-0 text-light">
+                <div class="row justify-content-around">
+                    <div>@item.Name</div>
+                    <div>@item.ArenaPoints</div>
+                    <a data-defenderId="@item.Id" data-archers="@item.Archers" data-infantry="@item.Infantry" data-cavalry="@item.Cavalry" data-artillery="@item.Artillery" class="opponent-select btn btn-danger">Select</a>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div class="user army-container font-weight-bold p-0 text-light text-center">
+        <div>My Armies</div>
+
+        <div class="row justify-content-around">
+            <div class="unit-card">
+
+                <div>Archers</div>
+                <div class="unit archers">@Model.Attacker.Archers</div>
+            </div>
+            <div class="unit-card">
+                <div>Infantry</div>
+                <div class="unit infantry"> @Model.Attacker.Infantry</div>
+            </div>
+            <div class="unit-card">
+                <div>Cavalry</div>
+                <div class="unit cavalry">@Model.Attacker.Cavalry</div>
+            </div>
+            <div class="unit-card">
+                <div>Artillery</div>
+                <div class="unit artillery">@Model.Attacker.Artillery</div>
+            </div>
+        </div>
+    </div>
+
+    <a id="LaunchAttack" class="btn btn-danger disabled" asp-controller="Arena" asp-action="Attack" asp-route-id="">Attack</a>
+
+    <div class="opponent army-container font-weight-bold p-0 text-light text-center">
+        <div>Enemy Armies</div>
+
+        <div class="row justify-content-around">
+            <div class="">
+
+                <div>Archers</div>
+                <div class="unit archers"></div>
+            </div>
+            <div class="">
+                <div>Infantry</div>
+                <div class="unit infantry"></div>
+            </div>
+            <div class="">
+                <div>Cavalry</div>
+                <div class="unit cavalry"></div>
+            </div>
+            <div class="">
+                <div>Artillery</div>
+                <div class="unit artillery"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
