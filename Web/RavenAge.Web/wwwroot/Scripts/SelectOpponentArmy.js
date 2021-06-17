@@ -1,13 +1,22 @@
 ﻿$(".opponent-select").each(function () {
     $(this).click(function () {
 
-        let userId = $(this).attr('data-defenderId');
+        let userToAttackId = $(this).attr('data-defenderId');
+        userId = parseInt(userToAttackId);
+        let hrefVal = $('#LaunchAttack').attr('href');
+        if (!hrefVal.endsWith('/Attack')) {
+            hrefVal = '/Arena/Attack'
+        }
+        hrefResult = hrefVal.concat('/').concat(userToAttackId);
+        console.log(hrefResult);
+
+        $('#LaunchAttack').attr('href', hrefResult);
+
         let archers = $(this).attr('data-archers');
         let infantry = $(this).attr('data-infantry');
         let cavalry = $(this).attr('data-cavalry');
         let artillery = $(this).attr('data-artillery');
 
-        $('#LaunchAttack').attr('asp-route-id', userId);
         $('#LaunchAttack').removeClass('disabled');
 
         $(".opponent div.unit").each(function () {

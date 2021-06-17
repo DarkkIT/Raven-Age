@@ -41,10 +41,10 @@
             }
         }
 
-        public async Task<IActionResult> Attack(int userId)
+        public async Task<IActionResult> Attack(int id)
         {
             var attackerId = this.GetUserId();
-            var defenderId = userId;
+            var defenderId = id;
 
             var viewModel = this.arenaService.GetArenaList(attackerId);
 
