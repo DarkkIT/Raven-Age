@@ -8,7 +8,6 @@
 
     public abstract class Unit : BaseDeletableModel<int>
     {
-
         public int Attack { get; set; }
 
         public int Bonus { get; set; }
