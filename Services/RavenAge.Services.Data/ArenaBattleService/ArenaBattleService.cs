@@ -37,10 +37,51 @@
 
             //// BattleLogic
 
-            //while (attackerCity.ArmyTotalCount <= 0 || defenderCity.ArmyTotalCount <= 0)
-            //{
+            var attackerArmyTotalCount = attackerCity.ArmyTotalCount;
+            var defenderArmyTotalCount = defenderCity.ArmyTotalCount;
 
-            //}
+            while (attackerArmyTotalCount > 0 || defenderArmyTotalCount > 0)
+            {
+                var attackerArchersCount = attackerCity.ArchersCount;
+                var attackerInfantryCount = attackerCity.InfantryCount;
+                var attackerCavaleryCount = attackerCity.CavaleryCount;
+                var attackerArtileryCount = attackerCity.ArtiletyCount;
+                attackerArmyTotalCount = attackerArchersCount + attackerInfantryCount + attackerCavaleryCount + attackerArtileryCount;
+
+                var defenderArchersCount = defenderCity.ArchersCount;
+                var defenderInfantryCount = defenderCity.InfantryCount;
+                var defenderCavaleryCount = defenderCity.CavaleryCount;
+                var defenderArtileryCount = defenderCity.ArtiletyCount;
+                defenderArmyTotalCount = defenderArchersCount + defenderInfantryCount + defenderCavaleryCount + defenderArtileryCount;
+
+                //// Phase 1 - Artilery attack enemy Artilery, then attack enemy Archers
+
+                var defenderArtileryHealtLeft =
+                    (defenderCity.FullArtileryHealth * defenderArtileryCount)
+                    - (attackerCity.FullArtileryAttack * attackerArtileryCount);
+
+                defenderArtileryCount = defenderArtileryHealtLeft / defenderCity.FullArtileryHealth;
+
+                var defenderArchersHeltLeft =
+                    (defenderCity.FullArcherHealth * defenderArchersCount)
+                    - (attackerCity.FullArtileryAttack * attackerArtileryCount);
+
+                defenderArchersCount = defenderArchersHeltLeft / defenderCity.FullArcherHealth;
+
+                //// Phase 2 - enemy Artilery responds with the same attack
+
+                var attackerArtileryHelthLeft =
+                    (attackerCity.FullArtileryHealth * attackerArtileryCount)
+                    - (defenderCity.FullArtileryAttack * defenderArtileryCount);
+
+                attackerArtileryCount = attackerArtileryHelthLeft / attackerCity.FullArtileryHealth;
+
+                var attackerArchersHealthLeft =
+                    (attackerCity.FullArcherHealth * attackerArchersCount)
+                    - (defenderCity.FullArtileryAttack * defenderArtileryCount);
+
+                attackerArchersCount = attackerArchersHealthLeft / attackerCity.FullArcherHealth;
+            }
 
             var model = new BattleResultViewModel { ArenaPoints = 15 };
 
