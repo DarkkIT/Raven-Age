@@ -24,13 +24,13 @@
 
         public int Workers { get; set; }
 
-        public int Archers { get; set; }
+        //////public int Archers { get; set; }
 
-        public int Infantry { get; set; }
+        //////public int Infantry { get; set; }
 
-        public int Cavalry { get; set; }
+        //////public int Cavalry { get; set; }
 
-        public int Artillery { get; set; }
+        //////public int Artillery { get; set; }
 
         //// City Resources
 
@@ -93,10 +93,6 @@
         public int ArchersArmyId { get; set; }
 
         public Archers ArchersArmy { get; set; }
-
-        public int ArmyId { get; set; }
-
-        public Army Army { get; set; }
 
         public int RuneId { get; set; }
 
