@@ -78,6 +78,22 @@
 
         public DefenceWall DefenceWall { get; set; }
 
+        public int InfantryArmyId { get; set; }
+
+        public Infantry InfantryArmy { get; set; }
+
+        public int CavalryArmyId { get; set; }
+
+        public Cavalry CavalryArmy { get; set; }
+
+        public int ArtilleryArmyId { get; set; }
+
+        public Artillery ArtilleryArmy { get; set; }
+
+        public int ArchersArmyId { get; set; }
+
+        public Archers ArchersArmy { get; set; }
+
         public int ArmyId { get; set; }
 
         public Army Army { get; set; }
