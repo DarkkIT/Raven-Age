@@ -24,6 +24,7 @@ $("input[value='Hire']").each(function (el) {
                 
                 success: function (data) {
 
+                    console.log(data);
                     updateResource(data);
 
                     var newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;

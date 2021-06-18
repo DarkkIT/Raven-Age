@@ -3,12 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-
+    using AutoMapper;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
     using RavenAge.Web.ViewModels.Barracks;
 
-    public class CityViewModel : IMapFrom<City>
+    public class CityViewModel : IMapFrom<City>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -59,5 +59,14 @@
         public RuneViewModel Runes { get; set; }
 
         public HireSoldiersInputModel HireSoldiersInputModel { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<City, CityViewModel>()
+                .ForMember(t => t.Archers, x => x.MapFrom(s => s.ArchersArmy.Count))
+                .ForMember(t => t.Cavalry, x => x.MapFrom(s => s.CavalryArmy.Count))
+                .ForMember(t => t.Artillery, x => x.MapFrom(s => s.ArtilleryArmy.Count))
+                .ForMember(t => t.Infantry, x => x.MapFrom(s => s.InfantryArmy.Count));
+        }
     }
 }
