@@ -19,5 +19,8 @@
         public int Production { get; set; }
 
         public string Description { get; set; }
+
+        public bool WoodRune { get; set; }
+
     }
 }
