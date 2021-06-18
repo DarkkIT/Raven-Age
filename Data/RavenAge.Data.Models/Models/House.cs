@@ -21,5 +21,7 @@
         public int WorkerLimit { get; set; }
 
         public string Description { get; set; }
+
+        public bool SilverRune { get; set; }
     }
 }

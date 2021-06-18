@@ -19,5 +19,9 @@
         public int FoodProduction { get; set; }
 
         public string Description { get; set; }
+
+
+        public bool FoodRunes { get; set; }
+
     }
 }

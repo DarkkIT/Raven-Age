@@ -25,6 +25,14 @@
         {
         }
 
+        public DbSet<Infantry> Infantries { get; set; }
+
+        public DbSet<Cavalry> Cavalries { get; set; }
+
+        public DbSet<Artillery> Artilleries { get; set; }
+
+        public DbSet<Archers> Archers { get; set; }
+
         public DbSet<Rune> Runes { get; set; }
 
         public DbSet<Army> Armies { get; set; }
