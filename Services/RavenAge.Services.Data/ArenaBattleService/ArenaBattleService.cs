@@ -13,13 +13,16 @@
     {
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IRepository<UserCity> userCityRepo;
+        private readonly IDeletableEntityRepository<Army> armyRepo;
 
         public ArenaBattleService(
             IDeletableEntityRepository<City> cityRepo,
-            IRepository<UserCity> userCityRepo)
+            IRepository<UserCity> userCityRepo,
+            IDeletableEntityRepository<Army> armyRepo)
         {
             this.cityRepo = cityRepo;
             this.userCityRepo = userCityRepo;
+            this.armyRepo = armyRepo;
         }
 
         public async Task<BattleResultViewModel> Attack(string attackerId, int defenderId)
@@ -27,7 +30,10 @@
             var userCity = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId);
 
             var attackerCity = this.cityRepo.All().FirstOrDefault(x => x.Id == userCity.CityId);
-            var defenderCity = this.cityRepo.All().FirstOrDefault(x => x.Id == defenderId); //// Need defenderId from JS
+            var defenderCity = this.cityRepo.All().FirstOrDefault(x => x.Id == defenderId);
+
+            var attackerAttacks = this.armyRepo.All().FirstOrDefault(x => x.Id == attackerCity.ArmyId);
+            var defenderAttacks = this.armyRepo.All().FirstOrDefault(x => x.Id == defenderCity.ArmyId);
 
             var model = new BattleResultViewModel { ArenaPoints = 15 };
 
