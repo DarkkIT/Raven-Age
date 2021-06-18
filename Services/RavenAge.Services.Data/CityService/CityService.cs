@@ -26,7 +26,6 @@
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IDeletableEntityRepository<TownHall> townHallRepo;
         private readonly IUserService userService;
-        private readonly IDeletableEntityRepository<Army> armyRepo;
         private readonly IDeletableEntityRepository<Rune> runeRepo;
 
         public CityService(
@@ -41,7 +40,6 @@
                            IRepository<UserCity> userCityRepo,
                            IDeletableEntityRepository<City> cityRepo,
                            IUserService userService,
-                           IDeletableEntityRepository<Army> armyRepo,
                            IDeletableEntityRepository<Rune> runeRepo)
         {
             this.barracksRepo = barracksRepo;
@@ -54,7 +52,6 @@
             this.cityRepo = cityRepo;
             this.townHallRepo = townHallRepo;
             this.userService = userService;
-            this.armyRepo = armyRepo;
             this.runeRepo = runeRepo;
         }
 
@@ -72,14 +69,13 @@
                 WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
-                Army = new Army { ArcherAttack = 1000, ArcherDefence = 800, ArcherHealth = 1000, InfantryAttack = 1000, InfantryDefence = 1000, InfantryHealth = 800, CavalryAttack = 1200, CavalryDefence = 1000, CavalryHealth = 1000, ArtilleryAttack = 1000, ArtilleryDefence = 800, ArtilleryHealth = 800 },
+                ArchersArmy = new Archers { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                InfantryArmy = new Infantry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                CavalryArmy = new Cavalry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                ArtilleryArmy = new Artillery { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
 
                 RuneId = runeId,
 
-                Infantry = 10,
-                Archers = 10,
-                Cavalry = 10,
-                Artillery = 5,
                 Silver = 1000,
                 Stone = 100,
                 Wood = 100,
@@ -149,7 +145,8 @@
 
         public ArmyViewModel GetArmy(string userId)
         {
-            return this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Army).To<ArmyViewModel>().FirstOrDefault();
+            return new ArmyViewModel();
+            ////this.userCityRepo.AllAsNoTracking().Where(x => x.UserId == userId).Select(x => x.City.Army).To<ArmyViewModel>().FirstOrDefault();
         }
 
         public RuneViewModel GetRune(string userId)

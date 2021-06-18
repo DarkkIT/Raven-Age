@@ -7,7 +7,7 @@
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
 
-    public class ArmyViewModel : IMapFrom<Army>
+    public class ArmyViewModel
     {
         //// Archers
 

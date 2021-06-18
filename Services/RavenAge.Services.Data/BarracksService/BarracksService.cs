@@ -49,10 +49,10 @@
 
             if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
             {
-                city.Archers += input.ArcharQuantity;
-                city.Infantry += input.InfantryQuantity;
-                city.Cavalry += input.CavalryQuantity;
-                city.Artillery += input.ArtilleryQuantity;
+                city.ArtilleryArmy.Count += input.ArcharQuantity;
+                city.InfantryArmy.Count += input.InfantryQuantity;
+                city.CavalryArmy.Count += input.CavalryQuantity;
+                city.ArtilleryArmy.Count += input.ArtilleryQuantity;
 
                 city.Silver -= silverNeeded;
                 city.Wood -= woodNeeded;

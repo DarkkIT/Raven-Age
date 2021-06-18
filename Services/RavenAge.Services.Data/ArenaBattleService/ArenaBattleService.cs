@@ -27,7 +27,7 @@
             var userCity = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId);
 
             var attackerCity = this.cityRepo.All().FirstOrDefault(x => x.Id == userCity.CityId);
-            var defenderCity = this.cityRepo.All().FirstOrDefault(x => x.Id == defenderId); //// Need defenderId from JS
+            var defenderCity = this.cityRepo.All().FirstOrDefault(x => x.Id == defenderId);
 
             var model = new BattleResultViewModel { ArenaPoints = 15 };
 
