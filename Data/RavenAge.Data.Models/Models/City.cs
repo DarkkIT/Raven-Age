@@ -24,14 +24,6 @@
 
         public int Workers { get; set; }
 
-        //////public int Archers { get; set; }
-
-        //////public int Infantry { get; set; }
-
-        //////public int Cavalry { get; set; }
-
-        //////public int Artillery { get; set; }
-
         //// City Resources
 
         public decimal Gold { get; set; } //// Premium
