@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Text;
 
     using RavenAge.Data.Common.Models;
@@ -70,21 +71,28 @@
 
         public DefenceWall DefenceWall { get; set; }
 
-        public int InfantryArmyId { get; set; }
+        public int InfantryId { get; set; }
 
-        public Infantry InfantryArmy { get; set; }
+        [ForeignKey("InfantryId")]
 
-        public int CavalryArmyId { get; set; }
+        public Infantry Infantry { get; set; }
 
-        public Cavalry CavalryArmy { get; set; }
+        public int CavalryId { get; set; }
 
-        public int ArtilleryArmyId { get; set; }
+        [ForeignKey("CavalryId")]
 
-        public Artillery ArtilleryArmy { get; set; }
+        public Cavalry Cavalry { get; set; }
 
-        public int ArchersArmyId { get; set; }
+        public int ArtilleryId { get; set; }
 
-        public Archers ArchersArmy { get; set; }
+        [ForeignKey("ArtilleryId")]
+
+        public Artillery Artillery { get; set; }
+
+        public int ArchersId { get; set; }
+
+        [ForeignKey("ArchersId")]
+        public Archers Archers { get; set; }
 
         public int RuneId { get; set; }
 

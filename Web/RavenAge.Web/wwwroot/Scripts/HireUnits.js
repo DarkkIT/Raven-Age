@@ -1,14 +1,17 @@
-﻿import { updateResource } from '../Scripts/UpdateResource.js';
+﻿import { updateResource } from './UpdateResource.js';
 
 $("input[value='Hire']").each(function (el) {
         $(this).click(function () {
 
-            var input = $(this).prev().children('input');
-            var quantity = parseInt(input.val())
+            let input = $(this).prev().children('input');
+            let quantity = parseInt(input.val())
             input.val('0');
-            var unit = input.attr('name');
-            var data = {};
+            let unit = input.attr('name');
+            let data = {};
             data[`${unit}`] = quantity;
+            let cityId = $('#cityId').val();
+            data['cityId'] = cityId;
+            console.log(cityId);
 
             var antiForgeryToken = $('input[name=__RequestVerificationToken]').val();
 
@@ -27,8 +30,8 @@ $("input[value='Hire']").each(function (el) {
                     console.log(data);
                     updateResource(data);
 
-                    var newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;
-                    $(`#${data.unitType}`).text(`${data.unitType} ${newUnitQuantity}`)
+                    //let newUnitQuantity = Number($(`#${data.unitType}`).text().split(`${data.unitType} `).filter(Boolean)) + data.unitQuantity;
+                    $(`#${data.unitType}`).text(`${data.unitType} ${data.unitQuantity}`)
                 },
             })
 

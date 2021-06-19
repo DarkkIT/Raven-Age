@@ -30,9 +30,9 @@
     <div class="col-md-3">
         <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
             <div class="col-md-10">
-                <label asp-for="@Model.HireSoldiersInputModel.ArcharQuantity"></label>
-                <input name="archarquantity" asp-for="@Model.HireSoldiersInputModel.ArcharQuantity" value="0" class="form-control" />
-                <span asp-validation-for="@Model.HireSoldiersInputModel.ArcharQuantity" class="text-danger"></span>
+                <label asp-for="@Model.HireSoldiersInputModel.ArcherQuantity"></label>
+                <input name="archerquantity" asp-for="@Model.HireSoldiersInputModel.ArcherQuantity" value="0" class="form-control" />
+                <span asp-validation-for="@Model.HireSoldiersInputModel.ArcherQuantity" class="text-danger"></span>
             </div>
             <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
 
@@ -72,12 +72,12 @@
                 <input name="artilleryquantity" asp-for="@Model.HireSoldiersInputModel.ArtilleryQuantity" value="0" class="form-control" />
                 <span asp-validation-for="@Model.HireSoldiersInputModel.ArtilleryQuantity" class="text-danger"></span>
             </div>
-
             <input type="submit" value="Hire" class="btn btn-primary mt-2 ml-3" style="width: 6.7rem;" />
-            
     </div>
 
 </div>
+
+<input id="cityId" type="hidden" asp-for="@Model.HireSoldiersInputModel.CityId" value="@Model.Id"/>
 
 <div class="row justify-content-between col-md-12">
 

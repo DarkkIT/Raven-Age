@@ -6,5 +6,6 @@ namespace RavenAge.Data.Models.Models
 {
    public class Artillery : Unit
     {
+
     }
 }

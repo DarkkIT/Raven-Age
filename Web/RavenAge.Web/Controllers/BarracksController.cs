@@ -28,9 +28,7 @@
         [HttpPost]
         public async Task<HiredUnitsAndCostModel> Hire(HireSoldiersInputModel input)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            var result = await this.barrackService.AddSoldiersAsync(input, userId);
+            var result = await this.barrackService.AddSoldiersAsync(input);
 
             return result;
         }
