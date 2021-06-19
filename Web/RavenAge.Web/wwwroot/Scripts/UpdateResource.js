@@ -5,14 +5,14 @@
 
 
             if (data.silverAvailable > 999999) {
-                $(this).text(`${(data.silverAvailable * 1.0 / 1000000).toFixed(3)} M`);
+                $(this).text(`Silver - ${(data.silverAvailable * 1.0 / 1000000).toFixed(3)} M`);
             }
             else if (data.silverAvailable > 999) {
-                $(this).text(`${(data.silverAvailable * 1.0 / 1000).toFixed(2)} k`);
+                $(this).text(`Silver - ${(data.silverAvailable * 1.0 / 1000).toFixed(2)} k`);
             }
 
             else{
-                $(this).text(`${data.silverAvailable}`);
+                $(this).text(`Silver - ${data.silverAvailable}`);
             }
 
         }
@@ -20,14 +20,14 @@
         else if ($(this).text().includes('Stone')) {
 
             if (data.stoneAvailable > 999999) {
-                $(this).text(`${(data.stoneAvailable * 1.0 / 1000000).toFixed(3)} M`);
+                $(this).text(`Stone - ${(data.stoneAvailable * 1.0 / 1000000).toFixed(3)} M`);
             }
             else if (data.stoneAvailable > 999) {
-                $(this).text(`${(data.stoneAvailable * 1.0 / 1000).toFixed(2)} k`);
+                $(this).text(`Stone - ${(data.stoneAvailable * 1.0 / 1000).toFixed(2)} k`);
             }
 
             else {
-                $(this).text(`${data.stoneAvailable}`);
+                $(this).text(`Stone - ${data.stoneAvailable}`);
             }
 
         }
@@ -35,14 +35,14 @@
         else {
 
             if (data.woodAvailable > 999999) {
-                $(this).text(`${(data.woodAvailable * 1.0 / 1000000).toFixed(3)} M`);
+                $(this).text(`Wood - ${(data.woodAvailable * 1.0 / 1000000).toFixed(3)} M`);
             }
             else if (data.woodAvailable > 999) {
-                $(this).text(`${(data.woodAvailable * 1.0 / 1000).toFixed(2)} k` );
+                $(this).text(`Wood - ${(data.woodAvailable * 1.0 / 1000).toFixed(2)} k` );
             }
 
             else {
-                $(this).text(`${data.woodAvailable}`);
+                $(this).text(`Wood - ${data.woodAvailable}`);
             }
 
         }
