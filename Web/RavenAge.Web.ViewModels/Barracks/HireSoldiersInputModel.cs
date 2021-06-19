@@ -7,11 +7,13 @@
 
     public class HireSoldiersInputModel
     {
+        public int CityId { get; set; }
+
         public string Type { get; set; }
 
         [Required]
         [Range(0, 1000)]
-        public int ArcharQuantity { get; set; }
+        public int ArcherQuantity { get; set; }
 
         [Required]
         [Range(0, 1000)]

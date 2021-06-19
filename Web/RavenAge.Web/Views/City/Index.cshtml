@@ -58,7 +58,7 @@
     <a id="anchor-level10" class="row justify-content-around">
 
         <div class="">
-            <span class="currency-image-container">  <i style="color:silver" class=" fas fa-coins"></i></span>
+            <span class="currency-image-container">Silver - <i style="color:silver" class=" fas fa-coins"></i></span>
             @if (Model.Silver > 999999)
             {
                 <span class="resource">@(Math.Round((Model.Silver / 1000000), 3)) M</span>
@@ -75,7 +75,7 @@
 
 
         <div class="">
-            <span class="currency-image-container"><i style="color:black" class="fas fa-mountain"></i></span>
+            <span class="currency-image-container">Stone - <i style="color:black" class="fas fa-mountain"></i></span>
             @if (Model.Stone > 999999)
             {
                 <span class="resource">@(Math.Round((Model.Stone / 1000000), 3)) M</span>
@@ -91,7 +91,7 @@
         </div>
 
         <div class="">
-            <span class="currency-image-container" style="color:forestgreen"> <i class="fas fa-tree"></i></span>
+            <span class="currency-image-container" >Wood - <i style="color:forestgreen" class="fas fa-tree"></i></span>
             @if (Model.Wood > 999999)
             {
                 <span class="resource">@(Math.Round((Model.Wood / 1000000), 3)) M</span>
@@ -319,7 +319,7 @@
 </div>
 
 @section Scripts{
-    <script type="module" src="~/Scripts/BarracksUpgrade.js"></script>
+    <script type="module" src="~/Scripts/HireUnits.js"></script>
     <script type="module" src="~/Scripts/FarmUpgrade.js"></script>
     <script type="module" src="~/Scripts/TownHallUpgrade.js"></script>
     <script type="module" src="~/Scripts/BuildingsSounds.js"></script>

@@ -72,19 +72,19 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<City, ArenaArmyDTO>()
-                .ForMember(t => t.SingleArcherAttack, opt => opt.MapFrom(s => s.ArchersArmy.Attack + s.ArchersArmy.Bonus))
-                .ForMember(t => t.SingleArcherHealth, opt => opt.MapFrom(s => s.ArchersArmy.Health + s.ArchersArmy.HealthBonus + s.ArchersArmy.Defence + s.ArchersArmy.DefenceBonus))
-                .ForMember(t => t.SingleInfantryAttack, opt => opt.MapFrom(s => s.InfantryArmy.Attack + s.InfantryArmy.Bonus))
-                .ForMember(t => t.SingleInfantryHealth, opt => opt.MapFrom(s => s.InfantryArmy.Health + s.InfantryArmy.HealthBonus + s.InfantryArmy.Defence + s.InfantryArmy.DefenceBonus))
-                .ForMember(t => t.SingleCavalryAttack, opt => opt.MapFrom(s => s.CavalryArmy.Attack + s.CavalryArmy.Bonus))
-                .ForMember(t => t.SingleCavalryHealth, opt => opt.MapFrom(s => s.CavalryArmy.Health + s.CavalryArmy.HealthBonus + s.CavalryArmy.Defence + s.CavalryArmy.DefenceBonus))
-                .ForMember(t => t.SingleArtileryAttack, opt => opt.MapFrom(s => s.ArtilleryArmy.Attack + s.ArtilleryArmy.Bonus))
-                .ForMember(t => t.SingleArtilleryHealth, opt => opt.MapFrom(s => s.ArtilleryArmy.Health + s.ArtilleryArmy.HealthBonus + s.ArtilleryArmy.Defence + s.ArtilleryArmy.DefenceBonus))
-                .ForMember(t => t.ArchersCount, opt => opt.MapFrom(s => s.ArchersArmy.Count))
-                .ForMember(t => t.InfantryCount, opt => opt.MapFrom(s => s.InfantryArmy.Count))
-                .ForMember(t => t.CavalryCount, opt => opt.MapFrom(s => s.CavalryArmy.Count))
-                .ForMember(t => t.ArtilleryCount, opt => opt.MapFrom(s => s.ArtilleryArmy.Count))
-                .ForMember(t => t.ArmyTotalCount, opt => opt.MapFrom(s => s.ArtilleryArmy.Count + s.InfantryArmy.Count + s.CavalryArmy.Count + s.ArtilleryArmy.Count));
+                .ForMember(t => t.SingleArcherAttack, opt => opt.MapFrom(s => s.Archers.Attack + s.Archers.Bonus))
+                .ForMember(t => t.SingleArcherHealth, opt => opt.MapFrom(s => s.Archers.Health + s.Archers.HealthBonus + s.Archers.Defence + s.Archers.DefenceBonus))
+                .ForMember(t => t.SingleInfantryAttack, opt => opt.MapFrom(s => s.Infantry.Attack + s.Infantry.Bonus))
+                .ForMember(t => t.SingleInfantryHealth, opt => opt.MapFrom(s => s.Infantry.Health + s.Infantry.HealthBonus + s.Infantry.Defence + s.Infantry.DefenceBonus))
+                .ForMember(t => t.SingleCavalryAttack, opt => opt.MapFrom(s => s.Cavalry.Attack + s.Cavalry.Bonus))
+                .ForMember(t => t.SingleCavalryHealth, opt => opt.MapFrom(s => s.Cavalry.Health + s.Cavalry.HealthBonus + s.Cavalry.Defence + s.Cavalry.DefenceBonus))
+                .ForMember(t => t.SingleArtileryAttack, opt => opt.MapFrom(s => s.Artillery.Attack + s.Artillery.Bonus))
+                .ForMember(t => t.SingleArtilleryHealth, opt => opt.MapFrom(s => s.Artillery.Health + s.Artillery.HealthBonus + s.Artillery.Defence + s.Artillery.DefenceBonus))
+                .ForMember(t => t.ArchersCount, opt => opt.MapFrom(s => s.Archers.Count))
+                .ForMember(t => t.InfantryCount, opt => opt.MapFrom(s => s.Infantry.Count))
+                .ForMember(t => t.CavalryCount, opt => opt.MapFrom(s => s.Cavalry.Count))
+                .ForMember(t => t.ArtilleryCount, opt => opt.MapFrom(s => s.Artillery.Count))
+                .ForMember(t => t.ArmyTotalCount, opt => opt.MapFrom(s => s.Artillery.Count + s.Infantry.Count + s.Cavalry.Count + s.Artillery.Count));
         }
     }
 }

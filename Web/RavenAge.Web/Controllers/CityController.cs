@@ -29,22 +29,22 @@
            return this.View(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Index(HireSoldiersInputModel input)
-        {
-            var userId = this.GetUserId();
+        //[HttpPost]
+        //public async Task<IActionResult> Index(HireSoldiersInputModel input)
+        //{
+        //    var userId = this.GetUserId();
 
-            if (!this.ModelState.IsValid)
-            {
-                return this.View();
-            }
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        return this.View();
+        //    }
 
-            await this.barrackService.AddSoldiersAsync(input, userId);
+        //    await this.barrackService.AddSoldiersAsync(input, userId);
 
-            var model = this.cityService.GetCity(userId);
+        //    var model = this.cityService.GetCity(userId);
 
-            return this.View(model);
-        }
+        //    return this.View(model);
+        //}
 
         public IActionResult BarracksStats()
         {

@@ -69,10 +69,10 @@
                 WoodMine = new WoodMine { Level = 1, Description = "This is a woodmine!", Production = 100, SilverPrice = 10, StonePrice = 12, WoodPrice = 13 },
                 StoneMine = new StoneMine { Level = 1, Description = "This is a stone mine!", Production = 100, SilverPrice = 10, StonePrice = 35, WoodPrice = 12 },
                 TownHall = new TownHall { Level = 1, Description = "This is a townhall!", SilverPrice = 11, StonePrice = 14, WoodPrice = 14, ArmyLimit = 250 },
-                ArchersArmy = new Archers { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
-                InfantryArmy = new Infantry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
-                CavalryArmy = new Cavalry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
-                ArtilleryArmy = new Artillery { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                Archers = new Archers { Attack = 1000, Defence = 1000, Health = 1000, Count = 11,  },
+                Infantry = new Infantry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                Cavalry = new Cavalry { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
+                Artillery = new Artillery { Attack = 1000, Defence = 1000, Health = 1000, Count = 11 },
 
                 RuneId = runeId,
 
@@ -83,17 +83,21 @@
                 Workers = 50,
                 Gold = 10,
             };
-
             ////var user = await this.userService.GetUserById(userId);
 
             await this.cityRepo.AddAsync(city);
 
             await this.cityRepo.SaveChangesAsync();
 
+            city.Archers.CityId = city.Id;
+            city.Artillery.CityId = city.Id;
+            city.Cavalry.CityId = city.Id;
+            city.Infantry.CityId = city.Id;
+            await this.cityRepo.SaveChangesAsync();
+
             var userCity = new UserCity() { UserId = userId, CityId = city.Id };
 
             await this.userCityRepo.AddAsync(userCity);
-
 
             await this.userCityRepo.SaveChangesAsync();
         }

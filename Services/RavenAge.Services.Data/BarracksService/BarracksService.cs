@@ -8,7 +8,6 @@
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
-    using RavenAge.Services.Mapping;
     using RavenAge.Web.ViewModels.Barracks;
     using RavenAge.Web.ViewModels.City;
 
@@ -17,94 +16,92 @@
         private readonly IDeletableEntityRepository<Barracks> barracksRepo;
         private readonly IRepository<UserCity> userCityRepo;
         private readonly IDeletableEntityRepository<City> cityRepo;
-        private readonly IDeletableEntityRepository<Archers> archers;
-        private readonly IDeletableEntityRepository<Infantry> infantries;
-        private readonly IDeletableEntityRepository<Cavalry> cavalries;
-        private readonly IDeletableEntityRepository<Artillery> artileries;
+        private readonly IDeletableEntityRepository<Archers> archersRepo;
+        private readonly IDeletableEntityRepository<Cavalry> cavalryRepo;
+        private readonly IDeletableEntityRepository<Artillery> artilleryRepo;
+        private readonly IDeletableEntityRepository<Infantry> infantryRepo;
 
         public BarracksService(
                            IDeletableEntityRepository<Barracks> barracksRepo,
                            IRepository<UserCity> userCityRepo,
                            IDeletableEntityRepository<City> cityRepo,
-                           IDeletableEntityRepository<Archers> archers,
-                           IDeletableEntityRepository<Infantry> infantries,
-                           IDeletableEntityRepository<Cavalry> cavalries,
-                           IDeletableEntityRepository<Artillery> artileries)
+                           IDeletableEntityRepository<Archers> archersRepo,
+                           IDeletableEntityRepository<Cavalry> cavalryRepo,
+                           IDeletableEntityRepository<Artillery> artilleryRepo,
+                           IDeletableEntityRepository<Infantry> infantryRepo)
         {
             this.barracksRepo = barracksRepo;
             this.userCityRepo = userCityRepo;
             this.cityRepo = cityRepo;
-            this.archers = archers;
-            this.infantries = infantries;
-            this.cavalries = cavalries;
-            this.artileries = artileries;
+            this.archersRepo = archersRepo;
+            this.cavalryRepo = cavalryRepo;
+            this.artilleryRepo = artilleryRepo;
+            this.infantryRepo = infantryRepo;
         }
 
-        public async Task<HiredUnitsAndCostModel> AddSoldiersAsync(HireSoldiersInputModel input, string userId)
+        public async Task<HiredUnitsAndCostModel> AddSoldiersAsync(HireSoldiersInputModel input)
         {
-            var cityId = this.userCityRepo.All()
-                .FirstOrDefault(x => x.UserId == userId)
-                .CityId;
+            var city = this.cityRepo.All().FirstOrDefault(x => x.Id == input.CityId);
+            var archers = this.archersRepo.All().FirstOrDefault(x => x.CityId == input.CityId);
+            var cavalry = this.cavalryRepo.All().FirstOrDefault(x => x.CityId == input.CityId);
+            var artillery = this.artilleryRepo.All().FirstOrDefault(x => x.CityId == input.CityId);
+            var infantry = this.infantryRepo.All().FirstOrDefault(x => x.CityId == input.CityId);
 
-            var city = this.cityRepo
-                .All()
-                .Where(x => x.Id == cityId)
-                .To<HiredArmyDTO>().FirstOrDefault();
+            var currentSilver = city.Silver;
+            var currentWood = city.Wood;
 
-            var curentSilver = city.Silver;
-            var curentWood = city.Wood;
-
-           //var model = this.cityRepo.All().Where(x => x.Id == cityId).Select(x => new {x })
-
-            var silverNeeded = (input.ArcharQuantity * GlobalConstants.ArcherSilverCost) +
+            var silverNeeded = (input.ArcherQuantity * GlobalConstants.ArcherSilverCost) +
                                (input.InfantryQuantity * GlobalConstants.InfantrySilverCost) +
                                (input.CavalryQuantity * GlobalConstants.CavalrySilverCost) +
                                (input.ArtilleryQuantity * GlobalConstants.ArtillerySilverCost);
 
-            var woodNeeded = (input.ArcharQuantity * GlobalConstants.ArcherWoodCost) +
+            var woodNeeded = (input.ArcherQuantity * GlobalConstants.ArcherWoodCost) +
                              (input.InfantryQuantity * GlobalConstants.InfantryWoodCost) +
                              (input.CavalryQuantity * GlobalConstants.CavalryWoodCost) +
                              (input.ArtilleryQuantity * GlobalConstants.ArcherWoodCost);
 
             var viewData = new HiredUnitsAndCostModel();
 
-            if (silverNeeded <= curentSilver && woodNeeded <= curentWood)
+            if (silverNeeded <= currentSilver && woodNeeded <= currentWood)
             {
-                city.ArchersArmyCount += input.ArcharQuantity;
-                city.InfantryArmyCount += input.InfantryQuantity;
-                city.CavalryArmyCount += input.CavalryQuantity;
-                city.ArtilleryArmyCount += input.ArtilleryQuantity;
+
+                artillery.Count += input.ArtilleryQuantity;
+                infantry.Count += input.InfantryQuantity;
+                cavalry.Count += input.CavalryQuantity;
+                archers.Count += input.ArcherQuantity;
 
                 city.Silver -= silverNeeded;
                 city.Wood -= woodNeeded;
                 await this.cityRepo.SaveChangesAsync();
+                await this.artilleryRepo.SaveChangesAsync();
+                await this.cavalryRepo.SaveChangesAsync();
+                await this.archersRepo.SaveChangesAsync();
 
                 var unitType = string.Empty;
-                int unitQuantity = 0;
 
                 viewData.SilverAvailable = city.Silver;
                 viewData.StoneAvailable = city.Stone;
                 viewData.WoodAvailable = city.Wood;
 
-                if (input.ArcharQuantity > 0)
+                if (input.ArcherQuantity > 0)
                 {
                     viewData.UnitType = "Archers";
-                    viewData.UnitQuantity = input.ArcharQuantity;
+                    viewData.UnitQuantity = archers.Count;
                 }
                 else if (input.InfantryQuantity > 0)
                 {
                     viewData.UnitType = "Infantry";
-                    viewData.UnitQuantity = input.InfantryQuantity;
+                    viewData.UnitQuantity = infantry.Count;
                 }
                 else if (input.CavalryQuantity > 0)
                 {
                     viewData.UnitType = "Cavalry";
-                    viewData.UnitQuantity = input.CavalryQuantity;
+                    viewData.UnitQuantity = cavalry.Count;
                 }
                 else if (input.ArtilleryQuantity > 0)
                 {
                     viewData.UnitType = "Artillery";
-                    viewData.UnitQuantity = input.ArtilleryQuantity;
+                    viewData.UnitQuantity = artillery.Count;
                 }
 
                 return viewData;

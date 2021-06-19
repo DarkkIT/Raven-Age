@@ -64,7 +64,7 @@
     <Content Update="wwwroot\images\pushing-pixels.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\Scripts\BarracksUpgrade.js">
+    <Content Update="wwwroot\Scripts\HireUnits.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Scripts\BuildingsSounds.js">

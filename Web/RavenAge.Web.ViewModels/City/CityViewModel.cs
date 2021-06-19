@@ -63,10 +63,10 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<City, CityViewModel>()
-                .ForMember(t => t.Archers, x => x.MapFrom(s => s.ArchersArmy.Count))
-                .ForMember(t => t.Cavalry, x => x.MapFrom(s => s.CavalryArmy.Count))
-                .ForMember(t => t.Artillery, x => x.MapFrom(s => s.ArtilleryArmy.Count))
-                .ForMember(t => t.Infantry, x => x.MapFrom(s => s.InfantryArmy.Count));
+                .ForMember(t => t.Archers, x => x.MapFrom(s => s.Archers.Count))
+                .ForMember(t => t.Cavalry, x => x.MapFrom(s => s.Cavalry.Count))
+                .ForMember(t => t.Artillery, x => x.MapFrom(s => s.Artillery.Count))
+                .ForMember(t => t.Infantry, x => x.MapFrom(s => s.Infantry.Count));
         }
     }
 }

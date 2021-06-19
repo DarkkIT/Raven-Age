@@ -37,22 +37,9 @@
 
             //// BattleLogic
 
-            //var attackerArmyTotalCount = attackerArmy.ArmyTotalCount;
-            //var defenderArmyTotalCount = defenderArmy.ArmyTotalCount;
 
             while (attackerArmy.ArmyTotalCount > 0 || defenderArmy.ArmyTotalCount > 0)
             {
-                //var attackerArchersCount = attackerArmy.ArchersCount;
-                //var attackerInfantryCount = attackerArmy.InfantryCount;
-                //var attackerCavaleryCount = attackerArmy.CavalryCount;
-                //var attackerArtileryCount = attackerArmy.ArtilleryCount;
-                //attackerArmyTotalCount = attackerArchersCount + attackerInfantryCount + attackerCavaleryCount + attackerArtileryCount;
-
-                //var defenderArchersCount = defenderArmy.ArchersCount;
-                //var defenderInfantryCount = defenderArmy.InfantryCount;
-                //var defenderCavaleryCount = defenderArmy.CavalryCount;
-                //var defenderArtileryCount = defenderArmy.ArtilleryCount;
-                //defenderArmyTotalCount = defenderArchersCount + defenderInfantryCount + defenderCavaleryCount + defenderArtileryCount;
 
                 //// Phase 1 - Artilery attack enemy Artilery, then attack enemy Archers
 
