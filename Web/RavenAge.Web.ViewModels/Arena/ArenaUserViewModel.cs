@@ -25,6 +25,8 @@
 
         public ArmyViewModel Army { get; set; }
 
+        //// Maping
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<City, ArenaUserViewModel>()
