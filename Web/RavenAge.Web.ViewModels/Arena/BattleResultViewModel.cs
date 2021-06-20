@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RavenAge.Web.ViewModels.Arena
+﻿namespace RavenAge.Web.ViewModels.Arena
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class BattleResultViewModel
     {
         public string Atacker { get; set; }
