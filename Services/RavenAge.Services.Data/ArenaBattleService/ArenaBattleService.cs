@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
@@ -16,91 +16,137 @@
         private readonly IDeletableEntityRepository<City> cityRepo;
         private readonly IRepository<UserCity> userCityRepo;
         private readonly IDeletableEntityRepository<Archers> archersRepo;
+        private readonly IDeletableEntityRepository<Infantry> infatryRepo;
+        private readonly IDeletableEntityRepository<Artillery> artilleryRepo;
+        private readonly IDeletableEntityRepository<Cavalry> calalryRepo;
 
         public ArenaBattleService(
             IDeletableEntityRepository<City> cityRepo,
             IRepository<UserCity> userCityRepo,
-            IDeletableEntityRepository<Archers> archersRepo)
+            IDeletableEntityRepository<Archers> archersRepo,
+            IDeletableEntityRepository<Infantry> infatryRepo,
+            IDeletableEntityRepository<Artillery> artilleryRepo,
+            IDeletableEntityRepository<Cavalry> calalryRepo)
         {
             this.cityRepo = cityRepo;
             this.userCityRepo = userCityRepo;
             this.archersRepo = archersRepo;
+            this.infatryRepo = infatryRepo;
+            this.artilleryRepo = artilleryRepo;
+            this.calalryRepo = calalryRepo;
         }
 
-        public async Task<BattleResultViewModel> Attack(string attackerId, int defenderId)
+        public async Task<BattleResultViewModel> Attack(string attackerId, int defenderCityId)
         {
-            var userCity = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId); //// Need attacker City Id !
+            var attackerCityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId).CityId; //// Need attacker City Id !
 
-            var attackerArmy = this.cityRepo.All().Where(x => x.Id == userCity.CityId).To<ArenaArmyDTO>().FirstOrDefault();
+            var attackPriority = new List<UnitType>() {UnitType.Artillery, UnitType.Archers, UnitType.Cavalry, UnitType.Infantry};
 
-            var defenderArmy = this.cityRepo.All().Where(x => x.Id == defenderId).To<ArenaArmyDTO>().FirstOrDefault();
+            var userArmy = this.GetArmy(attackerCityId, attackPriority);
+            var opponentArmy = this.GetArmy(defenderCityId, attackPriority);
 
             //// BattleLogic
 
-
-            while (attackerArmy.ArmyTotalCount > 0 || defenderArmy.ArmyTotalCount > 0)
+            while (userArmy.TotalArmyCount > 0 && opponentArmy.TotalArmyCount > 0)
             {
+                foreach (var unit in userArmy.Army.Where(x => x.Count > 0))
+                {
+                    var opponentDefendingUnit = SelectDefendingUnit(unit.AttackPriority, opponentArmy);
+                   this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
 
-                //// Phase 1 - Artilery attack enemy Artilery, then attack enemy Archers
+                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+                    {
+                        break;
+                    }
 
-                defenderArmy.ArtilleryCount = this.UnitAttack(defenderArmy.TotalArtilleryHealth, attackerArmy.TotalArtilleryAttack, defenderArmy.SingleArtilleryHealth);
+                    // Opponent turn
+                    var opponentAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
+                    if (opponentAttackUnit != null)
+                    {
+                    var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, userArmy);
+                    this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
+                    opponentAttackUnit.HasAttacked = true;
+                    }
 
-                defenderArmy.ArchersCount = this.UnitAttack(defenderArmy.TotalArcherHealth, attackerArmy.TotalArtilleryAttack, defenderArmy.SingleArcherHealth);
+                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+                    {
+                        break;
+                    }
+                }
 
-                //// Phase 1.2 - enemy Artilery responds with the same attack
+                while (opponentArmy.Army.Any(x => x.HasAttacked == false && x.Count > 0))
+                {
+                    var defenderAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
+                    var attackerDefendingUnit = SelectDefendingUnit(defenderAttackUnit.AttackPriority, userArmy);
+                    this.UnitAttack(defenderAttackUnit.TotalUnitAttack, attackerDefendingUnit);
 
-                attackerArmy.ArtilleryCount = this.UnitAttack(attackerArmy.TotalArtilleryHealth, defenderArmy.TotalArtilleryAttack, attackerArmy.SingleArtilleryHealth);
+                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+                    {
+                        break;
+                    }
+                }
 
-                attackerArmy.ArchersCount = this.UnitAttack(attackerArmy.TotalArcherHealth, defenderArmy.TotalArtilleryAttack, attackerArmy.SingleArcherHealth);
-
-                //// Phase 2 - Archers attack enemy Infantry, then attack enemy Cavalery
-
-                defenderArmy.InfantryCount = this.UnitAttack(defenderArmy.TotalInfantryHealth, attackerArmy.TotalArcherAttack, defenderArmy.SingleInfantryHealth);
-
-                defenderArmy.CavalryCount = this.UnitAttack(defenderArmy.TotalCavalryHealth, attackerArmy.TotalArcherAttack, defenderArmy.SingleCavalryHealth);
-
-                //// Phase 2.2 - enemy Archars responds with the same attack
-
-                attackerArmy.InfantryCount = this.UnitAttack(attackerArmy.TotalInfantryHealth, defenderArmy.TotalArcherAttack, attackerArmy.SingleInfantryHealth);
-
-                attackerArmy.CavalryCount = this.UnitAttack(attackerArmy.TotalCavalryHealth, defenderArmy.TotalArcherAttack, attackerArmy.SingleCavalryHealth);
-
-                //// Phase 3 - Cavalery attack enemy Infantry, then attack enemy Cavalery
-
-                defenderArmy.InfantryCount = this.UnitAttack(defenderArmy.TotalInfantryHealth, attackerArmy.TotalCavalryAttack, defenderArmy.SingleInfantryHealth);
-
-                defenderArmy.CavalryCount = this.UnitAttack(defenderArmy.TotalCavalryHealth, attackerArmy.TotalCavalryAttack, defenderArmy.SingleCavalryHealth);
-
-                //// Phase 3.2 - enemy Cavalery responds with the same attack
-
-                attackerArmy.InfantryCount = this.UnitAttack(attackerArmy.TotalInfantryHealth, defenderArmy.TotalCavalryAttack, attackerArmy.SingleInfantryHealth);
-
-                attackerArmy.CavalryCount = this.UnitAttack(attackerArmy.TotalCavalryHealth, defenderArmy.TotalCavalryAttack, attackerArmy.SingleCavalryHealth);
-
-                //// Phase 4 - Infantry attack enemy Cavalry , then attack enemy Infantry
-
-                defenderArmy.CavalryCount = this.UnitAttack(defenderArmy.TotalCavalryHealth, attackerArmy.TotalInfantryAttack, defenderArmy.SingleCavalryHealth);
-
-                defenderArmy.InfantryCount = this.UnitAttack(defenderArmy.TotalInfantryHealth, attackerArmy.TotalInfantryHealth, defenderArmy.SingleInfantryHealth);
-
-                //// Phase 4.2 - enemy Infantry responds with the same attack
-
-                attackerArmy.CavalryCount = this.UnitAttack(attackerArmy.TotalCavalryHealth, defenderArmy.TotalInfantryAttack, attackerArmy.SingleCavalryHealth);
-
-                attackerArmy.InfantryCount = this.UnitAttack(attackerArmy.TotalInfantryHealth, defenderArmy.TotalInfantryAttack, attackerArmy.SingleInfantryHealth);
+                opponentArmy.Army.ForEach(x => { x.HasAttacked = false; });
             }
+
+            var winner = userArmy.TotalArmyCount > 0 ? $"{attackerCityId} - winner" : $"{defenderCityId} - winner";
 
             var model = new BattleResultViewModel { ArenaPoints = 15 };
 
             return model;
         }
 
-        public int UnitAttack(int totalUnitHealth, int totalUnitAttack, int singleUnitHealth)
+        private static BattleUnitDTO SelectDefendingUnit(List<UnitType> attackPriority, BattleArmyDTO defenderArmy)
         {
-            var defenderUnitHealtLeft =
-                    totalUnitHealth - totalUnitAttack;
+            BattleUnitDTO defendingUnit = null;
+            for (int i = 0; i < 4; i++)
+            {
+                defendingUnit = defenderArmy.Army.FirstOrDefault(x => x.Type == attackPriority[i] && x.Count > 0);
+                if (defendingUnit != null)
+                {
+                    break;
+                }
+            }
 
-            return defenderUnitHealtLeft / singleUnitHealth;
+            return defendingUnit;
+        }
+
+        public void UnitAttack(int totalUnitAttack, BattleUnitDTO defendingUnit)
+        {
+            defendingUnit.Count = (defendingUnit.TotalUnitHealth - totalUnitAttack) / defendingUnit.SingleUnitHealth;
+
+            if (totalUnitAttack - totalUnitAttack <= 0)
+            {
+                defendingUnit.Count = 0;
+            }
+
+        }
+
+        private BattleArmyDTO GetArmy(int userCityId, List<UnitType> attackPriority)
+        {
+            var userArmy = new BattleArmyDTO();
+            var userArchers = this.archersRepo.AllAsNoTracking().Where(x => x.CityId == userCityId).To<BattleUnitDTO>().FirstOrDefault();
+            userArchers.Type = UnitType.Archers;
+            userArchers.AttackPriority = attackPriority;
+
+            var userInfantry = this.infatryRepo.AllAsNoTracking().Where(x => x.CityId == userCityId).To<BattleUnitDTO>().FirstOrDefault();
+            userInfantry.Type = UnitType.Infantry;
+            userInfantry.AttackPriority = attackPriority;
+
+            var userCavalry = this.calalryRepo.AllAsNoTracking().Where(x => x.CityId == userCityId).To<BattleUnitDTO>().FirstOrDefault();
+            userCavalry.Type = UnitType.Cavalry;
+            userCavalry.AttackPriority = attackPriority;
+
+            var userArtillery = this.artilleryRepo.AllAsNoTracking().Where(x => x.CityId == userCityId).To<BattleUnitDTO>().FirstOrDefault();
+            userArtillery.Type = UnitType.Artillery;
+            userArtillery.AttackPriority = attackPriority;
+
+            userArmy.Army.Add(userArchers);
+            userArmy.Army.Add(userInfantry);
+            userArmy.Army.Add(userCavalry);
+            userArmy.Army.Add(userArtillery);
+
+            return userArmy;
         }
     }
 }

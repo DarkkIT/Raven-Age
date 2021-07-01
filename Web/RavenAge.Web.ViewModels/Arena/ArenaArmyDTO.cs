@@ -40,7 +40,6 @@
 
         public int TotalInfantryAttack => this.InfantryCount * this.SingleInfantryAttack;
 
-
         //// Cavalery
         public int CavalryCount { get; set; }
 
