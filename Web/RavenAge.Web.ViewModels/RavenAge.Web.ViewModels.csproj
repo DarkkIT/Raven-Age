@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RavenAge.Data.Models\RavenAge.Data.Models.csproj" />
+    <ProjectReference Include="..\..\RavenAge.Common\RavenAge.Common.csproj" />
     <ProjectReference Include="..\..\Services\RavenAge.Services.Mapping\RavenAge.Services.Mapping.csproj" />
   </ItemGroup>
 
