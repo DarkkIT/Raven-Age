@@ -27,18 +27,7 @@
         {
             var userId = this.GetUserId();
 
-            if (!this.TempData.Keys.Contains("ArenaListViewModel"))
-            {
-                return this.View(this.arenaService.GetArenaList(userId));
-            }
-            else
-            {
-                string results = this.TempData["ArenaListViewModel"].ToString();
-
-                ArenaListViewModel viewModel = JsonConvert.DeserializeObject<ArenaListViewModel>(results);
-
-                return this.View(viewModel);
-            }
+            return this.View(this.arenaService.GetArenaList(userId));
         }
 
         public async Task<IActionResult> Attack(int id)
@@ -50,9 +39,7 @@
 
             viewModel.BattleResult = await this.arenaBattleService.Attack(attackerId, defenderId);
 
-            this.TempData["ArenaListViewModel"] = JsonConvert.SerializeObject(viewModel);
-
-            return this.RedirectToAction("Index");
+            return this.View("Index", viewModel);
         }
 
         internal string GetUserId()

@@ -52,7 +52,7 @@
                 foreach (var unit in userArmy.Army.Where(x => x.Count > 0))
                 {
                     var opponentDefendingUnit = SelectDefendingUnit(unit.AttackPriority, opponentArmy);
-                   this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
+                    this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
 
                     if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
