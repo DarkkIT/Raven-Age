@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RavenAge.Web.ViewModels.Arena
+﻿namespace RavenAge.Web.ViewModels.Arena
 {
-    public class BattleResultViewModel
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using RavenAge.Data.Models.Models;
+    using RavenAge.Services.Mapping;
+
+    public class BattleResultViewModel : IMapFrom<BattleResult>
     {
-        public string Atacker { get; set; }
+        public string Attacker { get; set; }
 
         public string Defender { get; set; }
 
@@ -18,24 +21,27 @@ namespace RavenAge.Web.ViewModels.Arena
 
         //// Attacker Army Loss
 
-        public int AttackerArchersLoss { get; set; }
+        public int AttackerArchersLost { get; set; }
 
-        public int AtackerInfantrysLoss { get; set; }
+        public int AttackerInfantrysLost { get; set; }
 
-        public int AtackerCavalryLoss { get; set; }
+        public int AttackerCavalryLost { get; set; }
 
-        public int AtackerArtilleryLoss { get; set; }
+        public int AttackerArtilleryLost { get; set; }
 
         //// Defender Army Loss
 
-        public int DefenderArchersLoss { get; set; }
+        public int DefenderArchersLost { get; set; }
 
-        public int DefenderInfantrysLoss { get; set; }
+        public int DefenderInfantryLost { get; set; }
 
-        public int DefenderCavalryLoss { get; set; }
+        public int DefenderCavalryLost { get; set; }
 
-        public int DefenderArtilleryLoss { get; set; }
+        public int DefenderArtilleryLost { get; set; }
 
-        public int DefenseWallPointsLoss { get; set; }
+        public int DefenseWallPointsLost { get; set; }
+
+        public List<string> BattleReport { get; set; }
+
     }
 }

@@ -27,9 +27,9 @@
         {
             var fullList = this.cityRepo.All().To<ArenaUserViewModel>().OrderByDescending(x => x.ArenaPoints).ToList();
 
-            var cityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
+            var userCityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == userId).CityId;
 
-            var curentId = fullList.FindIndex(a => a.Id == cityId);
+            var curentId = fullList.FindIndex(a => a.Id == userCityId);
 
             var arenaList = new List<ArenaUserViewModel>();
 
@@ -41,7 +41,7 @@
                 arenaList.Add(fullList[i]);
             }
 
-            var attacker = fullList.FirstOrDefault(x => x.Id == cityId);
+            var attacker = fullList.FirstOrDefault(x => x.Id == userCityId);
 
             var fullArenaList = new ArenaListViewModel { ArenaList = arenaList, Attacker = attacker };
 
