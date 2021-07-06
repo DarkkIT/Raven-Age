@@ -8,6 +8,7 @@
     using RavenAge.Services.Mapping;
 
     public class BattleResultViewModel : IMapFrom<BattleResult>
+
     {
         public string Attacker { get; set; }
 
