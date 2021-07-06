@@ -16,6 +16,7 @@ namespace RavenAge.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            //this.UserBattles = new HashSet<UserBattle>();
             this.AttackRune = false;
             this.DefenseRune = false;
             this.HealthRune = false;
@@ -55,5 +56,7 @@ namespace RavenAge.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public virtual ICollection<UserCity> UserCities { get; set; }
+
+        //public virtual ICollection<UserBattle> UserBattles { get; set; }
     }
 }

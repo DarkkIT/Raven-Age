@@ -43,6 +43,7 @@
     using RavenAge.Services.Mapping;
     using RavenAge.Services.Messaging;
     using RavenAge.Services.UserService.Data;
+    using RavenAge.Web.Infrastructure;
     using RavenAge.Web.ViewModels;
 
     public class Startup
@@ -84,7 +85,7 @@
                 options.Conventions.AddAreaPageRoute("/Home", "/Index", "");
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDatabaseDeveloperPageExceptionFilter();
-
+            services.AddAutoMapper(typeof(BattleResultProfile));
             services.AddSingleton(this.configuration);
 
             // Data repositories

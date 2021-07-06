@@ -26,8 +26,8 @@
         public IActionResult Index()
         {
             var userId = this.GetUserId();
-
-            return this.View(this.arenaService.GetArenaList(userId));
+            var model = this.arenaService.GetArenaList(userId);
+            return this.View(model);
         }
 
         public async Task<IActionResult> Attack(int id)

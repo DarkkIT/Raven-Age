@@ -8,7 +8,7 @@
 
     public class BattleResult : BaseModel<int>
     {
-        public string Atacker { get; set; }
+        public string Attacker { get; set; }
 
         public string Defender { get; set; }
 
@@ -22,31 +22,33 @@
 
         public int GoldProfit { get; set; }
 
+        public string BattleType { get; set; }
+
         //// Attacker Armys
 
         public int AttackerArchers { get; set; }
 
-        public int AtackerInfantrys { get; set; }
+        public int AttackerInfantry { get; set; }
 
-        public int AtackerCavalry { get; set; }
+        public int AttackerCavalry { get; set; }
 
-        public int AtackerArtillery { get; set; }
+        public int AttackerArtillery { get; set; }
 
         //// Attacker Army Loss
 
-        public int AttackerArchersLoss { get; set; }
+        public int AttackerArchersLost { get; set; }
 
-        public int AtackerInfantrysLoss { get; set; }
+        public int AttackerInfantryLost { get; set; }
 
-        public int AtackerCavalryLoss { get; set; }
+        public int AttackerCavalryLost { get; set; }
 
-        public int AtackerArtilleryLoss { get; set; }
+        public int AttackerArtilleryLost { get; set; }
 
         //// Defender Armys
 
         public int DefenderArchers { get; set; }
 
-        public int DefenderInfantrys { get; set; }
+        public int DefenderInfantry { get; set; }
 
         public int DefenderCavalry { get; set; }
 
@@ -56,14 +58,14 @@
 
         //// Defender Army Loss
 
-        public int DefenderArchersLoss { get; set; }
+        public int DefenderArchersLost { get; set; }
 
-        public int DefenderInfantrysLoss { get; set; }
+        public int DefenderInfantryLost { get; set; }
 
-        public int DefenderCavalryLoss { get; set; }
+        public int DefenderCavalryLost { get; set; }
 
-        public int DefenderArtilleryLoss { get; set; }
+        public int DefenderArtilleryLost { get; set; }
 
-        public int DefenseWallPointsLoss { get; set; }
+        public int DefenseWallPointsLost { get; set; }
     }
 }

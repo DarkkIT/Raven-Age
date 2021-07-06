@@ -23,8 +23,6 @@
 
         public int Artillery { get; set; }
 
-        public ArmyViewModel Army { get; set; }
-
         //// Maping
 
         public void CreateMappings(IProfileExpression configuration)

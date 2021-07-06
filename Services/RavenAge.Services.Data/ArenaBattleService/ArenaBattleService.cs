@@ -5,8 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
     using RavenAge.Common;
     using RavenAge.Data.Common.Repositories;
+    using RavenAge.Data.Models;
     using RavenAge.Data.Models.Models;
     using RavenAge.Services.Mapping;
     using RavenAge.Web.ViewModels.Arena;
@@ -19,6 +22,9 @@
         private readonly IDeletableEntityRepository<Infantry> infatryRepo;
         private readonly IDeletableEntityRepository<Artillery> artilleryRepo;
         private readonly IDeletableEntityRepository<Cavalry> calalryRepo;
+        private readonly IRepository<UserBattle> userBattleRepo;
+        private readonly IMapper mapper;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public ArenaBattleService(
             IDeletableEntityRepository<City> cityRepo,
@@ -26,7 +32,11 @@
             IDeletableEntityRepository<Archers> archersRepo,
             IDeletableEntityRepository<Infantry> infatryRepo,
             IDeletableEntityRepository<Artillery> artilleryRepo,
-            IDeletableEntityRepository<Cavalry> calalryRepo)
+            IDeletableEntityRepository<Cavalry> calalryRepo,
+            IRepository<UserBattle> userBattleRepo,
+            IMapper mapper,
+            UserManager<ApplicationUser> UserManager
+            )
         {
             this.cityRepo = cityRepo;
             this.userCityRepo = userCityRepo;
@@ -34,27 +44,34 @@
             this.infatryRepo = infatryRepo;
             this.artilleryRepo = artilleryRepo;
             this.calalryRepo = calalryRepo;
+            this.userBattleRepo = userBattleRepo;
+            this.mapper = mapper;
+            userManager = UserManager;
         }
 
         public async Task<BattleResultViewModel> Attack(string attackerId, int defenderCityId)
         {
             var attackerCityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId).CityId; //// Need attacker City Id !
+            var defenderId = this.userCityRepo.All().FirstOrDefault(x => x.CityId == defenderCityId).UserId;
+            // Attack priority should come as an input
+            var attackPriority = new List<UnitType>() { UnitType.Artillery, UnitType.Archers, UnitType.Cavalry, UnitType.Infantry };
 
-            var attackPriority = new List<UnitType>() {UnitType.Artillery, UnitType.Archers, UnitType.Cavalry, UnitType.Infantry};
-
-            var userArmy = this.GetArmy(attackerCityId, attackPriority);
+            var attackerArmy = this.GetArmy(attackerCityId, attackPriority);
             var opponentArmy = this.GetArmy(defenderCityId, attackPriority);
+            var battleResult = this.SetInitialBattleResultData(attackerArmy, opponentArmy, attackerId, defenderId);
+            var battleReport = new List<string>();
 
             //// BattleLogic
 
-            while (userArmy.TotalArmyCount > 0 && opponentArmy.TotalArmyCount > 0)
+            while (attackerArmy.TotalArmyCount > 0 && opponentArmy.TotalArmyCount > 0)
             {
-                foreach (var unit in userArmy.Army.Where(x => x.Count > 0))
+                foreach (var unit in attackerArmy.Army.Where(x => x.Count > 0))
                 {
                     var opponentDefendingUnit = SelectDefendingUnit(unit.AttackPriority, opponentArmy);
                     this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
+                    UpdateBattleReport(battleReport, unit, opponentDefendingUnit);
 
-                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+                    if (attackerArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
                         break;
                     }
@@ -63,12 +80,15 @@
                     var opponentAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
                     if (opponentAttackUnit != null)
                     {
-                    var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, userArmy);
-                    this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
-                    opponentAttackUnit.HasAttacked = true;
+                        var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, attackerArmy);
+                        this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
+
+                        UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit);
+
+                        opponentAttackUnit.HasAttacked = true;
                     }
 
-                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+                    if (attackerArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
                         break;
                     }
@@ -76,11 +96,13 @@
 
                 while (opponentArmy.Army.Any(x => x.HasAttacked == false && x.Count > 0))
                 {
-                    var defenderAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
-                    var attackerDefendingUnit = SelectDefendingUnit(defenderAttackUnit.AttackPriority, userArmy);
-                    this.UnitAttack(defenderAttackUnit.TotalUnitAttack, attackerDefendingUnit);
+                    var opponentAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
+                    var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, attackerArmy);
+                    this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
+                    UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit);
 
-                    if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
+
+                    if (attackerArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
                         break;
                     }
@@ -89,11 +111,63 @@
                 opponentArmy.Army.ForEach(x => { x.HasAttacked = false; });
             }
 
-            var winner = userArmy.TotalArmyCount > 0 ? $"{attackerCityId} - winner" : $"{defenderCityId} - winner";
+            UpdateBattleResult(attackerId, defenderId, attackerArmy, opponentArmy, battleResult);
+            var userBattle = new UserBattle() { BattleResult = battleResult, UserId = attackerId };
+            await this.userBattleRepo.AddAsync(userBattle);
+            await this.userBattleRepo.SaveChangesAsync();
 
-            var model = new BattleResultViewModel { ArenaPoints = 15 };
+            var result = this.mapper.Map<BattleResultViewModel>(battleResult);
+            result.BattleReport = battleReport;
 
-            return model;
+            return result;
+        }
+
+        private static void UpdateBattleReport(List<string> battleReport, BattleUnitDTO attackingUnit, BattleUnitDTO defendingUnit)
+        {
+            battleReport.Add($"{attackingUnit.Type} attacked {defendingUnit.Type} and did {attackingUnit.TotalUnitAttack} dmg!");
+        }
+
+        public void UnitAttack(int totalUnitAttack, BattleUnitDTO defendingUnit)
+        {
+            defendingUnit.Count = (defendingUnit.TotalUnitHealth - totalUnitAttack) / defendingUnit.SingleUnitHealth;
+
+            if (totalUnitAttack - totalUnitAttack <= 0)
+            {
+                defendingUnit.Count = 0;
+            }
+
+        }
+
+        private static void UpdateBattleResult(string attackerId, string defenderId, BattleArmyDTO attackerArmy, BattleArmyDTO opponentArmy, BattleResult battleResult)
+        {
+            battleResult.Winner = attackerArmy.TotalArmyCount > 0 ? attackerId : defenderId;
+            battleResult.AttackerArchersLost = battleResult.AttackerArchers - attackerArmy.Army.FirstOrDefault(x => x.Type == UnitType.Archers).Count;
+            battleResult.AttackerArtilleryLost = battleResult.AttackerArtillery - attackerArmy.Army.FirstOrDefault(x => x.Type == UnitType.Artillery).Count;
+            battleResult.AttackerCavalryLost = battleResult.AttackerCavalry - attackerArmy.Army.FirstOrDefault(x => x.Type == UnitType.Cavalry).Count;
+            battleResult.AttackerInfantryLost = battleResult.AttackerInfantry - attackerArmy.Army.FirstOrDefault(x => x.Type == UnitType.Infantry).Count;
+
+            battleResult.DefenderArchersLost = battleResult.DefenderArchers - opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Archers).Count;
+            battleResult.DefenderArtilleryLost = battleResult.DefenderArtillery - opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Artillery).Count;
+            battleResult.DefenderCavalryLost = battleResult.DefenderCavalry - opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Cavalry).Count;
+            battleResult.DefenderInfantryLost = battleResult.DefenderInfantry - opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Infantry).Count;
+        }
+
+        private BattleResult SetInitialBattleResultData(BattleArmyDTO userArmy, BattleArmyDTO opponentArmy, string attackerId, string defenderId)
+        {
+            var battleResult = new BattleResult();
+            battleResult.Attacker = attackerId;
+            battleResult.Defender = defenderId;
+            battleResult.BattleType = "Arena";
+            battleResult.AttackerArchers = userArmy.Army.FirstOrDefault(x => x.Type == UnitType.Archers).Count;
+            battleResult.AttackerArtillery = userArmy.Army.FirstOrDefault(x => x.Type == UnitType.Artillery).Count;
+            battleResult.AttackerCavalry = userArmy.Army.FirstOrDefault(x => x.Type == UnitType.Cavalry).Count;
+            battleResult.AttackerInfantry = userArmy.Army.FirstOrDefault(x => x.Type == UnitType.Infantry).Count;
+            battleResult.DefenderArchers = opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Archers).Count;
+            battleResult.DefenderArtillery = opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Artillery).Count;
+            battleResult.DefenderCavalry = opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Cavalry).Count;
+            battleResult.DefenderInfantry = opponentArmy.Army.FirstOrDefault(x => x.Type == UnitType.Infantry).Count;
+
+            return battleResult;
         }
 
         private static BattleUnitDTO SelectDefendingUnit(List<UnitType> attackPriority, BattleArmyDTO defenderArmy)
@@ -109,17 +183,6 @@
             }
 
             return defendingUnit;
-        }
-
-        public void UnitAttack(int totalUnitAttack, BattleUnitDTO defendingUnit)
-        {
-            defendingUnit.Count = (defendingUnit.TotalUnitHealth - totalUnitAttack) / defendingUnit.SingleUnitHealth;
-
-            if (totalUnitAttack - totalUnitAttack <= 0)
-            {
-                defendingUnit.Count = 0;
-            }
-
         }
 
         private BattleArmyDTO GetArmy(int userCityId, List<UnitType> attackPriority)
