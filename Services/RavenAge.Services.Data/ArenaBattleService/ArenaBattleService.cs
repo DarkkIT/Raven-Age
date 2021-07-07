@@ -35,7 +35,7 @@
             IDeletableEntityRepository<Cavalry> calalryRepo,
             IRepository<UserBattle> userBattleRepo,
             IMapper mapper,
-            UserManager<ApplicationUser> UserManager
+            UserManager<ApplicationUser> userManager
             )
         {
             this.cityRepo = cityRepo;
@@ -46,7 +46,7 @@
             this.calalryRepo = calalryRepo;
             this.userBattleRepo = userBattleRepo;
             this.mapper = mapper;
-            userManager = UserManager;
+            this.userManager = userManager;
         }
 
         public async Task<BattleResultViewModel> Attack(string attackerId, int defenderCityId)
@@ -61,6 +61,9 @@
             var battleResult = this.SetInitialBattleResultData(attackerArmy, opponentArmy, attackerId, defenderId);
             var battleReport = new List<string>();
 
+            var attacker = await this.userManager.FindByIdAsync(attackerId);
+            var defender = await this.userManager.FindByIdAsync(defenderId);
+
             //// BattleLogic
 
             while (attackerArmy.TotalArmyCount > 0 && opponentArmy.TotalArmyCount > 0)
@@ -69,7 +72,7 @@
                 {
                     var opponentDefendingUnit = SelectDefendingUnit(unit.AttackPriority, opponentArmy);
                     this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
-                    UpdateBattleReport(battleReport, unit, opponentDefendingUnit);
+                    UpdateBattleReport(battleReport, unit, opponentDefendingUnit, attacker, defender);
 
                     if (attackerArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
@@ -83,7 +86,7 @@
                         var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, attackerArmy);
                         this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
 
-                        UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit);
+                        UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit, defender, attacker);
 
                         opponentAttackUnit.HasAttacked = true;
                     }
@@ -99,7 +102,7 @@
                     var opponentAttackUnit = opponentArmy.Army.FirstOrDefault(x => x.Count > 0 && x.HasAttacked == false);
                     var attackerDefendingUnit = SelectDefendingUnit(opponentAttackUnit.AttackPriority, attackerArmy);
                     this.UnitAttack(opponentAttackUnit.TotalUnitAttack, attackerDefendingUnit);
-                    UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit);
+                    UpdateBattleReport(battleReport, opponentAttackUnit, attackerDefendingUnit, defender, attacker);
 
 
                     if (attackerArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
@@ -122,9 +125,9 @@
             return result;
         }
 
-        private static void UpdateBattleReport(List<string> battleReport, BattleUnitDTO attackingUnit, BattleUnitDTO defendingUnit)
+        private static void UpdateBattleReport(List<string> battleReport, BattleUnitDTO attackingUnit, BattleUnitDTO defendingUnit, ApplicationUser attacker, ApplicationUser defender)
         {
-            battleReport.Add($"{attackingUnit.Type} attacked {defendingUnit.Type} and did {attackingUnit.TotalUnitAttack} dmg!");
+            battleReport.Add($"{attacker.Name}'s {attackingUnit.Type} attacked {defender.Name}'s {defendingUnit.Type} and did {attackingUnit.TotalUnitAttack} dmg!");
         }
 
         public void UnitAttack(int totalUnitAttack, BattleUnitDTO defendingUnit)

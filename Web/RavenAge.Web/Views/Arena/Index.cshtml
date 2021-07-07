@@ -20,14 +20,14 @@
 
     @if (Model.BattleResult != null)
     {
-    <div class="alert alert-primary" role="alert" style="left: 47%; top: 50%; position: absolute;">
+    <div id="BattleResult" class="alert alert-primary" role="alert" style="left: 47%; top: 50%; position: absolute;">
         @if (UserManager.GetUserId(this.User) == Model.BattleResult.Winner)
         {
             <p>
                 You Win - @Model.BattleResult.ArenaPoints - Points.
             </p>
             <details>
-                <summary>Battle report</summary>
+                <summary>Battle report:</summary>
                 <table>
                     @foreach (var turn in Model.BattleResult.BattleReport)
                     {
