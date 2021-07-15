@@ -40,7 +40,7 @@
         {
             var attackerCityId = this.userCityRepo.All().FirstOrDefault(x => x.UserId == attackerId).CityId; //// Need attacker City Id !
 
-            var attackPriority = new List<UnitType>() {UnitType.Artillery, UnitType.Archers, UnitType.Cavalry, UnitType.Infantry};
+            var attackPriority = new List<UnitType>() { UnitType.Artillery, UnitType.Archers, UnitType.Cavalry, UnitType.Infantry };
 
             var userArmy = this.GetArmy(attackerCityId, attackPriority);
             var opponentArmy = this.GetArmy(defenderCityId, attackPriority);
@@ -52,7 +52,7 @@
                 foreach (var unit in userArmy.Army.Where(x => x.Count > 0))
                 {
                     var opponentDefendingUnit = SelectDefendingUnit(unit.AttackPriority, opponentArmy);
-                   this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
+                    this.UnitAttack(unit.TotalUnitAttack, opponentDefendingUnit);
 
                     if (userArmy.TotalArmyCount == 0 || opponentArmy.TotalArmyCount == 0)
                     {
